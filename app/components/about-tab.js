@@ -7,8 +7,6 @@ const AboutTab = ({tabs}) => {
 
     const [activeTab, setActiveTab] = useState(0);
 
-    
-
     return (
         <div className="section-outernav">
             <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">

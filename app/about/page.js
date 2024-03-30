@@ -2,96 +2,52 @@
 
 import Link from "next/link";
 import AboutTab from "../components/about-tab";
+import { useQuery } from "@tanstack/react-query";
+
+async function fetchHeading() {
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us?populate=*`
+    );
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+    return res.json();
+}
+  
+
 export default function About() {
 
     const title = 'About us';
     // const aboutArr = [{'OurStory', 'Awards', 'Milestone', 'Strategic Partners', 'Join Us'}];
 
     const aboutArr = [
-        { title: 'OurStory', content: <p>Content for Tab 1</p> },
-        { title: 'Awards', content: <p>Content for Tab 2</p> },
-        { title: 'Milestone', content: <p>Content for Tab 3</p> },
+        { "title": 'OurStory', "content": <p>Content for Tab 1</p>, "ver": true },
+        { "title": 'Awards', "content": <p>Content for Tab 2</p>, "ver": true },
+        { "title": 'Milestone', "content": <p>Content for Tab 3</p>, "ver": true },
     ]
 
-    const ourMission = {
-        "title": "Our Mission",
-        // "content": [
-        //     {
-        //         "type": "paragraph",
-        //         "children": [
-        //             {
-        //                 "type": "text",
-        //                 "text": "Hòa Nhịp Con Người – Vùng đất – Cộng đồng",
-        //                 "bold": true
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         "type": "paragraph",
-        //         "children": [
-        //             {
-        //                 "type": "text",
-        //                 "text": "Suốt chiều dài lịch sử, con người gắn kết với vùng đất mình sinh sống, thông qua gia đình và cộng đồng. Là nhà phát triển bất động sản, chúng tôi hiểu rằng sự hòa quyện giữa Con người – Đất đai  – Cộng đồng là nhân tố quan trọng mở ra một cuộc sống tốt đẹp mà ai nấy đều mong ước. "
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         "type": "paragraph",
-        //         "children": [
-        //             {
-        //                 "type": "text",
-        //                 "text": "Để nuôi dưỡng sự hòa quyện này, chúng tôi thấu hiểu từng vùng đất, đưa hơi thở đời sống vào quy hoạch tổng thể và kết cấu công trình, đưa văn hoá bản địa vào đường nét kiến trúc. Chúng tôi không ngừng thay đổi và sáng tạo trong sự cân bằng với an toàn và phát triển bền vững. Chúng tôi không xây nhà mà hòa nhịp những âm điệu của cuộc sống trong một bản giao hưởng cao quý giữa Con người - Đất đai và Cộng đồng."
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         "type": "paragraph",
-        //         "children": [
-        //             {
-        //                 "type": "text",
-        //                 "text": "Con người",
-        //                 "bold": true
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         "type": "paragraph",
-        //         "children": [
-        //             {
-        //                 "type": "text",
-        //                 "text": "Chúng tôi hướng tới việc nuôi dưỡng mối quan hệ lâu dài vào sâu sắc với khách hàng, nhà đầu tư và đối tác. Để làm tốt điều này, chúng tôi không ngừng tìm tòi, thử nghiệm, đưa ra các giải pháp mang lại trải nghiệm tích cực để thúc đẩy sự phát triển chung."
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         "type": "paragraph",
-        //         "children": [
-        //             {
-        //                 "type": "text",
-        //                 "text": "Cộng đồng",
-        //                 "bold": true
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         "type": "paragraph",
-        //         "children": [
-        //             {
-        //                 "type": "text",
-        //                 "text": "Sinh khí cộng đồng có ý nghĩa quan trọng đối với sự phát triển của cá nhân và gia đình. Chúng tôi thiết kế một hệ thống tạo điều kiện cho cư dân có thể giao tiếp với nhau một cách chân thành, thiện chí, để cùng tạo nên các cộng đồng văn minh, hứng khởi và thịnh vượng."
-        //             }
-        //         ]
-        //     }
-        // ]
+    const { data, isLoading, error } = useQuery({
+        queryKey: 'myData',
+        queryFn: fetchHeading
+    });
+
+    // Handle loading and error states
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>An error has occurred: {error.message}</p>;
+
+    function getTitlesFromArray(data) {
+        return data.map(item => item.Title);
     }
 
-    const ourPhilosophy = {
-        "title": "Our Philosophy",
-    }
+    const ourStoryCardTitles = getTitlesFromArray(data.data.attributes.OurStoryCard);
+    const awardTitles = getTitlesFromArray(data.data.attributes.Award);
+    const milestoneCardTitles = getTitlesFromArray(data.data.attributes.MilestoneCard);
+    const ourPartnerTitles = getTitlesFromArray(data.data.attributes.OurPartner);
 
-    const ourPeople = {
-        "title": "Our People",
-    }
+    console.log("Our Story Card Titles:", ourStoryCardTitles);
+    console.log("Award Titles:", awardTitles);
+    console.log("Milestone Titles:", milestoneCardTitles);
+    console.log("Our Partner Titles:", ourPartnerTitles);
 
     return(
         <div>
