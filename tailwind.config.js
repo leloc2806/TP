@@ -12,6 +12,13 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      color: {
+        "bgactive": "var(--bgactive)"
+      },
+      
+      fontSize: {
+        "titleBig": "var(--titleBig)"
+      }
       
     },
   },

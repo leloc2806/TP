@@ -1,53 +1,92 @@
-"use client"
-
 import Link from "next/link";
 import AboutTab from "../components/about-tab";
-import { useQuery } from "@tanstack/react-query";
 
-async function fetchHeading() {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us?populate=*`
-    );
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
-    }
-    return res.json();
-}
-  
+// async function getTitlePage() {
+//     const res = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/api/about-us?populate=deep,3`
+//     );
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data");
+//     }
+//     return res.json();
+// }
 
-export default function About() {
+// async function getOurStory() {
+//     const res = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-our-story?populate=deep,3`
+//     );
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data");
+//     }
+//     return res.json();
+// }
 
-    const title = 'About us';
-    // const aboutArr = [{'OurStory', 'Awards', 'Milestone', 'Strategic Partners', 'Join Us'}];
+// async function getAward(){
+    
+//     const res = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-award?populate=deep,3`
+//     );
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data");
+//     }
+//     return res.json();
+// }
 
-    const aboutArr = [
-        { "title": 'OurStory', "content": <p>Content for Tab 1</p>, "ver": true },
-        { "title": 'Awards', "content": <p>Content for Tab 2</p>, "ver": true },
-        { "title": 'Milestone', "content": <p>Content for Tab 3</p>, "ver": true },
-    ]
+// async function getMilestone(){
+    
+//     const res = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-milestone?populate=deep,3`
+//     );
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data");
+//     }
+//     return res.json();
+// }
 
-    const { data, isLoading, error } = useQuery({
-        queryKey: 'myData',
-        queryFn: fetchHeading
-    });
+// async function getStrategicPartner(){
+    
+//     const res = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/api/strategic-partner?populate=deep,3`
+//     );
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data");
+//     }
+//     return res.json();
+// }
 
-    // Handle loading and error states
-    if (isLoading) return <p>Loading...</p>;
-    if (error) return <p>An error has occurred: {error.message}</p>;
+// async function getJoinUs(){
+    
+//     const res = await fetch(
+//         `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-join-us?populate=deep,3`
+//     );
+//     if (!res.ok) {
+//         throw new Error("Failed to fetch data");
+//     }
+//     return res.json();
+// }
 
-    function getTitlesFromArray(data) {
-        return data.map(item => item.Title);
-    }
 
-    const ourStoryCardTitles = getTitlesFromArray(data.data.attributes.OurStoryCard);
-    const awardTitles = getTitlesFromArray(data.data.attributes.Award);
-    const milestoneCardTitles = getTitlesFromArray(data.data.attributes.MilestoneCard);
-    const ourPartnerTitles = getTitlesFromArray(data.data.attributes.OurPartner);
+export default async function About() {
+    // const [activeTab, setActiveTab] = useState(0);
+    // const titlePage = await getTitlePage();
+    // const ourStory = await getOurStory();
+    // const award = await getAward();
+    // const milestone = await getMilestone();
+    // const strategicPartner = await getStrategicPartner();
+    // const joinUs = await getJoinUs();
+    
+    // const title = titlePage.data.attributes.Title;
+    // const ourStoryTitle = ourStory.data.attributes.Title;
+    // const ourAward = award.data.attributes.Title;
+    // const ourMilestone = milestone.data.attributes.Title;
+    // const ourStrategicPartner = strategicPartner.data.attributes.Title;
+    // const ourJoinUs = joinUs.data.attributes.Title;
 
-    console.log("Our Story Card Titles:", ourStoryCardTitles);
-    console.log("Award Titles:", awardTitles);
-    console.log("Milestone Titles:", milestoneCardTitles);
-    console.log("Our Partner Titles:", ourPartnerTitles);
+    const title = 'Test'
+
+    const aboutArr = ['ourStoryTitle', 'ourAward', 'ourMilestone', 'ourStrategicPartner', 'ourJoinUs'];
+
+    const activeTab = '1';
 
     return(
         <div>
@@ -56,24 +95,31 @@ export default function About() {
                 <h1>{title}</h1>
             </div>   
             {/* Component */}
-            {/* <div className="section-outernav">
+            <div className="section-outernav">
                 <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">
                     <div className="sub-nav">
-                        <ul className="flex">                           
+                        <div className="flex">                           
                             {aboutArr.map((about, index) => 
-                                (<li key={index}><Link className={index === 0 ? "first:ml-0 my-11 mr-9 block opacity-60 hover:opacity-100 active:opacity-100" : "my-11 mx-9 block hover:text-black opacity-50 hover:opacity-100"} href={`/${about.toLowerCase().replace(/\s+/g, '-')}`}>{about}</Link></li>)
+                                (<button key={index} 
+                                    className={`opacity-60 hover:opacity-100 ${activeTab === index 
+                                        ? "active:opacity-100 visited:opacity-100 focus:opacity-100" 
+                                        : ""} ${index === 0 ? 'first:ml-0 my-11 mr-9' : 'my-11 mx-9'}`}     
+                                        
+                                >                         
+                                    {about.title}
+                                </button>)
                             )}
-                        </ul>
+                        </div>
                     </div> 
                 </div>
-            </div> */}
+            </div>
 
-            <AboutTab tabs={aboutArr}/>
+            {/* <AboutTab tabs={aboutArr}/> */}
 
-            {/* <div className="about-content">
+            <div className="about-content">
                 <div className="our-mission flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
                     <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                        <h2>{ourMission.title}</h2>
+                        <h2>Our Mission</h2>
                     </div>
                     <div className="right-content w-3/5">
                         <div>
@@ -87,7 +133,7 @@ export default function About() {
                 </div>
                 <div className="our-philosophy flex w-[80vw] mx-auto font-normal py-[5vw] relative">
                     <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                        <h2>{ourPhilosophy.title}</h2>
+                        <h2>ourPhilosophy</h2>
                     </div>
                     <div className="right-content w-3/5">
                         <div>
@@ -103,7 +149,7 @@ export default function About() {
                 </div>
                 <div className="our-philosophy w-[80vw] mx-auto font-normal py-[5vw] relative">
                     <div className="left-content text-[4vw] font-extralight pr-6 mb-20">
-                        <h2>{ourPeople.title}</h2>
+                        <h2>ourPeople</h2>
                     </div>
                     <div className="right-content">
                         <div>
@@ -119,8 +165,336 @@ Then with the right hearts in place, the right minds will come along. With this 
                     </div>
                     <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
                 </div>
-            </div> */}
-            
+            </div>
+            <div className="about-award w-[80vw] mx-auto font-normal py-[5vw] relative">
+                <div className="list-award flex flex-wrap">
+                    <div className="box flex w-1/4 items-center mx-[15px] my-10">
+                        <div className="pic-award w-1/4">
+                            <img src="https://www.nhojsc.vn/pictures/catalog/about/award/01.jpg"></img>
+                        </div>
+                        <div className="text-award w-3/4"> <p>N.H.O</p>
+                            <p><strong>Best Boutique Developer.</strong></p>
+                            <p><strong>(Country Winner)</strong></p>
+                            <p>Asia Property Award 2021</p>
+                        </div>
+                    </div>           
+                    <div className="box flex w-1/4 items-center mx-[15px] my-10">
+                        <div className="pic-award w-1/4">
+                            <img src="https://www.nhojsc.vn/pictures/catalog/about/award/01.jpg"></img>
+                        </div>
+                        <div className="text-award w-3/4"> <p>N.H.O</p>
+                            <p><strong>Best Boutique Developer.</strong></p>
+                            <p><strong>(Country Winner)</strong></p>
+                            <p>Asia Property Award 2021</p>
+                        </div>
+                    </div>
+                    <div className="box flex w-1/4 items-center mx-[15px] my-10">
+                        <div className="pic-award w-1/4">
+                            <img src="https://www.nhojsc.vn/pictures/catalog/about/award/01.jpg"></img>
+                        </div>
+                        <div className="text-award w-3/4"> <p>N.H.O</p>
+                            <p><strong>Best Boutique Developer.</strong></p>
+                            <p><strong>(Country Winner)</strong></p>
+                            <p>Asia Property Award 2021</p>
+                        </div>
+                    </div>   
+                    <div className="box flex w-1/4 items-center mx-[15px] my-10">
+                        <div className="pic-award w-1/4">
+                            <img src="https://www.nhojsc.vn/pictures/catalog/about/award/01.jpg"></img>
+                        </div>
+                        <div className="text-award w-3/4"> <p>N.H.O</p>
+                            <p><strong>Best Boutique Developer.</strong></p>
+                            <p><strong>(Country Winner)</strong></p>
+                            <p>Asia Property Award 2021</p>
+                        </div>
+                    </div>   
+                    <div className="box flex w-1/4 items-center mx-[15px] my-10">
+                        <div className="pic-award w-1/4">
+                            <img src="https://www.nhojsc.vn/pictures/catalog/about/award/01.jpg"></img>
+                        </div>
+                        <div className="text-award w-3/4"> <p>N.H.O</p>
+                            <p><strong>Best Boutique Developer.</strong></p>
+                            <p><strong>(Country Winner)</strong></p>
+                            <p>Asia Property Award 2021</p>
+                        </div>
+                    </div>   
+                    <div className="box flex w-1/4 items-center mx-[15px] my-10">
+                        <div className="pic-award w-1/4">
+                            <img src="https://www.nhojsc.vn/pictures/catalog/about/award/01.jpg"></img>
+                        </div>
+                        <div className="text-award w-3/4"> <p>N.H.O</p>
+                            <p><strong>Best Boutique Developer.</strong></p>
+                            <p><strong>(Country Winner)</strong></p>
+                            <p>Asia Property Award 2021</p>
+                        </div>
+                    </div>                                
+                </div>
+            </div>
+            <div className="about-milestone">
+                <div className="our-history flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
+                    <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
+                        <h2>our history and milestones</h2>
+                    </div>
+                    <div className="right-content w-3/5">
+                        <div>
+                            <p className="text-xl opacity-60">N.H.O was established 2012 with the goal to become a provid of good, affordable homes all over Vietnam. Since then, we have been striving to provide not only buildings, but to create value homes, families and communities. With our international team dedicated professionals, we believe that we are a positive force increasing the living standards of the country.
+                            </p>
+                        </div>
+                    </div>
+                    <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                </div>
+                <div className="our-milstone w-[80vw] mx-auto font-normal relative">
+                    <div className="list-his">
+                        <div className="his-box relative flex justify-between px-0 py-8">
+                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">2022</span>
+                            <div className="wrap-history-wrap relative w-1/2">
+                                <div className="row-history-box flex relative items-center mb-2">
+                                    <div className="pic-history pt-[25%] w-1/4 relative block">
+                                        <img className="absolute w-full h-full top-0 left-0 object-contain" src="https://www.nhojsc.vn/pictures/catalog/about/history/01.png" alt="HERA HAI PHONG" width="300px" height="300px"></img>
+                                    </div>  
+                                    <div className="text-history w-3/4 pl-8 relative block "> 
+                                        <p className="text-xl"><strong>HERA HAI PHONG</strong></p> 
+                                        <p className="text-xl">High-Rise (Commercial Housing)</p> 
+                                    </div>  
+                                </div>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                        </div>
+                        <div className="his-box relative flex justify-between px-0 py-8">
+                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">2022</span>
+                            <div className="wrap-history-wrap relative w-1/2">
+                                <div className="row-history-box flex relative items-center mb-2">
+                                    <div className="pic-history pt-[25%] w-1/4 relative block">
+                                        <img className="absolute w-full h-full top-0 left-0 object-contain" src="https://www.nhojsc.vn/pictures/catalog/about/history/01.png" alt="HERA HAI PHONG" width="300px" height="300px"></img>
+                                    </div>  
+                                    <div className="text-history w-3/4 pl-8 relative block "> 
+                                        <p className="text-xl"><strong>HERA HAI PHONG</strong></p> 
+                                        <p className="text-xl">High-Rise (Commercial Housing)</p> 
+                                    </div>  
+                                </div>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                        </div>
+                        <div className="his-box relative flex justify-between px-0 py-8">
+                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">2022</span>
+                            <div className="wrap-history-wrap relative w-1/2">
+                                <div className="row-history-box flex relative items-center mb-2">
+                                    <div className="pic-history pt-[25%] w-1/4 relative block">
+                                        <img className="absolute w-full h-full top-0 left-0 object-contain" src="https://www.nhojsc.vn/pictures/catalog/about/history/01.png" alt="HERA HAI PHONG" width="300px" height="300px"></img>
+                                    </div>  
+                                    <div className="text-history w-3/4 pl-8 relative block "> 
+                                        <p className="text-xl"><strong>HERA HAI PHONG</strong></p> 
+                                        <p className="text-xl">High-Rise (Commercial Housing)</p> 
+                                    </div>  
+                                </div>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                        </div>
+                        <div className="his-box relative flex justify-between px-0 py-8">
+                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">2022</span>
+                            <div className="wrap-history-wrap relative w-1/2">
+                                <div className="row-history-box flex relative items-center mb-2">
+                                    <div className="pic-history pt-[25%] w-1/4 relative block">
+                                        <img className="absolute w-full h-full top-0 left-0 object-contain" src="https://www.nhojsc.vn/pictures/catalog/about/history/01.png" alt="HERA HAI PHONG" width="300px" height="300px"></img>
+                                    </div>  
+                                    <div className="text-history w-3/4 pl-8 relative block "> 
+                                        <p className="text-xl"><strong>HERA HAI PHONG</strong></p> 
+                                        <p className="text-xl">High-Rise (Commercial Housing)</p> 
+                                    </div>  
+                                </div>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                        </div>
+                        <div className="his-box relative flex justify-between px-0 py-8">
+                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">2022</span>
+                            <div className="wrap-history-wrap relative w-1/2">
+                                <div className="row-history-box flex relative items-center mb-2">
+                                    <div className="pic-history pt-[25%] w-1/4 relative block">
+                                        <img className="absolute w-full h-full top-0 left-0 object-contain" src="https://www.nhojsc.vn/pictures/catalog/about/history/01.png" alt="HERA HAI PHONG" width="300px" height="300px"></img>
+                                    </div>  
+                                    <div className="text-history w-3/4 pl-8 relative block "> 
+                                        <p className="text-xl"><strong>HERA HAI PHONG</strong></p> 
+                                        <p className="text-xl">High-Rise (Commercial Housing)</p> 
+                                    </div>  
+                                </div>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                        </div>
+                        <div className="his-box relative flex justify-between px-0 py-8">
+                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">2022</span>
+                            <div className="wrap-history-wrap relative w-1/2">
+                                <div className="row-history-box flex relative items-center mb-2">
+                                    <div className="pic-history pt-[25%] w-1/4 relative block">
+                                        <img className="absolute w-full h-full top-0 left-0 object-contain" src="https://www.nhojsc.vn/pictures/catalog/about/history/01.png" alt="HERA HAI PHONG" width="300px" height="300px"></img>
+                                    </div>  
+                                    <div className="text-history w-3/4 pl-8 relative block "> 
+                                        <p className="text-xl"><strong>HERA HAI PHONG</strong></p> 
+                                        <p className="text-xl">High-Rise (Commercial Housing)</p> 
+                                    </div>  
+                                </div>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                        </div>
+                        <div className="his-box relative flex justify-between px-0 py-8">
+                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">2022</span>
+                            <div className="wrap-history-wrap relative w-1/2">
+                                <div className="row-history-box flex relative items-center mb-2">
+                                    <div className="pic-history pt-[25%] w-1/4 relative block">
+                                        <img className="absolute w-full h-full top-0 left-0 object-contain" src="https://www.nhojsc.vn/pictures/catalog/about/history/01.png" alt="HERA HAI PHONG" width="300px" height="300px"></img>
+                                    </div>  
+                                    <div className="text-history w-3/4 pl-8 relative block "> 
+                                        <p className="text-xl"><strong>HERA HAI PHONG</strong></p> 
+                                        <p className="text-xl">High-Rise (Commercial Housing)</p> 
+                                    </div>  
+                                </div>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                        </div>
+                    </div>
+                </div>                       
+            </div>
+            <div className="about-strategic-partner">
+                <div className="our-strategic-partner flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
+                    <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
+                        <h2>our strategic partners</h2>
+                    </div>
+                    <div className="right-content w-3/5">
+                        <div>
+                            <p className="text-xl opacity-60">We strive to cultivate a long-term relationship with strategic partners who share the same vision and values. This relationship enables us to create optimal and sustainable solutions for housing while providing higher living standards.
+
+The more we cooperate, the more we understand each other, and the more we grow up together in the mission of harmonizing people, land, and community.
+                            </p>
+                        </div>
+                    </div>
+                    <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                </div>
+                <div className="about-partner">
+                    <div className="wrap-content w-[--wrapcontent] m-auto py-[5vw] px-0 relative h-auto">
+                        <div className="list-partner flex flex-wrap relative">
+                            <div className="box-partner w-1/2 p-12 relative flex">
+                                <div className="pic-partner h-auto w-[45%] relative">
+                                    <img className="w-full h-auto object-left object-center relative block" src="https://www.nhojsc.vn/pictures/catalog/about/partner/01.jpg" alt="ALPHA ENGINEERING" width="596px" height="256px"></img>
+                                </div>
+                                <div className="text-partner w-[55%] text-[var(--bgactive)] pl-8 relative">
+                                    <p className="relative block mx-0 mt-0 mb-8">Alpha Engineering Corporation is a general construction company based in Vietnam providing high quality and innovative service and professional management to valued clients.</p>  
+                                    <div className="ani-view-details h-auto relative w-full">
+                                        <a className="view-details relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-16 h-16 is-inview" aria-label="link" href="https://www.handongec.co.kr/?lang=vi" target="_blank" rel="noopener">
+                                            <svg className="w-full h-full absolute top-0 left-0" viewBox="0 0 80 80">
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                            </svg>
+                                            <div className="view_i"></div>
+                                            <span className="o_h text-[--bgactive]">
+                                                <span>GO TO WEBSITE</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="box-partner w-1/2 p-12 relative flex">
+                                <div className="pic-partner h-auto w-[45%] relative">
+                                    <img className="w-full h-auto object-left object-center relative block" src="https://www.nhojsc.vn/pictures/catalog/about/partner/01.jpg" alt="ALPHA ENGINEERING" width="596px" height="256px"></img>
+                                </div>
+                                <div className="text-partner w-[55%] text-[var(--bgactive)] pl-8 relative">
+                                    <p className="relative block mx-0 mt-0 mb-8">Alpha Engineering Corporation is a general construction company based in Vietnam providing high quality and innovative service and professional management to valued clients.</p>  
+                                    <div className="ani-view-details h-auto relative w-full">
+                                        <a className="view-details relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-16 h-16 is-inview" aria-label="link" href="https://www.handongec.co.kr/?lang=vi" target="_blank" rel="noopener">
+                                            <svg className="w-full h-full absolute top-0 left-0" viewBox="0 0 80 80">
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                            </svg>
+                                            <div className="view_i"></div>
+                                            <span className="o_h text-[--bgactive]">
+                                                <span>GO TO WEBSITE</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="box-partner w-1/2 p-12 relative flex">
+                                <div className="pic-partner h-auto w-[45%] relative">
+                                    <img className="w-full h-auto object-left object-center relative block" src="https://www.nhojsc.vn/pictures/catalog/about/partner/01.jpg" alt="ALPHA ENGINEERING" width="596px" height="256px"></img>
+                                </div>
+                                <div className="text-partner w-[55%] text-[var(--bgactive)] pl-8 relative">
+                                    <p className="relative block mx-0 mt-0 mb-8">Alpha Engineering Corporation is a general construction company based in Vietnam providing high quality and innovative service and professional management to valued clients.</p>  
+                                    <div className="ani-view-details h-auto relative w-full">
+                                        <a className="view-details relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-16 h-16 is-inview" aria-label="link" href="https://www.handongec.co.kr/?lang=vi" target="_blank" rel="noopener">
+                                            <svg className="w-full h-full absolute top-0 left-0" viewBox="0 0 80 80">
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                            </svg>
+                                            <div className="view_i"></div>
+                                            <span className="o_h text-[--bgactive]">
+                                                <span>GO TO WEBSITE</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="box-partner w-1/2 p-12 relative flex">
+                                <div className="pic-partner h-auto w-[45%] relative">
+                                    <img className="w-full h-auto object-left object-center relative block" src="https://www.nhojsc.vn/pictures/catalog/about/partner/01.jpg" alt="ALPHA ENGINEERING" width="596px" height="256px"></img>
+                                </div>
+                                <div className="text-partner w-[55%] text-[var(--bgactive)] pl-8 relative">
+                                    <p className="relative block mx-0 mt-0 mb-8">Alpha Engineering Corporation is a general construction company based in Vietnam providing high quality and innovative service and professional management to valued clients.</p>  
+                                    <div className="ani-view-details h-auto relative w-full">
+                                        <a className="view-details relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-16 h-16 is-inview" aria-label="link" href="https://www.handongec.co.kr/?lang=vi" target="_blank" rel="noopener">
+                                            <svg className="w-full h-full absolute top-0 left-0" viewBox="0 0 80 80">
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                            </svg>
+                                            <div className="view_i"></div>
+                                            <span className="o_h text-[--bgactive]">
+                                                <span>GO TO WEBSITE</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="box-partner w-1/2 p-12 relative flex">
+                                <div className="pic-partner h-auto w-[45%] relative">
+                                    <img className="w-full h-auto object-left object-center relative block" src="https://www.nhojsc.vn/pictures/catalog/about/partner/01.jpg" alt="ALPHA ENGINEERING" width="596px" height="256px"></img>
+                                </div>
+                                <div className="text-partner w-[55%] text-[var(--bgactive)] pl-8 relative">
+                                    <p className="relative block mx-0 mt-0 mb-8">Alpha Engineering Corporation is a general construction company based in Vietnam providing high quality and innovative service and professional management to valued clients.</p>  
+                                    <div className="ani-view-details h-auto relative w-full">
+                                        <a className="view-details relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-16 h-16 is-inview" aria-label="link" href="https://www.handongec.co.kr/?lang=vi" target="_blank" rel="noopener">
+                                            <svg className="w-full h-full absolute top-0 left-0" viewBox="0 0 80 80">
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                            </svg>
+                                            <div className="view_i"></div>
+                                            <span className="o_h text-[--bgactive]">
+                                                <span>GO TO WEBSITE</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="box-partner w-1/2 p-12 relative flex">
+                                <div className="pic-partner h-auto w-[45%] relative">
+                                    <img className="w-full h-auto object-left object-center relative block" src="https://www.nhojsc.vn/pictures/catalog/about/partner/01.jpg" alt="ALPHA ENGINEERING" width="596px" height="256px"></img>
+                                </div>
+                                <div className="text-partner w-[55%] text-[var(--bgactive)] pl-8 relative">
+                                    <p className="relative block mx-0 mt-0 mb-8">Alpha Engineering Corporation is a general construction company based in Vietnam providing high quality and innovative service and professional management to valued clients.</p>  
+                                    <div className="ani-view-details h-auto relative w-full">
+                                        <a className="view-details relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-16 h-16 is-inview" aria-label="link" href="https://www.handongec.co.kr/?lang=vi" target="_blank" rel="noopener">
+                                            <svg className="w-full h-full absolute top-0 left-0" viewBox="0 0 80 80">
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                                            </svg>
+                                            <div className="view_i"></div>
+                                            <span className="o_h text-[--bgactive]">
+                                                <span>GO TO WEBSITE</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>                 
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

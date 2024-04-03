@@ -3,6 +3,61 @@
 import Link from "next/link";
 import { useState } from "react";
 
+const OurStory = ({props}) => {
+    <div className="our-mission flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
+        <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
+            <h2>{props.title}</h2>
+        </div>
+        <div className="right-content w-3/5">
+            <div>
+                <h3 className="font-bold text-xl mb-10">Harmonizing People – Land – Community</h3>
+                <p className="text-xl opacity-60">
+                    {props.content}
+                </p>
+            </div>
+        </div>
+        <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+    </div>
+}
+
+const Award = ({props}) => {
+    <div key={index} className="our-mission flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
+        <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
+            <h2>{tab.title}</h2>
+        </div>
+        <div className="right-content w-3/5">
+            <div>
+                <h3 className="font-bold text-xl mb-10">Harmonizing People – Land – Community</h3>
+                <p className="text-xl opacity-60">
+                    {tab.content}
+                </p>
+            </div>
+        </div>
+        <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+    </div>
+}
+
+const Milestone = ({props}) => {
+    <div key={index} className="our-mission flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
+        <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
+            <h2>{tab.title}</h2>
+        </div>
+        <div className="right-content w-3/5">
+            <div>
+                <h3 className="font-bold text-xl mb-10">Harmonizing People – Land – Community</h3>
+                <p className="text-xl opacity-60">
+                    {tab.content}
+                </p>
+            </div>
+        </div>
+        <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+    </div>
+}
+
+const OurPartner = () => {}
+
+const JoinUs = () => {}
+
 const AboutTab = ({tabs}) => {
 
     const [activeTab, setActiveTab] = useState(0);
@@ -27,22 +82,9 @@ const AboutTab = ({tabs}) => {
             </div>
             <div className="about-content">
                 {tabs.map((tab, index) =>
-                    activeTab === index ? (
-                        <div key={index} className="our-mission flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
-                            <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                                <h2>{tab.title}</h2>
-                            </div>
-                            <div className="right-content w-3/5">
-                                <div>
-                                    <h3 className="font-bold text-xl mb-10">Harmonizing People – Land – Community</h3>
-                                    <p className="text-xl opacity-60">
-                                        {tab.content}
-                                    </p>
-                                </div>
-                            </div>
-                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
-                        </div>
-                    ) : null
+                    activeTab === index ? 
+                        <OurStory key={index} props={tab}/>
+                    : null
                 )}
             </div>
         </div>
