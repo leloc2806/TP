@@ -74,6 +74,21 @@ html{
     font-size: 1vw;
 }
 
+/* About Us */
+
+.right-content b, strong {
+    font-weight: 700;
+}
+
+.right-content p {
+    position: relative;
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 0 0 1.8rem;
+}
+
+
 .close-pics-span circle, .view-details circle {
     stroke-dasharray: 265;
     stroke-dashoffset: 265;
@@ -189,4 +204,12 @@ html{
 .view-details:hover .view_i::after {
     transform: translateX(0);
     transition: transform .3s;
+}
+
+.text-fixed p {
+    position: relative;
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 0 0 1.8rem;
 }
