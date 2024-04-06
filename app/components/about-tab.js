@@ -25,7 +25,8 @@ function OurStory({data}){
                 <div className="right-content w-3/5">
                     <Markdown>{ourStoryRightContent1}</Markdown>
                 </div>
-                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+        
             </div>
             <div className="our-philosophy flex w-[80vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
@@ -34,7 +35,7 @@ function OurStory({data}){
                 <div className="right-content w-3/5">
                     <Markdown>{ourStoryRightContent2}</Markdown>
                 </div>
-                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
 
             </div>
             <div className="our-people w-[80vw] mx-auto font-normal py-[5vw] relative">
@@ -46,7 +47,8 @@ function OurStory({data}){
                         <Markdown>{ourStoryBottomContent3}</Markdown>
                     </div>
                 </div>
-                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+
             </div>
         </div>
      
@@ -123,7 +125,8 @@ function Milestone({data}){
                                     </div>
                                 </div>
                             </div>
-                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+
                         </div>
                     ))}
                 </div>
@@ -198,7 +201,7 @@ export default function TabAbout({ data }) {
                     {({ selected }) => (
                         <button
                         className={
-                            selected ? 'active:opacity-100 visited:opacity-100 focus:opacity-100' : ''
+                            selected ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 target:opacity-100 focus-visible:content-none selected' : ''
                         }
                         >
                         {tab}

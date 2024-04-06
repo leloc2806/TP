@@ -74,6 +74,16 @@ html{
     font-size: 1vw;
 }
 
+.selected{
+    opacity: 1!important;
+    focus-visible: hidden !important;
+}
+
+.selected:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
 /* About Us */
 
 .right-content b, strong {
