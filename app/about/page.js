@@ -1,8 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
 import AboutTab from "../components/about-tab";
 import Markdown from "react-markdown";
-import TabAbout from "../components/about-tab";
 
 async function getTitlePage() {
     const res = await fetch(
@@ -97,7 +94,7 @@ export default async function About() {
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
             </div>   
-
+            
             {/* Component */}
             <div className="section-outernav">
                 <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">

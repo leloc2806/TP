@@ -17,7 +17,9 @@ module.exports = {
       },
       
       fontSize: {
-        "titleBig": "var(--titleBig)"
+        "titleBig": "var(--titleBig)",
+        "titleSmall": "var(--titleSmall)",
+        "titleMedium": "var(--titleMedium)"
       }
       
     },
