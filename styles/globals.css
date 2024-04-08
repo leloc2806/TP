@@ -238,3 +238,32 @@ html{
     margin: 0 0 0 10px;
     opacity: .7;
 }
+
+.item-news {
+    position: relative;
+    display: block;
+    width: calc(33.33% - 30px);
+    margin: 15px;
+    padding: 0 0 80px;
+    cursor: pointer;
+}
+
+.date-thumb {
+    position: relative;
+    height: auto;
+    margin: 15px 0;
+    color: var(--color-black40);
+    font-weight: 500;
+    font-size: .8rem;
+    background-color: unset;
+    line-height: 1.5;
+    text-align: left;
+    z-index: 5;
+}
+
+.txt-news h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    position: relative;
+    margin: 0 0 1rem;
+}
