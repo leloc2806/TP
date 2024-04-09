@@ -29,7 +29,7 @@ function NewList({data}){
             <div className="view-more absolute bottom-0 left-0 inline-block my-8 mx-0">
                 <Link 
                     className="link-load relative flex items-center font-bold py-[5px] px-0 text-base uppercase my-0 mr-[10px] ml-0 text-[var(--color-black30)]" 
-                    href="https://www.nhojsc.vn/tin-tuc/tin-tuc-/song-ngam-tai-thi-truong-bat-dong-san-ha-long.html" 
+                    href={`/news/${post.slug}`} 
                     aria-label="news"
                     >
                         xem thêm

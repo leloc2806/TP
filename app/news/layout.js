@@ -3,6 +3,6 @@ export const metadata = {
     description:
       "Tin tuc",
   };
-  export default function NewsLayout({ children }) {
-    return <>{children}</>;
-  }
+export default function NewsLayout({ children }) {
+  return <>{children}</>;
+}
