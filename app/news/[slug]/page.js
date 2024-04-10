@@ -1,4 +1,5 @@
 import TitlePage from "@/app/components/titlepage"
+import Slider from "@/app/components/slider"
 import Markdown from 'react-markdown';
 
 
@@ -20,7 +21,7 @@ export default async function News({params}) {
     const categories = detailData.news_categories.data;
     const category = categories.map(item => item.attributes.name)
 
-    const content = detailData.article_content.content;
+    const content = detailData.article_content[0].content;
 
     return (
         <div className="relative m-0 news-detail-page">
@@ -33,15 +34,16 @@ export default async function News({params}) {
                                 {category.length > 1 ? category.join(', ') : category}
                             </div>
                             <h2>{detailData.title}</h2>
-                            <div className="date-numb text-center">by admin | Mar 21, 2024</div>
+                            <div className="date-thumb text-center">by admin | Mar 21, 2024</div>
                         </div>
-                        <div className="load-text relative block my-0 mx-auto overflow-hidden">
-                            <Markdown></Markdown>
+                        <div className="load-text relative block my-0 mx-auto overflow-hidden p-[40px]">
+                            <Markdown>{content}</Markdown>
                         </div>
                         <div className=""></div>
                     </div>
                 </div>
             </div>
+            <Slider />
         </div>
 
     )

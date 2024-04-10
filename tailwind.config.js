@@ -20,8 +20,8 @@ module.exports = {
         "titleBig": "var(--titleBig)",
         "titleSmall": "var(--titleSmall)",
         "titleMedium": "var(--titleMedium)"
-      }
-      
+      },
+
     },
   },
   plugins: [],

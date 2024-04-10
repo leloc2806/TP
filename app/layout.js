@@ -1,11 +1,14 @@
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "@/styles/globals.css";
 
 import Header from "./components/header";
 import Providers from "@/app/query_provider";
 import Footer from "./components/footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ 
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"]
+});
 
 export const metadata = {
   title: "Thanh Phat JSC",
@@ -15,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.className}>
         <Header/>
         <Providers>{children}</Providers>
         <Footer/>

@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    h1 {
+      @apply text-2xl;
+    }
+    h2 {
+      @apply text-xl;
+    }
+    h3 {
+      @apply text-lg;
+    }
+    h4{
+        @apply text-base
+    }
+}
+
 :root{
     --color-white: #fff;
     --color-whitelight: #f5f5f5;
@@ -72,6 +87,10 @@
 
 html{
     font-size: 1vw;
+}
+
+h1,h2 {
+    line-height: 1.2
 }
 
 .selected{
@@ -287,6 +306,10 @@ html{
     font-weight: 700;
 }
 
+.news-detail-page .date-thumb{
+    text-align: center;
+}
+
 .load-text h2, .load-text h3, .load-text h4, .load-text p{
     position: relative;
     display: block;
@@ -294,7 +317,24 @@ html{
     padding: 0 3vw;
 }
 
+.load-text h1{}
+.load-text h2{}
+.load-text h3{}
+.load-text h4{}
+.load-text h5{}
+
 .load-text p {
     margin: 0 0 1.8rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+}
+
+.figure-img, .figure-two-img {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.chapeau, .figure-img, .figure-two-img, .load-title {
+    position: relative;
+    width: 100%;
+    height: auto;
 }
