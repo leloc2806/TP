@@ -14,12 +14,28 @@ async function fetchHeading({params}){
     return res.json();
 }
 
-export default async function News({params}) {
+async function fetchRelativeArticle({ categorySlug}){
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,2&filters[news_categories][slug][$eq]=${categorySlug}`
 
+    )
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+    return res.json();
+}
+
+export default async function News({params}) {
+    
     const dataSinglePage = await fetchHeading({params});
+    
     const detailData = dataSinglePage.data[0].attributes;
     const categories = detailData.news_categories.data;
     const category = categories.map(item => item.attributes.name)
+    const categorySlug = categories.map(itemSlug => itemSlug.attributes.slug)
+    
+    const resRelArticle = await fetchRelativeArticle({categorySlug})
+    const relativeArticle = resRelArticle.data
 
     const content = detailData.article_content[0].content;
 
@@ -43,7 +59,7 @@ export default async function News({params}) {
                     </div>
                 </div>
             </div>
-            <Slider />
+            <Slider data={relativeArticle}/>
         </div>
 
     )
