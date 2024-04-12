@@ -2,6 +2,8 @@ import NewTab from "../components/new-tab";
 import Image from 'next/image';
 import Link from 'next/link';
 import TitlePage from "../components/titlepage";
+import { MotionDiv } from "../components/motiondiv";
+
 
 async function getTitleNewPage(){
     const res = await fetch(
@@ -88,11 +90,25 @@ export default async function News(){
     const featureItem = articleList[articleList.length - 1]
     const categoryList = categoriesList.data;
 
+    const variants = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1}
+    }
+
     return (
-        <div className="relative m-0">
-            <TitlePage title={title} />
-            <FeatureNew data={featureItem} />
-            <NewTab data={[articleList, categoryList]}/>
-        </div>
+        <MotionDiv
+            variants={variants}
+            initial="hidden"
+            animate="visible"   
+            transition={{
+                delay: 1,
+                ease: "easeInOut",
+                duration: 0.5,
+            }}
+            className="relative m-0">
+                <TitlePage title={title} />
+                <FeatureNew data={featureItem} />
+                <NewTab data={[articleList, categoryList]}/>
+        </MotionDiv>
     )
 }

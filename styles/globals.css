@@ -503,3 +503,8 @@ h1,h2 {
 .news-detail-page .swiper-pagination::before{
     content: "Trang:"
 }
+
+.news-detail-page .item-news.current {
+    pointer-events: none;
+    background: var(--bg-current);
+}

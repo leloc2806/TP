@@ -19,7 +19,7 @@ function NewList({data}){
     const url = post.thumbnail.data.attributes.url;
 
     return (
-        <ArticleCard post={post} url={url} width={width} height={height}/>
+        <ArticleCard index={post.id} post={post} url={url} width={width} height={height}/>
     )
 }
 
