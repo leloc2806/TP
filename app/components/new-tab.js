@@ -4,7 +4,7 @@ import { Tab } from '@headlessui/react'
 
 import classNames from '@/app/lib/joinClass';
 import ArticleCard from './articlecard';
-
+import { motion } from 'framer-motion';
 
 
 function NewList({data}){
@@ -50,7 +50,7 @@ export default function NewTab({data}){
                         {data[1].map((posts) => (
                             <Tab.Panel 
                                 key={posts.id}
-                                className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10'
+                                className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 animate-fade'
                             >
                                 <div className='load-news-list relative w-full h-auto '>
                                     <div className='news-list flex justify-start flex-wrap m-auto'>

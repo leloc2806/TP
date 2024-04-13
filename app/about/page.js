@@ -1,3 +1,4 @@
+import { MotionDiv } from "../components/MotionDiv";
 import AboutTab from "../components/about-tab";
 import Markdown from "react-markdown";
 
@@ -83,29 +84,41 @@ export default async function About() {
 
     const aboutArr = [ourStoryTitle, ourAward, ourMilestone, ourStrategicPartner, ourJoinUs];
 
-    const activeTab = '1';
+    const variants = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1}
+    }
 
     return(
-        <div className="relative m-0">
-            {/* Component */}
-            <div className="title-page block relative h-auto w-[80vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem]">
-                <div className="relative block w-full h-auto overflow-hidden">
-                    <h1 className="relative block text-[6vw] font-normal">{title}</h1>
+        <MotionDiv
+            variants={variants}
+            initial="hidden"
+            animate="visible"   
+            transition={{
+                delay: 1,
+                ease: "easeInOut",
+                duration: 0.5,
+            }}
+            className="relative m-0">
+                {/* Component */}
+                <div className="title-page block relative h-auto w-[80vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem]">
+                    <div className="relative block w-full h-auto overflow-hidden">
+                        <h1 className="relative block text-[6vw] font-normal">{title}</h1>
+                    </div>
+                    <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+                </div>   
+                
+                {/* Component */}
+                <div className="section-outernav">
+                    <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">
+                        <div className="sub-nav">
+                            <AboutTab data={[ourStory, award, milestone ,strategicPartner, joinUs, aboutArr]}/>
+                        </div> 
+                    </div>
                 </div>
-                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
-            </div>   
-            
-            {/* Component */}
-            <div className="section-outernav">
-                <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">
-                    <div className="sub-nav">
-                        <AboutTab data={[ourStory, award, milestone ,strategicPartner, joinUs, aboutArr]}/>
-                    </div> 
-                </div>
-            </div>
 
-            
-        </div>
+                
+        </MotionDiv>
     )
 }
 

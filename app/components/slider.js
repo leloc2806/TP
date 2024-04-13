@@ -39,15 +39,7 @@ const SwiperButtonPrev = ({ children }) => {
                 </button>;
 };
 
-export default ({data}) => {
-
-    const [activeItemId, setActiveItemId] = useState(null);
-
-    const handleItemClick = (id) => {
-        // Set the active item ID
-        setActiveItemId(id);
-        
-      };
+export default ({data, slug}) => {
 
     const pagination = {
         clickable: true,
@@ -58,7 +50,7 @@ export default ({data}) => {
     };
 
     return (
-        <div className='relative m-auto py-[5vw] px-0 w-[var(--wrapcontent)] h-auto '>
+        <div className='relative m-auto py-[5vw] px-0 w-[var(--wrapcontent)] h-auto new-slide-relative'>
             <div className='relative block w-full h-auto z-10 mb-16 mx-0 mt-0'>
                 <h2 className='absolute text-[5vw] overflow-hidden opacity-0'>Xem thêm</h2>
                 <div className='w-full h-auto block relative'>
@@ -67,7 +59,7 @@ export default ({data}) => {
             </div>
             <Swiper
                 // install Swiper modules
-                spaceBetween={20}
+                spaceBetween={10}
                 freeMode={true}
                 loop={true}
                 pagination={pagination}
@@ -88,7 +80,7 @@ export default ({data}) => {
                 {data.map((relativeArt) => (
                 
                     <SwiperSlide key={relativeArt.id}>
-                        <ArticleCard post={relativeArt.attributes} url={relativeArt.attributes.thumbnail.data.attributes.url} width={300} height={200}/>
+                        <ArticleCard slug={slug} post={relativeArt.attributes} url={relativeArt.attributes.thumbnail.data.attributes.url} width={300} height={200}/>
                     </SwiperSlide>
                 ))}
                 

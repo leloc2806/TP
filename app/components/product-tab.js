@@ -26,7 +26,18 @@ export default function ProductTab({data}){
                 ))}
                 </Tab.List>
                 <Tab.Panels>
-                    <Tab.Panel><h1>content1</h1></Tab.Panel>
+                    <Tab.Panel className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10'>
+                        <div className='load-news-list relative w-full h-auto '>
+                            <div className='news-list flex justify-start flex-wrap m-auto'>
+                                <div className='product-category-item'>
+                                    <div className='produc-category-item-pic'>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </Tab.Panel>
                     <Tab.Panel><h1>content2</h1></Tab.Panel>
                     <Tab.Panel><h1>content3</h1></Tab.Panel>
                 </Tab.Panels>

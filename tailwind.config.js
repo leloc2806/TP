@@ -21,6 +21,15 @@ module.exports = {
         "titleSmall": "var(--titleSmall)",
         "titleMedium": "var(--titleMedium)"
       },
+      animation: {
+        fadeIn: 'fadeIn 2s ease-in-out',
+      },
+      keyframes: theme => ({
+        fadeIn: {
+          '0%': { opacity: theme('opacity.0') },
+          '100%': { opacity: theme('opacity.1') },
+        },
+      }),
 
     },
   },

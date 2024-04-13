@@ -20,7 +20,7 @@ function OurStory({data}){
         <div className="about-content">
             <div className="our-mission flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <h2>{ourStoryTitleLeft1}</h2>
+                    <span className='text-7xl'>{ourStoryTitleLeft1}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <Markdown>{ourStoryRightContent1}</Markdown>
@@ -30,7 +30,7 @@ function OurStory({data}){
             </div>
             <div className="our-philosophy flex w-[80vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <h2>{ourStoryTitleLeft2}</h2>
+                    <span className='text-7xl'>{ourStoryTitleLeft2}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <Markdown>{ourStoryRightContent2}</Markdown>
@@ -40,7 +40,7 @@ function OurStory({data}){
             </div>
             <div className="our-people w-[80vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight pr-6 mb-20">
-                    <h2>{ourStoryUpperTitle3}</h2>
+                    <span className='text-7xl'>{ourStoryUpperTitle3}</span>
                 </div>
                 <div className="right-content">
                     <div>
@@ -91,7 +91,7 @@ function Milestone({data}){
         <div className="about-milestone">
             <div className="our-history flex w-[80vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <h2>{milestoneLeftTitle1}</h2>
+                    <span className='text-7xl'>{milestoneLeftTitle1}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <div className="text-field">
@@ -145,7 +145,7 @@ function StrategicPartner({data}){
         <div className="about-strategic-partner">
             <div className="our-strategic-partner flex w-[80vw] mx-auto font-normal py-[5vw] relative">    
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <h2>{ourStrategicPartnerLeftTitle1}</h2>
+                    <span className='text-7xl'>{ourStrategicPartnerLeftTitle1}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <Markdown>{ourStrategicPartnerRightContent1}</Markdown>
@@ -211,10 +211,10 @@ export default function TabAbout({ data }) {
                 ))}
                 </Tab.List>
                 <Tab.Panels>
-                <Tab.Panel><OurStory data={data[0].data.attributes}/></Tab.Panel>
-                <Tab.Panel><Award data={data[1].data.attributes}/></Tab.Panel>
-                <Tab.Panel><Milestone data={data[2].data.attributes}/></Tab.Panel>
-                <Tab.Panel><StrategicPartner data={data[3].data.attributes}/></Tab.Panel>
+                    <Tab.Panel><OurStory data={data[0].data.attributes}/></Tab.Panel>
+                    <Tab.Panel><Award data={data[1].data.attributes}/></Tab.Panel>
+                    <Tab.Panel><Milestone data={data[2].data.attributes}/></Tab.Panel>
+                    <Tab.Panel><StrategicPartner data={data[3].data.attributes}/></Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>
         </>
