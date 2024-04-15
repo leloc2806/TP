@@ -5,6 +5,7 @@ import {
 } from '@tanstack/react-query'
 
 import { useState } from 'react'
+import Tabs from '../components/Tabs'
 
 export default function Test() {
     const { isLoading, error, data } = useQuery({
@@ -32,6 +33,7 @@ return (
             <strong>👀 {ourStoryUpperTitle3}</strong>{' '}
             <strong>✨ {ourStoryRightContent1}</strong>{' '}
             <strong>🍴 {ourStoryRightContent2}</strong>
+            <Tabs/>
         </div>
     )
 }

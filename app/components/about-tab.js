@@ -211,10 +211,18 @@ export default function TabAbout({ data }) {
                 ))}
                 </Tab.List>
                 <Tab.Panels>
-                    <Tab.Panel><OurStory data={data[0].data.attributes}/></Tab.Panel>
-                    <Tab.Panel><Award data={data[1].data.attributes}/></Tab.Panel>
-                    <Tab.Panel><Milestone data={data[2].data.attributes}/></Tab.Panel>
-                    <Tab.Panel><StrategicPartner data={data[3].data.attributes}/></Tab.Panel>
+                    <Tab.Panel>
+                        <OurStory data={data[0].data.attributes}/>
+                    </Tab.Panel>
+                    <Tab.Panel>
+                        <Award data={data[1].data.attributes}/>
+                    </Tab.Panel>
+                    <Tab.Panel>
+                        <Milestone data={data[2].data.attributes}/>
+                    </Tab.Panel>
+                    <Tab.Panel>
+                        <StrategicPartner data={data[3].data.attributes}/>
+                    </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>
         </>

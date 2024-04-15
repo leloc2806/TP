@@ -1,37 +1,27 @@
 "use client"
 
-import { Tab } from '@headlessui/react'
+import { useState } from 'react';
+import { Tab, Transition } from '@headlessui/react'
 
 import classNames from '@/app/lib/joinClass';
 import ArticleCard from './articlecard';
 import { motion } from 'framer-motion';
 
-
-function NewList({data}){
-
-    const post = data.attributes;
-    // const firstName = post.createdBy.data.attributes.firstname;
-    // const lastName = post.createdBy.data.attributes.lastname;
-
-    // const author = `${firstName} ${lastName}`
-    const width = 2000
-    const height = 1333
-    const url = post.thumbnail.data.attributes.url;
-
-    return (
-        <ArticleCard index={post.id} post={post} url={url} width={width} height={height}/>
-    )
-}
-
 export default function NewTab({data}){ 
+
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     return(
         <div className="section-outernav">
             <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">
                 <div className="sub-nav">
-                    <Tab.Group>
+                    <Tab.Group
+                        vertical
+                        selectedIndex={selectedIndex}
+                        onChange={setSelectedIndex}
+                    >
                         <Tab.List>
-                        {data[1].map((category) => (
+                        {data[1].map((category, index) => (
                             <Tab 
                                 key={category.id} 
                                 data-index-number={category.id}
@@ -47,17 +37,26 @@ export default function NewTab({data}){
                         ))}
                         </Tab.List>
                         <Tab.Panels>
-                        {data[1].map((posts) => (
+                        {data[1].map((posts, index) => (
                             <Tab.Panel 
-                                key={posts.id}
+                                key={index}
                                 className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 animate-fade'
                             >
+                                
                                 <div className='load-news-list relative w-full h-auto '>
-                                    <div className='news-list flex justify-start flex-wrap m-auto'>
-                                    {posts.attributes.articles.data.map((post) => (
-                                        <NewList key={post.id} data={post}/>
-                                    ))}
-                                    </div>
+                                        <Transition appear show={selectedIndex == index}
+                                            enter="transition-opacity duration-500"
+                                            enterFrom="opacity-0"
+                                            enterTo="opacity-100"
+                                            leave="transition-opacity duration-500"
+                                            leaveFrom="opacity-100"
+                                            leaveTo="opacity-0">
+                                            <div className='news-list flex justify-start flex-wrap m-auto'>
+                                                {posts.attributes.articles.data.map((post) => (   
+                                                    <ArticleCard key={post.id} post={post.attributes} url={post.attributes.thumbnail.data.attributes.url} width={2000} height={1333}/>
+                                                ))}
+                                            </div>
+                                        </Transition>
                                 </div>
                             </Tab.Panel>
                         ))}

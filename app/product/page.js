@@ -1,5 +1,5 @@
 
-import ProductTab from "../components/product-tab";
+import CategoryProductTab from "../components/CategoryProductTab";
 
 
 async function getTitle() {
@@ -12,9 +12,9 @@ async function getTitle() {
     return res.json();
 }
 
-async function getProductCategories() {
+async function getCategories() {
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/categories?populate=deep,3`
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -25,13 +25,13 @@ async function getProductCategories() {
 export default async function Product(){
 
     const titlePage = await getTitle();
-    const categoryList = await getProductCategories();
+    const categoryList = await getCategories();
 
     const title = titlePage.data.attributes.Title
     const categories = categoryList.data;
 
     return(
-        <div className="relative m-0">
+        <div className="relative m-0 category-product-page">
             <div className="title-page block relative h-auto w-[80vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem]">
                 <div className="relative block w-full h-auto overflow-hidden">
                     <h1 className="text-[6vw] font-normal relative block">{title}</h1>
@@ -42,7 +42,7 @@ export default async function Product(){
             <div className="section-outernav">
                 <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">
                     <div className="sub-nav">
-                        <ProductTab data={categories}/>
+                        <CategoryProductTab categories={categories}/>
                     </div> 
                 </div>
             </div>
