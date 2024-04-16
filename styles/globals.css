@@ -651,6 +651,16 @@ h1,h2 {
 
 /* Product Page */
 
+.category-product-page .sub-nav button::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 1.2rem;
+    top: calc(50% - 12.3rem);
+    left: 18%;
+    background-color: var(--bgactive20);
+}
+
 .category-product-page .load-news-list{
     margin: -14.5px;
 }
@@ -663,8 +673,25 @@ h1,h2 {
 .category-product-page .product-category-text{
     width: 100%;
     height: auto;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     padding: 3rem;
     z-index: 12;
+}
+
+.category-product-page .item-product-category .pic-img{
+    background-size: cover;
+    padding-bottom: 65.6%;
+    width: 100%;
+    position: relative;
+}
+
+.category-product-page .item-product-category .pic-img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
 }

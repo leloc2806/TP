@@ -9,7 +9,7 @@ import classNames from '@/app/lib/joinClass';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function CategoryProductTab({categories}){
+export default function ProductTab({products}){
 
     const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -21,10 +21,10 @@ export default function CategoryProductTab({categories}){
                 onChange={setSelectedIndex}
             >
                 <Tab.List>
-                {categories.map((category, index) => (
-                    <Tab 
-                        key={category.id} 
-                        data-index-number={category.id}
+                {products.map((product, index) => (
+                   <Tab 
+                        key={product.id} 
+                        data-index-number={product.id}
                         className={({selected}) => classNames(
                             index === 0 ? 'first:ml-0 my-11 mr-9' : 'my-11 mx-9',
                             selected
@@ -32,12 +32,12 @@ export default function CategoryProductTab({categories}){
                             : 'opacity-60 hover:opacity-100'
                         )}
                     >
-                    {category.attributes.name}
+                    {product.attributes.name}
                     </Tab>
                 ))}
                 </Tab.List>
                 <Tab.Panels>
-                    {Object.values(categories).map((category, index) => (
+                    {Object.values(products).map((product, index) => (
                         <Tab.Panel 
                             key={index}
                             className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10'>
@@ -49,7 +49,7 @@ export default function CategoryProductTab({categories}){
                                     leaveFrom="opacity-100"
                                     leaveTo="opacity-0">
                                     <div className='load-news-list relative w-full h-auto flex flex-wrap'>
-                                        {category.attributes.product_categories.data.map((catProduct) => ( 
+                                        {product.attributes.product_categories.data.map((catProduct) => ( 
                                             <Link key={catProduct.id} className='item-product-category relative block' href={`/product/${catProduct.attributes.slug}`}>
                                                 <div className="product-category-pic relative">
                                                     <div className="wrap-product-category-pic relative">
