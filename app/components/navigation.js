@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import MenuButton from "./menu-button"
 import React, { useState } from 'react';
 
 export default function NavigationMenu(){
