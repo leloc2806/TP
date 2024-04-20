@@ -1,5 +1,5 @@
 import TitlePage from "@/app/components/titlepage"
-import Slider from "@/app/components/slider"
+import Slider from "@/app/components/newSlider"
 import Markdown from 'react-markdown';
 import { MotionDiv } from "@/app/components/MotionDiv";
 

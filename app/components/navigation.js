@@ -24,16 +24,16 @@ export default function NavigationMenu(){
             </button>
 
             <div 
-                className={`navigation${showNavBar ? ' show opacity-1' : ' opacity-0'}`} 
+                className={`navigation${showNavBar ? ' show opacity-1' : ''}`} 
             >
                 <span></span>
                 <button 
-                className={`close-menu${showNavBar ? ' show opacity-1' : ' opacity-0'}`}
+                className={`close-menu${showNavBar ? ' show opacity-1' : ''}`}
                 onClick={toggleMenu} >
                     <span className="line-toggle toggle-1"></span> 
                     <span className="line-toggle toggle-2"></span>
                 </button>
-                <nav className={`main-menu${showNavBar ? ' show opacity-1' : ' opacity-0'}`}>
+                <nav className={`main-menu${showNavBar ? ' show opacity-1' : ''}`}>
                     <ul>
                         <li className="nav-item nav-item-home current">
                             <Link className="link-home link-load nav-item-a" href="https://www.nhojsc.vn/" data-name="home-page" aria-label="nav">
@@ -50,7 +50,7 @@ export default function NavigationMenu(){
                         <li className="nav-item small-nav-item first-small"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href="https://www.nhojsc.vn/lien-he.html" data-name="contact-page" aria-label="nav">Liên hệ</Link></li>
                     </ul>
                 </nav>
-                <div className={`overlay-menu${showNavBar ? ' show opacity-1' : ' opacity-0'}`}></div>
+                <div className={`overlay-menu${showNavBar ? ' show opacity-1' : ''}`}></div>
                 <div 
                     className={`right-header right-header-clone${showNavBar ? ' animation-menu' : ' animation-menu-showdown'}`}
                 >

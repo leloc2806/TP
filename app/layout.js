@@ -6,6 +6,7 @@ import Providers from "@/app/query_provider";
 import Footer from "./components/footer";
 import { Suspense } from "react";
 
+
 const roboto = Roboto({ 
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700", "900"]
@@ -17,6 +18,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body className={roboto.className}>

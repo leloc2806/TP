@@ -1085,3 +1085,280 @@ h1,h2 {
         transition: height .3s ease-in-out;
     }
 }
+
+@media screen and (max-width: 1100px) {
+    :root {
+        --titleBig:6vw;
+        --titleFont: 4vw;
+        --titleMedium: 3vw;
+        --titleSmall: clamp(18px, 2.2vw, 30px);
+        --fontText: 1.3rem;
+        --wrapcontent: 90vw;
+        --wrapsmall: 90vw;
+        --widthmenu: 100vw;
+        --padding-page: 40px 0
+    }
+
+    .wheel {
+        display: none
+    }
+
+    .detail-scroll,.fixed-scrol,.main,.scroll-content,.smooth-scroll {
+        position: relative;
+        height: auto;
+        left: auto;
+        top: auto;
+        right: auto
+    }
+
+    .info-cookie p {
+        font-size: 15px
+    }
+
+    .trigger-but {
+        font-size: 13px
+    }
+
+    .loadicon {
+        --size: 20vw
+    }
+
+    .header {
+        --height: 70px;
+        font-size: 16px
+    }
+
+    .email-but,.link-home-top {
+        width: 30px;
+        height: 30px
+    }
+
+    .email-but svg,.link-home-top svg {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0
+    }
+
+    .logo {
+        width: 150px;
+        height: 100px;
+        top: 30px;
+        left: 30px
+    }
+
+    .logo svg {
+        display: none!important
+    }
+
+    .navigation {
+        text-align: center;
+        height: 100vh;
+        top: 0
+    }
+
+    .main-menu {
+        margin: 0 -5px;
+        padding: 0;
+        width: 100%
+    }
+
+    .main-menu ul {
+        width: 100%;
+        padding: 5vw
+    }
+
+    .nav-item .nav-item-a {
+        font-size: 3rem;
+        padding: 20px
+    }
+
+    .small-nav-item.nav-item .nav-item-a {
+        padding: 20px
+    }
+
+    .nav-item .hilife span {
+        width: 160px;
+        height: 80px;
+        margin: auto
+    }
+
+    .nav-click {
+        top: 5px;
+        right: 0;
+        padding: 0 50px 0 20px;
+        transition: all .3s ease-in-out;
+        --widthnavclick: 2.5em;
+        z-index: 5
+    }
+
+    .close-menu {
+        top: 15px;
+        right: 15px;
+        --widthclose: 60px
+    }
+
+    .close-menu .toggle-1,.close-menu .toggle-2 {
+        right: 25%;
+        width: 50%
+    }
+
+    .right-header {
+        --margin-dis: 0 30px 0 0
+    }
+
+    .right-header-main {
+        top: 5px;
+        right: 70px;
+        padding: 0 0 0 30px;
+        border-radius: 0 0 0 10px;
+        --margin-dis: 0 2em 0 0
+    }
+
+    .right-header-main::after {
+        margin: 0 40px 0 30px
+    }
+
+    .right-header-clone {
+        right: 0;
+        height: 90px
+    }
+
+    .right-header-clone::after {
+        display: block;
+        background-color: var(--color-white50)!important;
+        margin: 0 100px 0 30px
+    }
+
+    .right-header-clone .language,section {
+        margin: 0
+    }
+
+    .language li button {
+        font-size: 1em
+    }
+
+    .header.hide {
+        --height: 70px
+    }
+
+    .header.hide .nav-click,.header.hide .right-header-main {
+        top: 0;
+        color: var(--bgactive)
+    }
+
+    .header.hide::after {
+        height: var(--height)
+    }
+
+    .header.hide .logo {
+        top: 5px;
+        left: 10px;
+        width: 90px;
+        height: 60px
+    }
+
+    .search-but {
+        width: 2.6em;
+        height: 2.6em
+    }
+
+    .form-row-search .input-text .holder,.form-row-search .input-text input[type=text] {
+        font-size: 18px
+    }
+
+    .search-form {
+        top: 10vh
+    }
+
+    .search-form.typing {
+        top: 5vh
+    }
+
+    .social {
+        display: none;
+        transition: none;
+        opacity: 0;
+        pointer-events: none
+    }
+
+    .social li a,.social li button {
+        width: 38px;
+        height: 38px
+    }
+
+    .social li svg {
+        width: 90%;
+        height: 90%;
+        left: 5%;
+        top: 5%
+    }
+
+    .social.alway {
+        display: block;
+        right: auto;
+        top: auto;
+        bottom: 30px;
+        left: 0
+    }
+
+    .social.alway.show {
+        pointer-events: auto;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        animation-delay: .5s;
+        animation-fill-mode: forwards
+    }
+
+    .social.alway ul {
+        background-color: var(--bgactive70);
+        border-radius: 0 10px 10px 0;
+        padding: 5px
+    }
+
+    .title-page h1 {
+        font-size: 7vw
+    }
+
+    .home-banner {
+        height: auto
+    }
+
+    .banner-inner {
+        --heightbanner: max(calc(1125/2000 * 100vw), 300px);
+        height: var(--heightbanner)
+    }
+
+    .bg .bg-cover,.bg-inner .bg {
+        height: calc(1125/2000*100vw)
+    }
+
+    .bg-inner .bg::after {
+        display: none
+    }
+
+    .background {
+        position: relative;
+        width: 100%;
+        height: auto;
+        left: auto;
+        top: auto
+    }
+
+    .slide-background {
+        height: auto;
+        padding-top: 0
+    }
+
+    .bg {
+        height: auto
+    }
+
+    .bg .bg-cover {
+        position: relative;
+        display: block;
+        top: auto;
+        left: auto
+    }
+
+}

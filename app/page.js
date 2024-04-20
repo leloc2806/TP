@@ -1,9 +1,11 @@
-import Image from "next/image";
+
+
 
 export default function Home() {
+  
   return (
-    <div className="h-[100vh] bg-gray-600">
-      <h1>test</h1>
+    <div className="h-[100vh] bg-gray-600 relative m-0 w-full p-0">
+        <div className="relative m-0" id="home-page"></div>
     </div>
   );
 }

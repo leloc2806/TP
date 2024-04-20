@@ -13,7 +13,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import { useSwiper } from "swiper/react";
-import { useRouter } from 'next/router';
 
 const SwiperButtonNext = ({ children }) => {
     const swiper = useSwiper();
