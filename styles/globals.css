@@ -103,6 +103,10 @@ h1,h2 {
     box-shadow: none;
 }
 
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
+    display: block;
+}
+
 /* Menu */
 
 .header {
@@ -115,6 +119,21 @@ h1,h2 {
     text-align: center;
     font-size: 1vw;
     z-index: 100;
+    display: block;
+}
+
+.header::after {
+    content: '';
+    background-color: var(--color-white);
+    transition: height .3s ease-in-out;
+    height: 0;
+}
+
+.header::after, .logo-main {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .nav-click {
@@ -1055,6 +1074,11 @@ h1,h2 {
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 1100px){
+
+    .email-but, .hotline-contacts, .language li button, .line-toggle, .link-home-top, .nav-click, .search-but {
+        transition: all .3s ease-in-out;
+    }
+
     .nav-item .nav-item-a::after {
         content: '';
         position: absolute;
@@ -1081,6 +1105,20 @@ h1,h2 {
 }
 
 @media screen and (min-width: 1100px){
+
+    .header.hide {
+        --height: 4rem;
+    }
+
+    .header.hide::after {
+        height: var(--height);
+        transition: height .4s ease-in-out;
+    }
+
+    .header.hide .nav-click, .header.hide .right-header-main .email-but, .header.hide .right-header-main .hotline-contacts, .header.hide .right-header-main .language, .header.hide .search-but{
+        color: var(--bgactive);
+    }
+
     .right-header {
         transition: height .3s ease-in-out;
     }

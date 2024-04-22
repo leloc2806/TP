@@ -55,36 +55,60 @@ export default function NavigationMenu(){
                     className={`right-header right-header-clone${showNavBar ? ' animation-menu' : ' animation-menu-showdown'}`}
                 >
                     <Link className="hotline-contacts link-load" href={`/`}>
-                        <Image
-                            src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/call_svgrepo_com_0896300b0f.svg`}
-                            alt={"logo"}
-                            className={"w-auto"}
-                            width={0}
-                            height={0}
-
-                        />
+                        <svg className={
+                            "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                        }  
+                        viewBox="0 0 24.00 24.00" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        stroke="currentColor" 
+                        transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)">
+                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier"> 
+                                <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> 
+                            </g>
+                        </svg>
                     </Link>
                     <Link className="email-but" href={`/`}>
-                        <Image
-                            src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/mail_svgrepo_com_e1143eaf2c.svg`}
-                            alt={"logo"}
-                            className={"w-auto"}
-                            width={0}
-                            height={0}
-                        />
+                        <svg className={
+                            "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                        }
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier"> 
+                            <title></title> 
+                                <g id="Complete"> 
+                                    <g id="mail"> 
+                                        <g> 
+                                        <polyline fill="none" points="4 8.2 12 14.1 20 8.2" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polyline> 
+                                        <rect fill="none" height="14" rx="2" ry="2" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="6.5"></rect> 
+                                        </g> 
+                                    </g> 
+                                </g> 
+                            </g>
+                        </svg>
                     </Link>
                     <div className="language">
                         <span>EN</span>
                     </div>
                     <div className="search-top">
                         <button className="search-but" aria-label="search">
-                            <Image
-                                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/search_svgrepo_com_1b82fc5e53.svg`}
-                                alt={"logo"}
-                                className={"w-auto"}
-                                width={0}
-                                height={0}
-                            />
+                            <svg className={
+                                "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                            }  
+                            viewBox="0 0 24.00 24.00" 
+                            fill="none" 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            stroke="currentColor" 
+                            transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)">
+                                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier"> 
+                                    <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> 
+                                </g>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -92,37 +116,62 @@ export default function NavigationMenu(){
 
             <div className="right-header right-header-main flex">
                 <Link className="hotline-contacts link-load" href={`/`}>
-                    <Image
-                        src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/call_svgrepo_com_0896300b0f.svg`}
-                        alt={"logo"}
-                        className={"w-auto"}
-                        width={0}
-                        height={0}
-
-                    />
+                    <svg 
+                        className={
+                            "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px] mr-[10px]"
+                        }  
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier"> 
+                            <path d="M14 2C14 2 16.2 2.2 19 5C21.8 7.8 22 10 22 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> 
+                            <path d="M14.207 5.53564C14.207 5.53564 15.197 5.81849 16.6819 7.30341C18.1668 8.78834 18.4497 9.77829 18.4497 9.77829" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> 
+                            <path d="M10.0376 5.31617L10.6866 6.4791C11.2723 7.52858 11.0372 8.90532 10.1147 9.8278C10.1147 9.8278 10.1147 9.8278 10.1147 9.8278C10.1146 9.82792 8.99588 10.9468 11.0245 12.9755C13.0525 15.0035 14.1714 13.8861 14.1722 13.8853C14.1722 13.8853 14.1722 13.8853 14.1722 13.8853C15.0947 12.9628 16.4714 12.7277 17.5209 13.3134L18.6838 13.9624C20.2686 14.8468 20.4557 17.0692 19.0628 18.4622C18.2258 19.2992 17.2004 19.9505 16.0669 19.9934C14.1588 20.0658 10.9183 19.5829 7.6677 16.3323C4.41713 13.0817 3.93421 9.84122 4.00655 7.93309C4.04952 6.7996 4.7008 5.77423 5.53781 4.93723C6.93076 3.54428 9.15317 3.73144 10.0376 5.31617Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path> 
+                        </g>
+                    </svg>
                     <span>Contact</span>    
                 </Link>
                 <Link className="email-but" href={`/`}>
-                    <Image
-                        src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/mail_svgrepo_com_e1143eaf2c.svg`}
-                        alt={"logo"}
-                        className={"w-auto"}
-                        width={0}
-                        height={0}
-                    />
+                    <svg className={
+                        "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                    }
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier"> 
+                        <title></title> 
+                            <g id="Complete"> 
+                                <g id="mail"> 
+                                    <g> 
+                                    <polyline fill="none" points="4 8.2 12 14.1 20 8.2" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polyline> 
+                                    <rect fill="none" height="14" rx="2" ry="2" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="6.5"></rect> 
+                                    </g> 
+                                </g> 
+                            </g> 
+                        </g>
+                    </svg>
                 </Link>
                 <div className="language">
                     <span>EN</span>
                 </div>
                 <div className="search-top">
                     <button className="search-but" aria-label="search">
-                        <Image
-                            src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/search_svgrepo_com_1b82fc5e53.svg`}
-                            alt={"logo"}
-                            className={"w-auto"}
-                            width={0}
-                            height={0}
-                        />
+                    <svg className={
+                        "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                    }  
+                    viewBox="0 0 24.00 24.00" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    stroke="currentColor" 
+                    transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier"> 
+                            <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> 
+                        </g>
+                    </svg>
                     </button>
                 </div>
             </div>

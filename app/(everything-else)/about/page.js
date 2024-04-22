@@ -1,6 +1,5 @@
-import { MotionDiv } from "../components/MotionDiv";
-import AboutTab from "../components/about-tab";
-import Markdown from "react-markdown";
+import { MotionDiv } from "../../components/MotionDiv";
+import AboutTab from "../../components/about-tab";
 
 async function getTitlePage() {
     const res = await fetch(
