@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Providers from "@/app/query_provider";
 import Footer from "../components/footer";
 import { Suspense } from "react";
+import SideHeader from "../components/sideHeader";
 
 
 const roboto = Roboto({ 
@@ -22,6 +23,7 @@ export default function PageLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <Suspense fallback={<Loading />}>
+          <SideHeader/>
             <Providers>{children}</Providers>
           <Footer/>
         </Suspense>

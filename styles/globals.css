@@ -136,6 +136,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     left: 0;
 }
 
+.header.black .nav-click, .header.black .right-header-main .email-but, .header.black .right-header-main .hotline-contacts, .header.black .right-header-main .language, .header.black .search-but, .title-page {
+    color: var(--bgactive);
+}
+
 .nav-click {
     position: absolute;
     right: 4rem;
@@ -1113,6 +1117,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     .header.hide::after {
         height: var(--height);
         transition: height .4s ease-in-out;
+    }
+
+    .header.hide .right-header::after {
+        background-color: var(--bgactive50);
     }
 
     .header.hide .nav-click, .header.hide .right-header-main .email-but, .header.hide .right-header-main .hotline-contacts, .header.hide .right-header-main .language, .header.hide .search-but{
