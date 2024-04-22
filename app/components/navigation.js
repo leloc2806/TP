@@ -1,35 +1,74 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function NavigationMenu(){
 
-    const [showNavBar, setShowNabBar] = useState(false);
+    const [showNavBar, setShowNavBar] = useState(false);
+    const menuRef = useRef(null);
 
     const toggleMenu = () => {
-        setShowNabBar(!showNavBar);
-      };
+        setShowNavBar((prev) => !prev);
+        console.log(showNavBar)
+    };
+
+    useEffect(() => {
+        showNavBar
+          ? (document.body.style.overflow = 'hidden')
+          : (document.body.style.overflow = 'auto');
+      }, [showNavBar]);
+
+    // useEffect(() => {
+    //     const handleOutSideClick = (event) => {
+    //       if (!menuRef.current?.contains(event.target)) {
+    //         console.log("Outside Clicked. ");
+    //       }
+    //     };
+    
+    //     window.addEventListener("mousedown", handleOutSideClick);
+    
+    //     return () => {
+    //       window.removeEventListener("mousedown", handleOutSideClick);
+    //     };
+    // }, [menuRef]);
+
+    const handleOutsideClick = (e) => {
+        if (menuRef.current?.contains(e.target)) {
+            setShowNavBar((prev) => !prev);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleOutsideClick);
+        return () => {
+          document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
+    
+    
 
     return (
+        
         <>
             <button 
                 className="nav-click block"
-                onClick={() => setShowNabBar((prev) => !prev)}
+                onClick={toggleMenu}
             >
                 <div className="active-nav">
                     <span className="line-toggle toggle-1"></span> 
                     <span className="line-toggle toggle-2"></span>
                 </div>
             </button>
-
+            
             <div 
-                className={`navigation${showNavBar ? ' show opacity-1' : ''}`} 
+                className={`navigation${showNavBar ? ' show opacity-1' : ''}`}
             >
-                <span></span>
+                <span ref={menuRef}></span>
                 <button 
-                className={`close-menu${showNavBar ? ' show opacity-1' : ''}`}
-                onClick={toggleMenu} >
+                    className={`close-menu${showNavBar ? ' show opacity-1' : ''}`}
+                    onClick={toggleMenu}
+                >
                     <span className="line-toggle toggle-1"></span> 
                     <span className="line-toggle toggle-2"></span>
                 </button>
@@ -175,6 +214,7 @@ export default function NavigationMenu(){
                     </button>
                 </div>
             </div>
+            
         </>
         
     )
