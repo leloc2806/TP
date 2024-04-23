@@ -1115,6 +1115,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
         transition: height .4s ease-in-out;
     }
 
+    .header.hide .right-header::after {
+        background-color: var(--bgactive50);
+    }
+
     .header.hide .nav-click, .header.hide .right-header-main .email-but, .header.hide .right-header-main .hotline-contacts, .header.hide .right-header-main .language, .header.hide .search-but{
         color: var(--bgactive);
     }
