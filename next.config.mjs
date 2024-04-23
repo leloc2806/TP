@@ -2,14 +2,14 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['localhost'],
+        domains: ['127.0.0.1'],
         remotePatterns: [
-        {
-            protocol: "http",
-            hostname: "localhost:3000",
-            port: "",
-            pathname: "/uploads/**",
-        },
+            {
+                protocol: "http",
+                hostname: "127.0.0.1:3000",
+                port: "",
+                pathname: "/uploads/**",
+            },
         ],
     },
 };
