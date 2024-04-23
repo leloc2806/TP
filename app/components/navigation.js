@@ -18,21 +18,7 @@ export default function NavigationMenu(){
           ? (document.body.style.overflow = 'hidden')
           : (document.body.style.overflow = 'auto');
       }, [showNavBar]);
-
-    // useEffect(() => {
-    //     const handleOutSideClick = (event) => {
-    //       if (!menuRef.current?.contains(event.target)) {
-    //         console.log("Outside Clicked. ");
-    //       }
-    //     };
-    
-    //     window.addEventListener("mousedown", handleOutSideClick);
-    
-    //     return () => {
-    //       window.removeEventListener("mousedown", handleOutSideClick);
-    //     };
-    // }, [menuRef]);
-
+      
     const handleOutsideClick = (e) => {
         if (menuRef.current?.contains(e.target)) {
             setShowNavBar((prev) => !prev);

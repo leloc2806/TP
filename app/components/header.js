@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <motion.header
       className={`header bg-slate-300 ${isShrunk ? 'hide' : ''}`}
-      transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+      transition={{ type: 'spring', stiffness: 150, damping: 20 }}
 
     >
       <div className="logo absolute">

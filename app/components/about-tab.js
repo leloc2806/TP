@@ -160,6 +160,7 @@ function StrategicPartner({data}){
                             <div className="pic-partner h-auto w-[45%] relative block">
                                 <Image 
                                     className="w-full h-auto object-left object-center"
+                                    alt={partner.LeftLogo.data.attributes.name}
                                     src={`${process.env.NEXT_PUBLIC_API_URL}${partner.LeftLogo.data.attributes.url}`}
                                     width={294}
                                     height={215}

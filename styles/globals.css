@@ -89,6 +89,18 @@ html{
     font-size: 1vw;
 }
 
+#home-page::-webkit-scrollbar {
+    display: none;
+}
+
+*{
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 h1,h2 {
     line-height: 1.2
 }
@@ -459,6 +471,346 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
 
 /* Menu End */
 
+/* Footer */
+
+.download, .download-pdf, .footer {
+    height: auto;
+    position: relative;
+    display: inline-block;
+}
+.footer {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 5vw 3vw 3vw;
+    font-size: 1vw;
+    background-color: var(--color-white);
+    z-index: 2;
+}
+
+.download-pdf, .footer {
+    width: auto;
+    z-index: 100;
+}
+
+
+.box-footer.on-show, .item-search.on-show{
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+}
+
+.box-footer, .wrap-box-footer {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.box-footer {
+    height: auto;
+    padding: 3vw;
+    z-index: 1;
+    background-color: var(--color-whitelight);
+}
+
+.go-top {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-white);
+    right: 2rem;
+    top: -3rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--bgactive);
+    transition: all .3s ease-in-out;
+    z-index: 20;
+    position: absolute;
+}
+
+.go-top, .wrap-contact-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.company-text {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    color: var(--bgactive);
+    text-align: left;
+}
+
+.company-text>h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin: 2rem 0;
+}
+
+.company-text>h2, .go-top span {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+}
+
+.company-text ul, .list-career, .text-partner p {
+    position: relative;
+    display: block;
+}
+
+.box-footer .company-info, .center-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box-footer .company-info li {
+    width: auto;
+    max-width: 30%;
+    margin: 2rem 0;
+}
+
+.box-footer .company-info li {
+    width: auto;
+    max-width: 30%;
+    margin: 2rem 0;
+}
+
+.company-text ul li {
+    display: flex;
+    position: relative;
+    margin: 0 0 15px;
+}
+
+.box-footer .company-text span {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.company-text span {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    margin: 0 13px 0 0;
+}
+
+/* Footer End */
+
+/* HomePage */
+
+#home-page .text-banner {
+    position: absolute;
+    width: 45vw;
+    text-align: left;
+    bottom: 4rem;
+    left: 10vw;
+    color: var(--color-white);
+    max-width: 40vw;
+}
+
+.home-banner .bg-cover::after, 
+.home-banner .bg::after, 
+.home-banner .thumb-banner-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;    
+    bottom: 0;
+    left: 0;
+}
+
+.home-banner .bg-cover::after {
+    height: 100vh;
+    background: var(--bg-banner);
+    mix-blend-mode: multiply;
+}
+
+.home-banner .title-banner {
+    width: 100%;
+    height: auto;
+    margin: 0 0 1.2rem;
+}
+
+#home-page .hm-intro-text, .title-banner {
+    position: relative;
+    display: block;
+}
+
+#home-page .title-banner h2 {
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 100;
+    font-size: 5.2rem;
+}
+
+#home-page .title-banner h2, .title-banner h3 {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+#home-page .ani-title {
+    overflow: hidden;
+}
+
+#home-page .ani-title>span {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1.2;
+    display: inline-block;
+}
+
+#home-page .ani-title>span, .pic-img img, .title-ani, .title-small {
+    position: relative;
+    display: block;
+}
+
+#home-page .title-banner h3 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    width: 46vw;
+}
+
+#home-page .hm-intro-text {
+    overflow: hidden;
+}
+
+#home-page .hm-intro-text p {
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.home-intro {
+    padding: 8vw 0 5vw;
+}
+
+.pic-home-intro {
+    width: 60vw;
+    height: 60vw;
+    bottom: 0;
+}
+
+.home-intro::after, .home-project .title-big, .pic-home-intro {
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+}
+
+.pic-home-intro {
+    width: 60vw;
+    height: 60vw;
+    top: 0;
+}
+
+.home-intro .bg-cover{
+    right: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: -1;
+}
+
+.home-intro .bg-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.home-intro .bg-cover img {
+    display: block;
+    pointer-events: none;
+}
+
+.home-intro .bg-cover img, .wrap-project-home img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.home-intro::after {
+    content: '';
+    width: 100%;
+    height: 30%;
+    bottom: -1px;
+    background: var(--gradient-white);
+    z-index: 1;
+}
+
+.text-home-intro {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: var(--wrapcontent);
+    margin: auto;
+    z-index: 5;
+}
+
+.text-home-intro .box-txt, .text-home-intro .title-big {
+    width: 50%;
+}
+
+.title-big, .title-main, .title-post {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+}
+
+.title-big {
+    margin: 0 0 4rem;
+}
+
+.color-blue {
+    color: var(--bgactive);
+}
+
+.text-title-about{
+    overflow: hidden;
+    font-size: 6rem;
+    font-weight: 100;
+    color: inherit;
+    line-height: 1;
+}
+
+.box-txt, .box-txt p {
+    position: relative;
+    display: block;
+}
+
+/* .ani-item {
+    opacity: 0;
+} */
+
+.box-txt p {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 0 0 1.8rem;
+}
+
+.text-home-intro p {
+    font-size: var(--fontText);
+    font-weight: 300;
+}
+
+.box-txt, .box-txt p {
+    position: relative;
+    display: block;
+}
+
+/* End HomePage */
+
 /* About Us */
 
 .right-content b, strong {
@@ -597,6 +949,37 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     font-size: 1.3rem;
     font-weight: 300;
     margin: 0 0 1.8rem;
+}
+
+.ani-view-details {
+    display: block;
+    height: auto;
+}
+
+.ani-view-details, .objec-h {
+    position: relative;
+    width: 100%;
+}
+
+.view-details {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    margin: 2rem 0 0;
+    width: 4rem;
+    height: 4rem;
+    font-size: 0;
+    z-index: 1;
+}
+
+.hm-projects-link>svg, .view-details svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 /* News */
@@ -1063,7 +1446,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     margin: 14.5px;
 }
 
+@media (orientation: landscape){
+    .home-banner, .home-banner .banner {
+        height: 100vh;
+    }
+
+    .home-banner .bg-cover img.desktop {
+        display: block;
+    }
+}
 @media screen and (max-width: 1500px){
+
+    :root {
+        --titleBig: 5rem;
+        --fontText: 1.7rem;
+    }    
+
     .header {
         font-size: 1.1vw;
     }
@@ -1129,6 +1527,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
 
     .right-header {
         transition: height .3s ease-in-out;
+    }
+
+    .ani-item.on-show {
+        animation-name: fadeIn;
+        animation-duration: 1.2s;
+        animation-delay: .3s;
+        animation-fill-mode: forwards;
     }
 }
 
