@@ -1,3 +1,5 @@
+import { animate } from "framer-motion";
+import { MotionDiv } from "../components/MotionDiv";
 import SlideHome from "../components/homeSlide";
 import Link from "next/link";
 
@@ -14,7 +16,15 @@ async function fetchSlider(){
 
 const About = () => {
   return(
-    <div className="home-intro relative">
+    <MotionDiv 
+      className="home-intro relative"
+      variants={fadeInAnimationVariants}
+      initial="initial"
+      whileInView="animate"
+      viewport={{
+        once: true
+      }}
+    >
       <div className="pic-home-intro">
         <div className="bg-cover">
           <img loading="lazy" src="https://www.nhojsc.vn/pictures/catalog/home/home-intro.jpg" alt="sứ mệnh" width="1500px" height="1500px"/>
@@ -47,14 +57,31 @@ const About = () => {
             </div>
         </div>
       </div>
-    </div>  
+    </MotionDiv>  
   )
+}
+
+const fadeInAnimationVariants = {
+  initial: {
+    opacity: 0,
+    y: 0,
+  },
+  animate:{
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 1
+    }
+  }
 }
 
 export default async function Home() {
   
   return (
-    <div className="relative m-0 w-full h-auto p-0">
+    <div 
+      className="relative m-0 w-full h-auto p-0"
+      
+    >
         <div className="relative m-0" id="home-page">
             <SlideHome/>
             <About/>
