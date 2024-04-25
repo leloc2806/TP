@@ -20,7 +20,7 @@ export const metadata = {
 export default function HomeLayout({ children }) {
 
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={roboto.className}>
         <Suspense fallback={<Loading />}>
           <Header/>

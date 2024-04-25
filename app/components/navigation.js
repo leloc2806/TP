@@ -10,7 +10,6 @@ export default function NavigationMenu(){
 
     const toggleMenu = () => {
         setShowNavBar((prev) => !prev);
-        console.log(showNavBar)
     };
 
     useEffect(() => {

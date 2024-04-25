@@ -152,6 +152,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     color: var(--bgactive);
 }
 
+.header.black .right-header::after {
+    background-color: var(--bgactive);
+}
+
 .nav-click {
     position: absolute;
     right: 4rem;
@@ -941,7 +945,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
 }
 
 .text-title-about{
-    overflow: hidden;
     font-size: 6rem;
     font-weight: 100;
     color: inherit;
@@ -1074,7 +1077,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     position: absolute;
     display: block;
     /* color: var(--color-white); */
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 400;
     left: 100%;
     top: 50%;
@@ -1125,7 +1128,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     width: 100%;
 }
 
-.view-details {
+/* .view-details {
     position: relative;
     display: flex;
     align-items: center;
@@ -1136,7 +1139,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     height: 4rem;
     font-size: 0;
     z-index: 1;
-}
+} */
 
 .hm-projects-link>svg, .view-details svg {
     position: absolute;
@@ -1145,6 +1148,149 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     top: 0;
     left: 0;
 }
+
+.text-inner-ani {
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 1;
+    position: relative;
+}
+
+/* About End */
+
+/* Home Page New */
+
+.home-news .wrap-content{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5rem 0;
+    width: var(--wrapcontent);
+    margin: auto;
+}
+
+.home-news .left-content, .home-news .right-content {
+    width: 50%;
+}
+
+.left-content, .right-content {
+    position: relative;
+    display: block;
+    width: 50%;
+    height: auto;
+    z-index: 5;
+}
+
+.news-list-home {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.item-news-home {
+    position: relative;
+    display: flex;
+    text-align: left;
+    margin: 0 0 1rem;
+    color: var(--bgactive);
+}
+
+.pic-news-home {
+    overflow: hidden;
+    width: 40%;
+}
+
+.pic-news-home, .txt-news-home {
+    position: relative;
+    display: block;
+}
+
+.pic-news-home .pic-img {
+    height: 100%;
+    min-height: 14rem;
+}
+
+.pic-cover, .pic-cover img, .pic-img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.pic-img {
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+
+.ani-title>span, .pic-img img, .title-ani, .title-small {
+    position: relative;
+    display: block;
+}
+
+.pic-img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center center;
+    pointer-events: none;
+}
+
+.txt-news-home {
+    width: 60%;
+    height: auto;
+    padding: 2rem;
+}
+
+.pic-news-home, .txt-news-home {
+    position: relative;
+    display: block;
+}
+
+.txt-news-home h3 {
+    position: relative;
+    color: inherit;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: unset;
+}
+
+.collection-box>a, .item-news-home>a, .project-pic>a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.home-news .ani-view-details {
+    position: absolute;
+    bottom: 6rem;
+    width: auto;
+    z-index: 10;
+}
+
+.ani-view-details {
+    display: block;
+    height: auto;
+}
+
+.pic-news-home {
+    overflow: hidden;
+    width: 40%;
+}
+
+/* Home Page New End */
 
 /* News */
 
@@ -1693,6 +1839,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
         color: var(--bgactive);
     }
 
+    .header.hide .right-header::after {
+        background-color: var(--bgactive50);
+    }
+
     .right-header {
         transition: height .3s ease-in-out;
     }
@@ -2054,4 +2204,109 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
         right: -4rem;
     }
 
+    #home-page .text-banner {
+        width: 90vw;
+        max-width: 500px;
+        left: 5vw;
+        bottom: auto;
+        top: 200px;
+        height: calc(100% - 250px);
+    }
+
+    #home-page .title-banner h2 {
+        font-size: 6.25vw;
+        font-weight: 400;
+    }
+
+    #home-page .title-banner h3 {
+        font-size: 3vw;
+        width: 100%;
+    }
+
+    #home-page .hm-intro-text p {
+        font-size: 1.9rem;
+    }
+
+    .home-intro {
+        padding: var(--padding-page);
+        padding-bottom: 30vw;
+    }
+
+    .pic-home-intro {
+        width: 100%;
+        height: 70%;
+        bottom: -10%;
+        left: 0;
+        top: auto;
+    }
+
+    .home-intro .bg-cover img {
+        object-position: bottom;
+        object-fit: contain;
+    }
+
+    .text-home-intro {
+        display: block;
+    }
+
+    .home-intro::after {
+        height: 20vw;
+    }
+
+    .left-content, .right-content, .text-home-intro .box-txt, .text-home-intro .title-big, .text-inner-ani {
+        width: 100%;
+    }
+
+    .title-big, .title-margin {
+        margin: 0 0 40px;
+    }
+
+    .about-people p, .half-wrap .text-fixed p, .half-wrap .text-fixed span, .num-career, .register .regis-info p, .special-numb, .title-big h2, .title-big h3 {
+        font-weight: 300;
+    }
+
+    .title-big h2, .title-big h3 {
+        position: relative;
+        display: block;
+    }
+
+    .box-txt p, .leader-info p, .text-career p, .text-fixed p, .text-partner p, .txt-news h3 {
+        font-size: 1.6rem;
+    }
+
+    .view-details {
+        width: 55px;
+        height: 55px;
+    }
+
+    .view_i {
+        width: 20px;
+        height: 12px;
+        margin: -6px 0 0 -10px;
+    }
+
+    .view-details.is-inview>span {
+        transform: translate(22px, -50%);
+        font-size: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 680px) {
+    @media screen and (max-width: 440px) {
+        :root {
+            --titleBig: 9vw;
+            --titleFont: 5vw;
+            --titleMedium: 2rem;
+            --titleSmall: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    @media screen and (max-width: 380px) {
+        html {
+            font-size: 15px;
+        }
+    }
 }

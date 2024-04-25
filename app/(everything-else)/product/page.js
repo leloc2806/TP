@@ -1,5 +1,5 @@
+import CategoryProductTab from "@/app/components/CategoryProductTab";
 
-import CategoryProductTab from "../components/CategoryProductTab";
 
 
 async function getTitle() {
