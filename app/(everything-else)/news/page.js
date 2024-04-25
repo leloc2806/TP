@@ -1,8 +1,8 @@
-import NewTab from "../components/new-tab";
+import NewTab from "@/app/components/new-tab";
 import Image from 'next/image';
 import Link from 'next/link';
-import TitlePage from "../components/titlepage";
-import { MotionDiv } from "../components/MotionDiv";
+import TitlePage from "@/app/components/titlepage";
+import { MotionDiv } from "@/app/components/MotionDiv";
 
 
 async function getTitleNewPage(){
@@ -55,6 +55,7 @@ function FeatureNew({data}){
                                 src={`${process.env.NEXT_PUBLIC_API_URL}${featureUrl}`}
                                 width={800} 
                                 height={450}
+                                alt={featureItem.attributes.title}
                             />
                         </div>
                     </div>

@@ -1195,29 +1195,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     color: var(--bgactive);
 }
 
-.pic-news-home {
+.home-news .pic-news-home {
     overflow: hidden;
     width: 40%;
 }
 
-.pic-news-home, .txt-news-home {
+.home-news .pic-news-home, .txt-news-home {
     position: relative;
     display: block;
 }
 
-.pic-news-home .pic-img {
+.home-news .pic-news-home .pic-img {
     height: 100%;
     min-height: 14rem;
 }
 
-.pic-cover, .pic-cover img, .pic-img {
+.home-news .pic-cover, .pic-cover img, .pic-img {
     position: relative;
     display: block;
     width: 100%;
     height: auto;
 }
 
-.pic-img {
+.home-news .pic-img {
     overflow: hidden;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -1229,7 +1229,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     display: block;
 }
 
-.pic-img img {
+.home-news .pic-img img {
     position: absolute;
     width: 100%;
     height: 100%;
