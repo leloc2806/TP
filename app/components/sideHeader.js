@@ -27,7 +27,7 @@ export default function SideHeader() {
       </div>
       
       <NavigationMenu/>
-      
+      <script dangerouslySetInnerHTML={{ __html: `history.scrollRestoration = "manual"` }} />
     </motion.header>
   );
 }

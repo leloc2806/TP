@@ -3,6 +3,7 @@ import { MotionDiv } from "../components/MotionDiv";
 import SlideHome from "../components/homeSlide";
 import Link from "next/link";
 import SectionComponent from "../components/home-page";
+import SlidePartner from "../components/partnerSlide";
 
 async function fetchSlider(){
     
@@ -58,6 +59,55 @@ export default async function Home() {
                           <span className="o_h"><span>Xem them</span></span>     
                       </Link>
                   </div>
+              </div>
+            </div>
+          </SectionComponent>
+          <SectionComponent className="home-commercial relative">
+            <div className="flex flex-wrap w-full h-auto m-auto justify-start z-10 relative">
+              <div className="collection-box">
+                <Link className="link-load" href='/'/>
+                <div className="pic-img pic-collection">
+                  <img loading="lazy" src="https://www.nhojsc.vn/pictures/catalog/home/commercial/02.jpg" alt="Nhà Ở" className="trans-y lazy" data-speed="-2" data-scroll="" data-scroll-speed="-2" data-scroll-direction="vertical" width="1200px" height="810px"/>
+                </div>
+                <div className="inside-text color-white">
+                  <h2>Nhà Ở</h2>
+                </div>
+              </div>
+              <div className="collection-box">
+                <Link className="link-load" href='/'/>
+                <div className="pic-img pic-collection">
+                  <img loading="lazy" src="https://www.nhojsc.vn/pictures/catalog/home/commercial/02.jpg" alt="Nhà Ở" className="trans-y lazy" data-speed="-2" data-scroll="" data-scroll-speed="-2" data-scroll-direction="vertical" width="1200px" height="810px"/>
+                </div>
+                <div className="inside-text color-white">
+                  <h2>Nhà Ở</h2>
+                </div>
+              </div>
+              <div className="collection-box">
+                <Link className="link-load" href='/'/>
+                <div className="pic-img pic-collection">
+                  <img loading="lazy" src="https://www.nhojsc.vn/pictures/catalog/home/commercial/02.jpg" alt="Nhà Ở" className="trans-y lazy" data-speed="-2" data-scroll="" data-scroll-speed="-2" data-scroll-direction="vertical" width="1200px" height="810px"/>
+                </div>
+                <div className="inside-text color-white">
+                  <h2>Nhà Ở</h2>
+                </div>
+              </div>
+              <div className="collection-box">
+                <Link className="link-load" href='/'/>
+                <div className="pic-img pic-collection">
+                  <img loading="lazy" src="https://www.nhojsc.vn/pictures/catalog/home/commercial/02.jpg" alt="Nhà Ở" className="trans-y lazy" data-speed="-2" data-scroll="" data-scroll-speed="-2" data-scroll-direction="vertical" width="1200px" height="810px"/>
+                </div>
+                <div className="inside-text color-white">
+                  <h2>Nhà Ở</h2>
+                </div>
+              </div>
+              <div className="collection-box">
+                <Link className="link-load" href='/'/>
+                <div className="pic-img pic-collection">
+                  <img loading="lazy" src="https://www.nhojsc.vn/pictures/catalog/home/commercial/02.jpg" alt="Nhà Ở" className="trans-y lazy" data-speed="-2" data-scroll="" data-scroll-speed="-2" data-scroll-direction="vertical" width="1200px" height="810px"/>
+                </div>
+                <div className="inside-text color-white">
+                  <h2>Nhà Ở</h2>
+                </div>
               </div>
             </div>
           </SectionComponent>
@@ -121,6 +171,9 @@ export default async function Home() {
                 </Link>
               </div>  
           </div>
+          </SectionComponent>
+          <SectionComponent className="home-partner relative">
+            <SlidePartner/>
           </SectionComponent>
         </div>
     </div>
