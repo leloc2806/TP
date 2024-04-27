@@ -80,7 +80,7 @@ export default function NavigationMenu(){
                 >
                     <Link className="hotline-contacts link-load" href={`/`}>
                         <svg className={
-                            "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                            "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                         }  
                         viewBox="0 0 24.00 24.00" 
                         fill="none" 
@@ -96,7 +96,7 @@ export default function NavigationMenu(){
                     </Link>
                     <Link className="email-but" href={`/`}>
                         <svg className={
-                            "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                            "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                         }
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
                             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -120,7 +120,7 @@ export default function NavigationMenu(){
                     <div className="search-top">
                         <button className="search-but" aria-label="search">
                             <svg className={
-                                "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                                "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                             }  
                             viewBox="0 0 24.00 24.00" 
                             fill="none" 
@@ -142,7 +142,7 @@ export default function NavigationMenu(){
                 <Link className="hotline-contacts link-load" href={`/`}>
                     <svg 
                         className={
-                            "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px] mr-[10px]"
+                            "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px] mr-[10px]"
                         }  
                         viewBox="0 0 24 24" 
                         fill="none" 
@@ -159,7 +159,7 @@ export default function NavigationMenu(){
                 </Link>
                 <Link className="email-but" href={`/`}>
                     <svg className={
-                        "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                        "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                     }
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
                         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -183,7 +183,7 @@ export default function NavigationMenu(){
                 <div className="search-top">
                     <button className="search-but" aria-label="search">
                     <svg className={
-                        "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
+                        "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                     }  
                     viewBox="0 0 24.00 24.00" 
                     fill="none" 

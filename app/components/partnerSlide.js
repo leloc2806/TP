@@ -1,5 +1,6 @@
 "use client"
 
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -9,6 +10,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function SlidePartner(){
+
+    const swiperRefLocal = useRef()
+
+    const handleMouseEnter = () => {
+        swiperRefLocal?.current?.swiper?.autoplay?.stop()
+    };
+
+    const handleMouseLeave = () => {
+        swiperRefLocal?.current?.swiper?.autoplay?.start()
+    };
+
      return (
 
         <div className="wrap-content">
@@ -19,8 +31,9 @@ export default function SlidePartner(){
                     </div>
                 </div>
             </div>
-            <div className='right-content'>
+            <div className='right-content' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <Swiper
+                ref={swiperRefLocal}
                 spaceBetween={10}
                 slidesPerView={3}
                 speed={2000}
@@ -29,7 +42,6 @@ export default function SlidePartner(){
                     delay: 0,
                     disableOnInteraction: true,
                     pauseOnMouseEnter: false,
-                    disableOnInteraction: true
                 }}
                 allowTouchMove={false}
                 freeMode={true}

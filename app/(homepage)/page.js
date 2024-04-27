@@ -23,12 +23,18 @@ export default async function Home() {
       className="relative m-0 w-full h-auto p-0"
       
     >
-        <div className="relative m-0" id="home-page">
-          <SectionComponent className="home-banner relative">
+        <div className="relative m-0 overflow-hidden" id="home-page">
+          <SectionComponent 
+            className="home-banner relative" 
+            translate={"translateX(-200px)"}
+          >
             <SlideHome/>
           </SectionComponent>
             {/* <About/> */}
-          <SectionComponent className="home-intro relative">
+          <SectionComponent 
+          
+            className="home-intro relative"
+            translate={"translateY(200px)"}>
             <div className="pic-home-intro">
               <div className="bg-cover">
                 <img loading="lazy" src="https://www.nhojsc.vn/pictures/catalog/home/home-intro.jpg" alt="sứ mệnh" width="1500px" height="1500px"/>
@@ -62,7 +68,9 @@ export default async function Home() {
               </div>
             </div>
           </SectionComponent>
-          <SectionComponent className="home-commercial relative">
+          <SectionComponent 
+            className="home-commercial relative"
+            translate={"translateY(-200px)"}>
             <div className="flex flex-wrap w-full h-auto m-auto justify-start z-10 relative">
               <div className="collection-box">
                 <Link className="link-load" href='/'/>
@@ -111,7 +119,9 @@ export default async function Home() {
               </div>
             </div>
           </SectionComponent>
-          <SectionComponent className="home-news relative">
+          <SectionComponent 
+            className="home-news relative"
+            translate={"translateX(200px)"}>
             <div className="wrap-content">
               <div className="left-content">
                 <div className="title-big text-ani-item color-blue">
@@ -172,7 +182,9 @@ export default async function Home() {
               </div>  
           </div>
           </SectionComponent>
-          <SectionComponent className="home-partner relative">
+          <SectionComponent 
+            className="home-partner relative"
+            translate={"translateX(-200px)"}>
             <SlidePartner/>
           </SectionComponent>
         </div>

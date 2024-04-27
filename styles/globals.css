@@ -89,6 +89,10 @@ html{
     font-size: 1vw;
 }
 
+html,body{
+    overflow-x: hidden;
+}
+
 #home-page::-webkit-scrollbar {
     display: none;
 }
@@ -1161,6 +1165,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     position: relative;
 }
 
+.about-content .left-content, .about-content .right-content{
+    width: 100%;
+}
+
 /* About End */
 
 /* Home Page New */
@@ -2113,7 +2121,7 @@ img.trans-y {
     }
 
     .nav-item .nav-item-a {
-        font-size: 3rem;
+        font-size: 6rem;
         padding: 20px
     }
 
@@ -2395,7 +2403,79 @@ img.trans-y {
         font-size: 1.5rem;
     }
 
+    .collection-box {
+        width: calc(50% - 1px); 
+    }
+
+    .right-header-clone {
+        right: 0;
+        height: 90px;
+    }
+
+    .right-header {
+        --margin-dis: 0 30px 0 0;
+    }
+
+    .right-header-clone .language, section {
+        margin: 0;
+    }
+
+    .right-header-clone::after {
+        display: block;
+        background-color: var(--color-white50) !important;
+        margin: 0 100px 0 30px;
+    }
+
+    .main-menu ul {
+        width: 100%;
+        padding: 5vw;
+    }
+
+    .nav-item {
+        text-align: left;
+    }
+    
+    .right-header::after{
+        height: 2rem;
+    }
+
+    .right-header-clone {
+        height: 72px;
+        width: 220px;
+        right: calc(50% - 110px);
+    }
 }
+
+@media only screen and (max-width: 1100px) and (orientation: portrait) {
+    .nav-item {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    @media screen and (max-width: 580px) {
+        .right-header {
+            --margin-dis: 0 25px 0 0;
+        }
+
+        .nav-item {
+            margin: 5px 0;
+        }
+    }
+
+    .right-header::after {
+        height: 4rem;
+    }
+
+    .right-header-main::after {
+        margin: 0 30px 0 20px;
+    }
+
+    .close-menu{
+        top: 2%;
+    }
+}
+
 
 @media screen and (max-width: 680px) {
     @media screen and (max-width: 440px) {
@@ -2413,6 +2493,13 @@ img.trans-y {
         html {
             font-size: 15px;
         }
+    }
+
+    .right-header-clone::after, 
+    .right-header-main .email-but, 
+    .right-header-main .hotline-contacts, 
+    .right-header-main .language {
+        display: none;
     }
 }
 
