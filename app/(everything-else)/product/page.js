@@ -1,4 +1,5 @@
 import CategoryProductTab from "@/app/components/CategoryProductTab";
+import CategoryProductComboBox from "@/app/components/CategoryProductComboBox";
 
 
 
@@ -32,7 +33,7 @@ export default async function Product(){
 
     return(
         <div className="relative m-0 category-product-page">
-            <div className="title-page block relative h-auto w-[80vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem]">
+            <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem]">
                 <div className="relative block w-full h-auto overflow-hidden">
                     <h1 className="text-[6vw] font-normal relative block">{title}</h1>
                 </div>   
@@ -40,9 +41,12 @@ export default async function Product(){
             </div>
 
             <div className="section-outernav">
-                <div className="outer-nav w-[80vw] mx-auto font-normal text-xl">
-                    <div className="sub-nav">
+                <div className="outer-nav min-h-[80vh] max-[1100px]:w-[90vw] w-[var(--wrapcontent)] mx-auto font-normal text-xl">
+                    <div className="sub-nav desktop-tab">
                         <CategoryProductTab categories={categories}/>
+                    </div> 
+                    <div className="sub-nav mobile-tab">
+                        <CategoryProductComboBox categories={categories}/>
                     </div> 
                 </div>
             </div>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import TitlePage from "@/app/components/titlepage";
 import { MotionDiv } from "@/app/components/MotionDiv";
+import NewComboBox from "@/app/components/new-combobox";
 
 
 async function getTitleNewPage(){
@@ -43,7 +44,7 @@ function FeatureNew({data}){
 
     return (
         <div className="feature-new relative">
-            <div className="w-[80vw] mx-auto font-normal text-xl z-10 py-[5vw] px-0">
+            <div className="w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl z-10 py-[5vw] max-[1100px]:pt-[60px] px-0">
                 <div className="title-post relative inline-block w-auto mx-0 mt-0 mb-8 h-auto text-[var(--bgactive)]">
                     <h2 className="inline-block relative font-normal text-titleMedium">Nổi bật</h2>
                 </div>
@@ -109,6 +110,7 @@ export default async function News(){
                 <TitlePage title={title} />
                 <FeatureNew data={featureItem} />
                 <NewTab data={[articleList, categoryList]}/>
+                <NewComboBox data={[articleList, categoryList]}/>
         </MotionDiv>
     )
 }

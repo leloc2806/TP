@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Navigation, Pagination, Scrollbar, A11y, FreeMode } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, FreeMode, Grid } from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -64,11 +64,14 @@ export default ({data, slug}) => {
                 pagination={pagination}
                 breakpoints={{
                     960: {
-                      slidesPerView: 4,
-                      slidesPerGroup: 4,
+                        slidesPerView: 4,
+                        slidesPerGroup: 4,
+                    },
+                    320: {
+                        slidesPerView: 2
                     },
                   }}
-                modules={[FreeMode, Pagination, Navigation]}
+                modules={[FreeMode, Pagination, Navigation, Grid]}
                 className="mySwiper"
             >
                 <div className='slidebox-arrows'>

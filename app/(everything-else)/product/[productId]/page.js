@@ -20,7 +20,7 @@ export default async function ProductId({params}){
     return (
         <>
             <div className="relative m-0 product-cat-page">
-                <div className="title-page block relative h-auto w-[80vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem]">
+                <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem]">
                     <div className="relative block w-full h-auto overflow-hidden">
                         <h1 className="text-[6vw] font-normal relative block">{detailData.name}</h1>
                     </div>   
@@ -28,9 +28,9 @@ export default async function ProductId({params}){
                 </div>
 
                 <div className="section-outernav">
-                    <div className="outer-nav w-[80vw] mx-auto font-normal text-xl pt-12">
+                    <div className="outer-nav w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl pt-12">
                         <div className="sub-nav">
-                            <div className="className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10">
+                            <div className="wrap-content min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10">
                                 <div className='load-news-list relative w-full h-auto flex flex-wrap'>
                                     {detailData.products.data.map((product) => ( 
                                         <Link key={product.id} className='item-product-category relative block' href={`/product/${params.productId}/pro/${product.attributes.slug}`}>

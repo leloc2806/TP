@@ -41,7 +41,7 @@ export default function SlidePartner(){
                 autoplay={{
                     delay: 0,
                     disableOnInteraction: true,
-                    pauseOnMouseEnter: false,
+                    pauseOnMouseEnter: true,
                 }}
                 allowTouchMove={false}
                 freeMode={true}

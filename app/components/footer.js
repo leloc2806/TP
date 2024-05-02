@@ -8,7 +8,7 @@ export default function Footer() {
                     <ButtonTop/>
                     <div className="wrap-box-footer">
                         <div className="company-text">
-                            <h2>Công ty CP Tổ Chức Nhà Quốc Gia</h2>
+                            <h2>Công ty CP Năng Lượng Thành Phát</h2>
                             <ul className="company-info"> 
                                 <li>
                                     <span className="call">
@@ -23,7 +23,7 @@ export default function Footer() {
                                                 </g>
                                         </svg>
                                     </span> 
-                                    <a href="tel:+84-28-3845-9963">(+84) 28 3845 9963</a> 
+                                    <a href="tel:+84-99-9999-9999">(+84) 99 9999 9999</a> 
                                 </li>   
                                 <li>
                                     <span className="email">
@@ -49,7 +49,7 @@ export default function Footer() {
                                             </g>
                                         </svg>
                                     </span> 
-                                    <a href="mailto:info@nhojsc.vn">info@nhojsc.vn</a> 
+                                    <a href="mailto:info@nhojsc.vn">info@thanhphat.vn</a> 
                                 </li>   
                                 <li className="company-address">
                                     <span className="address">
@@ -73,7 +73,7 @@ export default function Footer() {
                                             </g>
                                         </svg>
                                     </span>  
-                                    44B Nguyễn Văn Trỗi, Phường 15, Quận Phú Nhuận, Thành Phố Hồ Chí Minh  
+                                    137 Louis 1, Hoàng Văn Thụ, Quận Hoàng Mai, TP. Hà Nội 
                                 </li>  
                             </ul>
                         </div>

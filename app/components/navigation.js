@@ -2,14 +2,21 @@
 import Link from "next/link"
 import Image from "next/image"
 import React, { useState, useEffect, useRef } from 'react';
+import SearchComponent from "./searchComponent";
 
 export default function NavigationMenu(){
 
     const [showNavBar, setShowNavBar] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
     const menuRef = useRef(null);
+    const itemRef = useRef(null);
 
     const toggleMenu = () => {
         setShowNavBar((prev) => !prev);
+    };
+
+    const toggleSearch = () => {
+        setShowSearch((prev) => !prev);
     };
 
     useEffect(() => {
@@ -60,18 +67,17 @@ export default function NavigationMenu(){
                 <nav className={`main-menu${showNavBar ? ' show opacity-1' : ''}`}>
                     <ul>
                         <li className="nav-item nav-item-home current">
-                            <Link className="link-home link-load nav-item-a" href="https://www.nhojsc.vn/" data-name="home-page" aria-label="nav">
+                            <Link className="link-home link-load nav-item-a" href={`/`} data-name="home-page" aria-label="nav">
                                 <svg x="0px" y="0px" viewBox="0 0 50 36">
                                     <path fill="currentColor" d="M25,0 15.017,10 15.017,6 7.031,6 7.031,18 0,25.043 1.412,26.457 25,2.828 48.588,26.457 50,25.043z"></path>
                                     <path fill="currentColor" d="M7.031,26 7,36 42.896,36 42.896,26 25,8z"></path>
                                 </svg>
                             </Link>
                         </li>
-                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href="https://www.nhojsc.vn/du-an.html" data-name="project-page" aria-label="nav">Dự án</Link></li>
-                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href="https://www.nhojsc.vn/tin-tuc.html" data-name="news-page" aria-label="nav">Tin tức</Link></li>
-                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href="https://www.nhojsc.vn/gioi-thieu.html" data-name="about-page" aria-label="nav">Giới thiệu</Link></li>
-                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href="https://www.nhojsc.vn/n-h-o-cares.html" data-name="care-page" aria-label="nav">N.H.O cares</Link></li>
-                        <li className="nav-item small-nav-item first-small"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href="https://www.nhojsc.vn/lien-he.html" data-name="contact-page" aria-label="nav">Liên hệ</Link></li>
+                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/product`} aria-label="nav" onClick={toggleMenu}>Dự án</Link></li>
+                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/news`} onClick={toggleMenu}>Tin tức</Link></li>
+                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/about`} onClick={toggleMenu}>Giới thiệu</Link></li>
+                        <li className="nav-item small-nav-item first-small"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/contact`} onClick={toggleMenu}>Liên hệ</Link></li>
                     </ul>
                 </nav>
                 <div className={`overlay-menu${showNavBar ? ' show opacity-1' : ''}`}></div>
@@ -181,7 +187,11 @@ export default function NavigationMenu(){
                     <span>EN</span>
                 </div>
                 <div className="search-top">
-                    <button className="search-but" aria-label="search">
+                    <button 
+                        className="search-but" 
+                        aria-label="search"
+                        onClick={toggleSearch}
+                    >
                     <svg className={
                         "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                     }  
@@ -199,7 +209,7 @@ export default function NavigationMenu(){
                     </button>
                 </div>
             </div>
-            
+            <SearchComponent show={showSearch} display={toggleSearch} />
         </>
         
     )

@@ -2,7 +2,7 @@ import { animate } from "framer-motion";
 import { MotionDiv } from "../components/MotionDiv";
 import SlideHome from "../components/homeSlide";
 import Link from "next/link";
-import SectionComponent from "../components/home-page";
+import SectionComponent from "@/app/components/sectionComponent";
 import SlidePartner from "../components/partnerSlide";
 
 async function fetchSlider(){

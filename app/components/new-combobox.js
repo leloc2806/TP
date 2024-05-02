@@ -7,12 +7,18 @@ import classNames from '@/app/lib/joinClass';
 import ArticleCard from './articlecard';
 import { motion } from 'framer-motion';
 
-export default function NewTab({data}){ 
+export default function NewComboBox({data}){ 
 
     const [selectedIndex, setSelectedIndex] = useState(0);
+ 
+    const [selectedItem, setDropdown] = useState(false)
+
+    const handleClick = () => {
+        setDropdown((prev) => !prev);
+    }
 
     return(
-        <div className="section-outernav desktop-tab">
+        <div className="section-outernav mobile-tab">
             <div className="outer-nav w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl">
                 <div className="sub-nav">
                     <Tab.Group
@@ -26,11 +32,12 @@ export default function NewTab({data}){
                                 key={category.id} 
                                 data-index-number={category.id}
                                 className={({selected}) => classNames(
-                                    index === 0 ? 'first:ml-0 my-11 mr-9' : 'my-11 mx-9',
+                                    'opacity-60 hover:opacity-100 w-full text-left py-7 pr-9 text-[16px]',
                                     selected
-                                    ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 selected' 
-                                    : 'opacity-60 hover:opacity-100'
+                                    ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 target:opacity-100 focus-visible:content-none selected font-bold' 
+                                    : `${selectedItem ? ' -order-first show-tab opacity-100' : ' hidden hide-tab opacity-0'}`
                                 )}
+                                onClick={() => handleClick()}
                             >
                             {category.attributes.name}
                             </Tab>

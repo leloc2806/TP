@@ -1,6 +1,6 @@
 "use client";
 
-import { Tab, Transition } from '@headlessui/react'
+import { Tab } from '@headlessui/react'
 import Image from 'next/image';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
@@ -23,9 +23,9 @@ function OurStory({data}){
 
     return(
         <div className="about-content">
-            <div className="our-mission flex w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">    
+            <div className="our-mission flex w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative max-[580px]:block">    
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <span className='text-7xl'>{ourStoryTitleLeft1}</span>
+                    <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{ourStoryTitleLeft1}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <Markdown>{ourStoryRightContent1}</Markdown>
@@ -35,7 +35,7 @@ function OurStory({data}){
             </div>
             <div className="our-philosophy flex w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <span className='text-7xl'>{ourStoryTitleLeft2}</span>
+                    <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{ourStoryTitleLeft2}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <Markdown>{ourStoryRightContent2}</Markdown>
@@ -45,7 +45,7 @@ function OurStory({data}){
             </div>
             <div className="our-people w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight pr-6 mb-20">
-                    <span className='text-7xl'>{ourStoryUpperTitle3}</span>
+                    <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{ourStoryUpperTitle3}</span>
                 </div>
                 <div className="right-content">
                     <div>
@@ -96,7 +96,7 @@ function Milestone({data}){
         <div className="about-milestone">
             <div className="our-history flex w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <span className='text-7xl'>{milestoneLeftTitle1}</span>
+                    <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{milestoneLeftTitle1}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <div className="text-field">
@@ -110,7 +110,7 @@ function Milestone({data}){
                 <div className="list-his">
                     {milestones.map((milestone, index) => (
                         <div key={index} className="his-box relative flex justify-between px-0 py-8">
-                            <span className="special-numb relative block font-thin text-7xl text-[var(--bgactive)] ">{milestone.Year}</span>
+                            <span className="special-numb relative block font-thin text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px] text-[var(--bgactive)] ">{milestone.Year}</span>
                             <div className="wrap-history-wrap relative w-1/2">
                                 <div className="row-history-box flex relative items-center mb-2">
                                     <div className="pic-history pt-[25%] w-1/4 relative block">
@@ -149,8 +149,8 @@ function StrategicPartner({data}){
     return(
         <div className="about-strategic-partner">
             <div className="our-strategic-partner flex w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">    
-                <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <span className='text-7xl'>{ourStrategicPartnerLeftTitle1}</span>
+                <div className="left-content text-[5vw] font-extralight w-2/5 pr-6">
+                    <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{ourStrategicPartnerLeftTitle1}</span>
                 </div>
                 <div className="right-content w-3/5">
                     <Markdown>{ourStrategicPartnerRightContent1}</Markdown>
@@ -197,89 +197,53 @@ function StrategicPartner({data}){
     )
 }
 
-export default function TabAbout({ data }) {
+export default function ComboBoxAbout({ data }) {
 
-    const [selectedIndex, setSelectedIndex] = useState(0)
+    const [selectedItem, setDropdown] = useState(false)
 
-    return (
+    const handleClick = () => {
+        setDropdown((prev) => !prev);
+    }
+
+    return(
         <>
-            <Tab.Group
-                vertical
-                selectedIndex={selectedIndex}
-                onChange={setSelectedIndex}
-            >
-                <Tab.List>
-                {data[5].map((tab, index) => (
-                    <Tab 
-                    key={index}
-                    className={({selected}) => 
-                        classNames(
-                            `opacity-60 hover:opacity-100 ${index === 0 ? 'first:ml-0 my-11 mr-9' : 'my-11 mx-9'}`,
-                            selected 
+            <Tab.Group>
+                <Tab.List className="flex flex-col">
+                    {data[5].map((tab, index) => (
+                        <Tab 
+                        key={index} 
+                        className={({selected}) => 
+                            classNames(
+                                'opacity-60 hover:opacity-100 w-full text-left py-7 pr-9 text-[16px]',
+                                selected 
                                 ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 target:opacity-100 focus-visible:content-none selected font-bold' 
-                                : ''
-                        )
-                    }
-                    >
-                        {tab}
-                    </Tab>
-                ))}
-                </Tab.List>
+                                : `${selectedItem ? ' -order-first show-tab opacity-100' : ' hidden hide-tab opacity-0'}`
 
-                
+                            )
+                        }
+                        onClick={() => handleClick()}
+                        >
+                            {tab}
+                        
+                        </Tab>
+                    ))}
+                </Tab.List>
                 <Tab.Panels>
                     <Tab.Panel>
-                        <Transition 
-                            appear show={selectedIndex == 0}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
-
-                            <OurStory data={data[0].data.attributes}/>
-                        </Transition>
+                        <OurStory data={data[0].data.attributes}/>
                     </Tab.Panel>
                     <Tab.Panel>
-                        <Transition appear show={selectedIndex == 1}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
-                                
-                            <Award data={data[1].data.attributes}/>
-                        </Transition>
+                        <Award data={data[1].data.attributes}/>
                     </Tab.Panel>
                     <Tab.Panel>
-                        <Transition appear show={selectedIndex == 2}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
-
-                            <Milestone data={data[2].data.attributes}/>
-                        </Transition>
+                        <Milestone data={data[2].data.attributes}/>
                     </Tab.Panel>
                     <Tab.Panel>
-                        <Transition appear show={selectedIndex == 3}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
-
-                            <StrategicPartner data={data[3].data.attributes}/>
-                        </Transition>
+                        <StrategicPartner data={data[3].data.attributes}/>
                     </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>
         </>
-    );
-}
 
+    )
+}
