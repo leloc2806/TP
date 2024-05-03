@@ -4,7 +4,7 @@ import { Navigation, Pagination, Scrollbar, A11y, FreeMode, Grid } from 'swiper/
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import ArticleCard from './articlecard';
+import ArticleCard from '../articlecard';
 
 // Import Swiper styles
 import 'swiper/css';

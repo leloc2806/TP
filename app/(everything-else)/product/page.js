@@ -1,26 +1,41 @@
-import CategoryProductTab from "@/app/components/CategoryProductTab";
-import CategoryProductComboBox from "@/app/components/CategoryProductComboBox";
+import CategoryProductTab from "@/app/components/product/CategoryProductTab";
+import CategoryProductComboBox from "@/app/components/product/CategoryProductComboBox";
 
 
 
 async function getTitle() {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/product-category-page?populate=deep,3`
-    );
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
+    try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/product-category-page?populate=deep,3`
+        );
+    
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+    
+        return res.json();
+    } catch (error) {
+        // Handle errors here, such as logging or displaying an error message
+        console.error("Error fetching slider data:", error.message);
+        throw error; // Re-throw the error to be handled by the caller if needed
     }
-    return res.json();
 }
 
 async function getCategories() {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/categories?populate=deep,3`
-    );
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
+    try{
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/categories?populate=deep,3`
+        );
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+        return res.json();
     }
-    return res.json();
+    catch(error){
+        // Handle errors here, such as logging or displaying an error message
+        console.error("Error fetching data:", error.message);
+        throw error; // Re-throw the error to be handled by the caller if needed
+    }
 }
 
 export default async function Product(){

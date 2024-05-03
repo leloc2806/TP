@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import NavigationMenu from './navigation';
+import NavigationMenu from './navbar/navigation';
 
 export default function SideHeader() {
   const { scrollYProgress } = useScroll();

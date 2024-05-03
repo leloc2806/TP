@@ -2,16 +2,19 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['127.0.0.1'],
+        domains: ['localhost'],
         remotePatterns: [
             {
                 protocol: "http",
-                hostname: "127.0.0.1",
+                hostname: "localhost",
                 port: "",
                 pathname: "/uploads/**",
             },
         ],
     },
+    // eslint: {
+    //     ignoreDuringBuilds: true,
+    // },
 };
 
 export default nextConfig;

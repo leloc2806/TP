@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Tab, Transition } from '@headlessui/react'
 
 import classNames from '@/app/lib/joinClass';
-import ArticleCard from './articlecard';
+import ArticleCard from '../articlecard';
 import { motion } from 'framer-motion';
 
 export default function NewTab({data}){ 
