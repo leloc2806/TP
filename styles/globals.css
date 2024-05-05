@@ -852,8 +852,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
 }
 
 .box-footer .company-text span {
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 32px;
+    height: 32px;
 }
 
 .company-text span {
@@ -1593,7 +1593,7 @@ div,p,span {
 
 .collection-box{
     position: relative;
-    width: calc(33.3333% - 1px);
+    width: calc(50% - 1px);
     margin: 0;
     cursor: pointer;
 }

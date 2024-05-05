@@ -1,4 +1,4 @@
-function flattenAttributes(data) {
+export default function flattenAttributes(data) {
     // Check if data is a plain object; return as is if not
     if (
         typeof data !== "object" ||

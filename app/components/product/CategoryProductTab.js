@@ -2,8 +2,11 @@
 
 
 import { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation'
 
 import { Tab, Transition } from '@headlessui/react'
+
+
 
 import classNames from '@/app/lib/joinClass';
 import Image from 'next/image';
@@ -13,12 +16,18 @@ export default function CategoryProductTab({categories}){
 
     const [selectedIndex, setSelectedIndex] = useState(0);
 
+    const handleTabChange = (index) => {
+        setSelectedIndex(index);
+    };
+    
+
     return(
         <>
             <Tab.Group
                 vertical
                 selectedIndex={selectedIndex}
-                onChange={setSelectedIndex}
+                onChange={handleTabChange}
+                manual
             >
                 <Tab.List>
                 {categories.map((category, index) => (

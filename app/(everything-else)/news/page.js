@@ -1,9 +1,9 @@
-import NewTab from "@/app/components/new-tab";
+import NewTab from "@/app/components/news/new-tab";
 import Image from 'next/image';
 import Link from 'next/link';
 import TitlePage from "@/app/components/titlepage";
 import { MotionDiv } from "@/app/components/MotionDiv";
-import NewComboBox from "@/app/components/new-combobox";
+import NewComboBox from "@/app/components/news/new-combobox";
 
 
 async function getTitleNewPage(){

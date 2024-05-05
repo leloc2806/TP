@@ -8,24 +8,31 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Image from 'next/image';
 
-export default function SlideHome(){
-     return (
+export default function SlideHome({slides}){
+
+    return (
         <Swiper
         spaceBetween={0}
         slidesPerView={1}
         className='h-[100vh]'
         >
-            <SwiperSlide>
+        {
+            slides.map((slide) => (
+                
+            <SwiperSlide key={slide.id}>
                 <div className='bg-cover relative'>
-                    <img
+                    <Image
                         className={'desktop'}
-                        src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
+                        src={`${process.env.NEXT_PUBLIC_API_URL}${slide.Image.url}`}
+                        width={1000}
+                        height={1000}
+                        alt={slide.Name}
                     />
                 </div>
                 <div className="text-banner">  
                     <div className="title-banner"> 
                         <h2 className="ani-title">
-                            <span className="ani-title-inner">Hòa Nhịp</span>
+                            <span className="ani-title-inner">{slide.Name}</span>
                         </h2> 
                         <h3 className="ani-title" data-time="0.3">
                             <span className="ani-title-inner">Con Người – Vùng đất – Cộng đồng</span>
@@ -36,30 +43,10 @@ export default function SlideHome(){
                     </div>  
                 </div>
             </SwiperSlide>
-            <SwiperSlide>
-                <div className='bg-cover'>
-                    <img
-                        className={'desktop'}
-                        src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
-                    />
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='bg-cover'>
-                    <img
-                        className={'desktop'}
-                        src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
-                    />
-                </div>
-            </SwiperSlide>
-            <SwiperSlide>
-                <div className='bg-cover'>
-                    <img
-                        className={'desktop'}
-                        src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
-                    />
-                </div>
-            </SwiperSlide>
+
+            ))
+        }
+            
         </Swiper>
     );
 }
