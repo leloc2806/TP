@@ -46,9 +46,8 @@ export default function SearchComponent({show, display}){
                             </div> */}
                             <button 
                                 className="display-none link-search-load-typing" 
-                                data-href="https://www.nhojsc.vn/tim-kiem-1.html" 
-                                aria-label="search">
-
+                                onClick={display}
+                                >
                             </button>
                         </div>
                         <button 

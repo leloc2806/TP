@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import NavigationMenu from './navbar/navigation';
 
@@ -18,7 +18,7 @@ export default function SideHeader() {
 
   return (
     <motion.header
-      className={`header black ${isShrunk ? 'hide' : ''}`}
+      className={`header black show ${isShrunk ? 'hide' : ''}`}
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
 
     >

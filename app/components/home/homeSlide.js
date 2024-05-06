@@ -8,12 +8,17 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Image from 'next/image';
 
+import { EffectFade } from 'swiper/modules';
+
 export default function SlideHome({slides}){
 
     return (
         <Swiper
         spaceBetween={0}
+        effect={'fade'}
         slidesPerView={1}
+        loop={true}
+        modules={[EffectFade]}
         className='h-[100vh]'
         >
         {

@@ -2,11 +2,7 @@
 
 
 import { useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation'
-
 import { Tab, Transition } from '@headlessui/react'
-
-
 
 import classNames from '@/app/lib/joinClass';
 import Image from 'next/image';

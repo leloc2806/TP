@@ -1,12 +1,11 @@
 "use client"
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/virtual';
 import 'swiper/css/autoplay';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function SlidePartner(){

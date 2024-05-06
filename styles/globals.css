@@ -622,6 +622,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     left: 0;
 }
 
+.search-box {
+    display: block;
+    margin: 0;
+    counter-reset: item;
+    z-index: 5
+}
+
 .load-search-list {
     position: relative;
     display: block;
@@ -632,7 +639,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     overflow-y: auto;
     scrollbar-color: inherit;
     scrollbar-width: none;
-    counter-reset: div;
+    counter-reset: item;
 }
 
 .list-result-search-typing {
@@ -692,9 +699,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     pointer-events: none;
 }
 
+
 .item-search::after {
-    content: counter(div) " ";
-    counter-increment: div;
+    content: counter(item) " ";
+    counter-increment: item;
     position: absolute;
     top: 50%;
     right: 0;
@@ -710,7 +718,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
 }
 
 .item-search .title-search h3 {
-    font-size: 1.2rem;
+    font-size: 21px;
     font-weight: 400;
     line-height: 1.4;
     margin: 0 0 10px;
@@ -723,9 +731,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     color: var(--bgactive);
 }
 
-.item-search a {
+.item-search span {
     font-style: italic;
-    font-size: .9rem;
+    font-size: 17px;
     pointer-events: none;
     white-space: nowrap;
     overflow: hidden;
@@ -2090,6 +2098,18 @@ img.trans-y {
     height: 40px;
 }
 
+/* Contact Page */
+
+.contact-page .wrap-content, 
+.contact-page .wrap-small {
+    display: block;
+    width: var(--wrapcontent);
+    margin: auto;
+    padding: 5vw 0;
+}
+
+/* Contact Page End */
+
 @media (hover: hover) and (pointer: fine) and (min-width: 1100px){
     
     .download-pdf-subscribe, .input-but button, .print-box>button, .share-item a, .view-album, .view-album::after, .view-album::before, .view-degree, .view-degree::after, .view-pdf, .view-pdf::after, .view-pdf::before, .view-video, .view-video::after, .view-video::before {
@@ -2120,6 +2140,28 @@ img.trans-y {
         left: 0;
         background-color: var(--color-black20);
         transition: opacity .3s ease-in-out;
+    }
+
+    .item-search:hover {
+        background-color: var(--bgactive);
+        box-shadow: 0 10px 25px 0 var(--color-black10);
+        border-color: var(--color-light);
+    }
+
+    .item-search:hover img {
+        transform: scale(1.05);
+        filter: grayscale(1);
+    }
+
+    .item-search img, .title-pic {
+        transition: all .6s ease-in-out;
+    }
+    .item-news-home:hover, .item-search:hover h3, .social ul:hover li a, .social-project a:hover {
+        color: var(--color-white);
+    }
+
+    .item-search:hover span {
+        color: var(--color-white);
     }
     
 }
@@ -2904,7 +2946,7 @@ img.trans-y {
         justify-content: space-around;
     }
 
-    .copyright p, .item-search a, .left-footer a, .list-view p {
+    .copyright p, .item-search a, .item-search span, .left-footer a, .list-view p {
         font-size: 13px;
     }
 
@@ -3000,6 +3042,15 @@ img.trans-y {
 
     .center-footer::before, .details-content.details-recruitment::after, .details-content.details-recruitment::before, .join-group .join-us::after, .list-term-footer, .menu-footer{
         display: none;
+    }
+
+    .search-box {
+        box-shadow: 0 20px 30px 0 var(--color-black10);
+        padding: 20px;
+    }
+
+    .item-search .title-news h3, .item-search .title-search h3 {
+        font-size: 17px;
     }
     
 }
@@ -3432,6 +3483,34 @@ img.trans-y {
 
     .product-category-text{
         text-align: center;
+    }
+
+    .item-search::after {
+        font-size: 13px;
+        font-weight: 700;
+        width: 30px;
+        line-height: 30px;
+        top: -15px;
+        left: 5px;
+        right: auto;
+        padding: 0;
+        text-align: center;
+        border-radius: 50%;
+        color: var(--color-black);
+        margin: 0;
+    }
+
+    .item-search, .item-search::after {
+        background-color: var(--color-white);
+    }
+
+    .item-search .pic-search {
+        max-width: inherit;
+        height: 120px;
+    }
+
+    .item-search .title-search {
+        width: 70%;
     }
 
 }

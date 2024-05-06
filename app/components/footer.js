@@ -1,4 +1,5 @@
 import ButtonTop from "./button-top";
+import Link from "next/link"
 
 export default function Footer() {
     return(
@@ -81,11 +82,10 @@ export default function Footer() {
                     <div className="center-footer">
                         <div className="menu-footer">
                             <ul>
-                                <li><a className="link-load link-footer current" href="https://www.nhojsc.vn/" data-name="home-page">Trang chủ</a></li>
-                                <li><a className="link-load link-footer" href="https://www.nhojsc.vn/du-an.html" data-name="project-page">Dự án</a></li>
-                                <li><a className="link-load link-footer" href="https://www.nhojsc.vn/tin-tuc.html" data-name="news-page">Tin tức</a></li>
-                                <li><a className="link-load link-footer" href="https://www.nhojsc.vn/gioi-thieu.html" data-name="about-page">Giới thiệu</a></li>
-                                <li><a className="link-load link-footer" href="https://www.nhojsc.vn/n-h-o-cares.html" data-name="care-page">N.H.O cares</a></li>
+                                <li><Link className="link-load link-footer" href={"/"}>Trang chủ</Link></li>
+                                <li><Link className="link-load link-footer" href={"/product"}>Dự án</Link></li>
+                                <li><Link className="link-load link-footer" href={"/news"}>Tin tức</Link></li>
+                                <li><Link className="link-load link-footer" href={"/about"}>Giới thiệu</Link></li>
                             </ul>
                         </div>
                         <div className="social-footer">

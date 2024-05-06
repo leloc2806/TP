@@ -2,14 +2,23 @@ import Link from "next/link";
 import Image from "next/image";
 
 async function getProductCategory({params}) {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,3&filters[slug][$eq]=${params.productId}`
-    );
-    if (!res.ok) {
-        throw new Error("Failed to fetch data");
+    try{
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,3&filters[slug][$eq]=${params.productId}`
+        );
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+        return res.json();
     }
-    return res.json();
+    catch(error){
+        // Handle errors here, such as logging or displaying an error message
+        console.error("Error fetching product data:", error.message);
+        throw error; // Re-throw the error to be handled by the caller if needed
+    }
 }
+
+
 
 
 export default async function ProductId({params}){

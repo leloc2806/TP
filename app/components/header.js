@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import NavigationMenu from './navbar/navigation';
 
@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`header bg-slate-300 ${isShrunk ? 'hide' : ''}`}
+      className={`header show bg-slate-300 ${isShrunk ? 'hide' : ''}`}
       transition={{ type: 'spring', stiffness: 150, damping: 20 }}
 
     >

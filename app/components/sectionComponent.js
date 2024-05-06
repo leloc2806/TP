@@ -1,7 +1,6 @@
 "use client"
-import Link from "next/link"
-import { motion, useScroll, useMotionValueEvent, useInView } from "framer-motion"
-import { useEffect, useRef } from "react"
+import {useInView } from "framer-motion"
+import { useRef } from "react"
 
 export default function SectionComponent({ children, className, translate}){
 

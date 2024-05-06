@@ -1,10 +1,10 @@
-import { Map } from "@/app/components/map";
+import GMap, { Map } from "@/app/components/map";
 import SectionComponent from "@/app/components/sectionComponent";
 import TitlePage from "@/app/components/titlepage";
 
 export default function Contact(){
     return (
-        <div className="relative m-0">
+        <div className="relative m-0 contact-page">
             <SectionComponent
             className="section-title-page"
             translate={"translateY(200px)"}>
@@ -23,7 +23,28 @@ export default function Contact(){
                             <h2 className="text-title-about block">trụ sở làm việc</h2>
                         </div>
                     </div>
-                    {/* <Map/> */}
+                    <div className={"map-box"}>
+                        <GMap/>
+                        <div className="list-view">
+                            <ul>   
+                                <li className="agen_map">
+                                    <h3>Trụ sở chính</h3>  
+                                    <div>
+                                        
+                                        <p>44B Nguyễn Văn Trỗi, Phường 15, Quận Phú Nhuận, Thành Phố Hồ Chí Minh</p>
+                                    </div>   
+                                    <div>
+                                        
+                                        <a href="tel:+84-28-3845-9963">(028) 3845 9963</a> 
+                                    </div>   
+                                    <div>
+                                        
+                                    </div>  
+                                    <button className="no-display link-load-map"></button>
+                                </li>   
+                            </ul>  
+                        </div>
+                    </div>
                 </div>
             </SectionComponent>
             <SectionComponent 
