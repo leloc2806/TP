@@ -1,4 +1,22 @@
+"use client"
+
+import { useRouter } from "next/navigation";
+import { useState } from "react"
+
+
 export default function SearchComponent({show, display}){
+
+    const [searchQuery, setSearchQuery] = useState("");
+    const router = useRouter();
+
+    const onSearch = (e) => {
+        e.preventDefault(); 
+        const encondedSearchQuery = encodeURI(searchQuery);
+
+        router.push(`/search?q=${encondedSearchQuery}`)
+
+    }
+
     return(
 
         <div 
@@ -7,7 +25,7 @@ export default function SearchComponent({show, display}){
             <span></span>
             <div className={`search-form${show ? ' active opacity-1' : ''}`}>
                 <div className="form-row-search">
-                    <div id="search" >
+                    <form id="search" onSubmit={onSearch}>
                         <div className="search-svg">
                             <svg viewBox="0 0 50 50">
                                 <path fill="currentColor" d="M33.3,31.9c-0.6,0.6-1.3,1-2,1.4l5.9,5.9c1,0.9,2.5,0.9,3.4,0c0.9-1,0.9-2.5,0-3.4l-5.9-5.9C34.4,30.6,33.9,31.3,33.3,31.9z"></path>
@@ -16,16 +34,22 @@ export default function SearchComponent({show, display}){
                             </svg>
                         </div>
                         <div className="input-text">
-                        <input type="text" id="quicksearch" name="quicksearch" placeholder="Tìm kiếm ..." data-default="Tìm kiếm ..." aria-label="fieldsearch"/>
-                        {/* <div className="search-error" id="errorsearch">
-                            <div className="search-error-content">Từ khóa không được dưới 3 kí tự, vui lòng nhập lại từ khóa tìm kiếm!</div>
-                        </div> */}
-                        <button 
-                            className="display-none link-search-load-typing" 
-                            data-href="https://www.nhojsc.vn/tim-kiem-1.html" 
-                            aria-label="search">
+                            <input 
+                                type="text" 
+                                id="quicksearch" 
+                                value={searchQuery} 
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder="Tìm kiếm ..."
+                            />
+                            {/* <div className="search-error" id="errorsearch">
+                                <div className="search-error-content">Từ khóa không được dưới 3 kí tự, vui lòng nhập lại từ khóa tìm kiếm!</div>
+                            </div> */}
+                            <button 
+                                className="display-none link-search-load-typing" 
+                                data-href="https://www.nhojsc.vn/tim-kiem-1.html" 
+                                aria-label="search">
 
-                        </button>
+                            </button>
                         </div>
                         <button 
                             className="close-search"
@@ -35,7 +59,7 @@ export default function SearchComponent({show, display}){
                         <input type="hidden" id="defaultvalue" name="defaultvalue" aria-label="defaultvalue"/> 
                         <input type="hidden" id="errorsearchcode" name="errorsearch" aria-label="errorsearch"/> 
                         <input type="hidden" id="href_search" name="href_search" aria-label="hrefsearch"/>
-                    </div>
+                    </form>
                 </div>
             </div>
             <div className="search-loading">

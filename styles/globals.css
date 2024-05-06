@@ -2216,6 +2216,10 @@ img.trans-y {
     margin: 14.5px;
 }
 
+.search-result .wrap-content{
+    max-width: 1100px;
+}
+
 @media (orientation: landscape){
     .home-banner, .home-banner .banner {
         height: 100vh;
@@ -2613,6 +2617,7 @@ img.trans-y {
     .search-form.typing {
         top: 5vh
     }
+
 
     .social {
         display: none;
