@@ -739,6 +739,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     color: var(--bgactive);
 }
 
+.box-footer.on-show .company-info li::after,.header.show .logo {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards
+}
+
+.header.show .active-nav,.header.show .right-header-main {
+    animation-name: fadeInDown;
+    animation-duration: 1.2s;
+    animation-delay: 0s;
+    animation-fill-mode: forwards
+}
+
 /* Menu End */
 
 /* Footer */
@@ -2107,6 +2121,7 @@ img.trans-y {
         background-color: var(--color-black20);
         transition: opacity .3s ease-in-out;
     }
+    
 }
 
 .share-item ul {
@@ -2233,13 +2248,6 @@ img.trans-y {
         right: -4rem;
     }
 
-    .center-footer {
-        padding: 0 0 2rem;
-    }
-
-    .center-footer::before, .details-content.details-recruitment::after, .details-content.details-recruitment::before, .join-group .join-us::after, .list-term-footer, .menu-footer{
-        display: none;
-    }
 }
 
 @media (hover: hover) and (pointer: fine) and (min-width: 1100px){
@@ -2360,6 +2368,15 @@ img.trans-y {
         }
     }
 
+    @keyframes fadeIn{
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
     .box-footer.on-show .center-footer::after, .box-footer.on-show .center-footer::before{
         animation-name: scaleSmallX;
         animation-duration: 1.5s;
@@ -2379,6 +2396,32 @@ img.trans-y {
 
     .center-footer::after {
         bottom: 0;
+    }
+
+    .header.hide .logo {
+        top: .8rem;
+        left: 3.5rem;
+        --widthlogo: 3rem;
+        filter: none;
+        z-index: 10;
+    }
+
+    
+}
+
+@media screen and (max-width: 1500px) {
+    @media screen and (min-width: 1100px) {
+        .header.show .active-nav,.header.show .logo,.header.show .right-header-main {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+            animation-delay: 0s;
+            animation-fill-mode: forwards
+        }
+    
+        .header.show .active-nav,.header.show .right-header-main {
+            animation-name: fadeInDown
+        }
+
     }
 }
 
@@ -2948,6 +2991,10 @@ img.trans-y {
 
     .news-detail-page .load-text {
         padding: 30px 0;
+    }
+
+    .center-footer::before, .details-content.details-recruitment::after, .details-content.details-recruitment::before, .join-group .join-us::after, .list-term-footer, .menu-footer{
+        display: none;
     }
     
 }
