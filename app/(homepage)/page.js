@@ -195,7 +195,7 @@ export default async function Home() {
           <SectionComponent 
             className="home-partner relative"
             translate={"translateX(-200px)"}>
-            <SlidePartner/>
+            <SlidePartner aboutData={aboutData}/>
           </SectionComponent>
         </div>
     </div>

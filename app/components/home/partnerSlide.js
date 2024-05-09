@@ -7,8 +7,9 @@ import 'swiper/css';
 import 'swiper/css/virtual';
 import 'swiper/css/autoplay';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function SlidePartner(){
+export default function SlidePartner({aboutData}){
 
     const swiperRefLocal = useRef()
 
@@ -48,49 +49,67 @@ export default function SlidePartner(){
                 >
                     <SwiperSlide className=''>
                         <div className='bg-cover relative '>
-                            <img
+                            <Image
                                 className={'desktop'}
-                                src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
+                                alt={'abc'}
+                                width={1000}
+                                height={1000}
                             />
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className=''>
                         <div className='bg-cover relative'>
-                            <img
+                            <Image
                                 className={'desktop'}
-                                src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
+                                alt={'abc'}
+                                width={1000}
+                                height={1000}
                             />
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className=''>
                         <div className='bg-cover relative'>
-                            <img
+                            <Image
                                 className={'desktop'}
-                                src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
+                                alt={'abc'}
+                                width={1000}
+                                height={1000}
                             />
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className=''>
                         <div className='bg-cover relative'>
-                            <img
+                            <Image
                                 className={'desktop'}
-                                src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
+                                alt={'abc'}
+                                width={1000}
+                                height={1000}
                             />
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className=''>
                         <div className='bg-cover relative'>
-                            <img
+                            <Image
                                 className={'desktop'}
-                                src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
+                                alt={'abc'}
+                                width={1000}
+                                height={1000}
                             />
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className=''>
                         <div className='bg-cover relative'>
-                            <img
+                            <Image
                                 className={'desktop'}
-                                src={`https://www.nhojsc.vn/pictures/catalog/banner/01.jpg`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
+                                alt={'abc'}
+                                width={1000}
+                                height={1000}
                             />
                         </div>
                     </SwiperSlide>
