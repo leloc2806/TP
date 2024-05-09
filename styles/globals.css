@@ -93,6 +93,14 @@ html,body{
     overflow-x: hidden;
 }
 
+input:focus-visible,
+select:focus-visible,
+div:focus-visible,
+button:focus-visible {
+    outline: none;
+}
+
+
 #home-page::-webkit-scrollbar {
     display: none;
 }
@@ -2162,6 +2170,10 @@ img.trans-y {
 
     .item-search:hover span {
         color: var(--color-white);
+    }
+
+    .item-news-home:hover, .social ul:hover, .social-project a::after {
+        background-color: var(--bgactive);
     }
     
 }

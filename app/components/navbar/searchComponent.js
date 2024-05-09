@@ -11,12 +11,16 @@ export default function SearchComponent({show, display}){
 
     const onSearch = (e) => {
         e.preventDefault(); 
-        const encondedSearchQuery = encodeURI(searchQuery);
+        if (!searchQuery.trim()) {
+            console.log(show);
+            return; // Prevent further execution
+        }
+        const encodedSearchQuery = encodeURI(searchQuery);
 
-        router.push(`/search?q=${encondedSearchQuery}`)
+        router.push(`/search?q=${encodedSearchQuery}`)
 
     }
-
+    
     return(
 
         <div 
@@ -55,15 +59,10 @@ export default function SearchComponent({show, display}){
                             onClick={display}
                         >
                         </button>
-                        <input type="hidden" id="defaultvalue" name="defaultvalue" aria-label="defaultvalue"/> 
-                        <input type="hidden" id="errorsearchcode" name="errorsearch" aria-label="errorsearch"/> 
-                        <input type="hidden" id="href_search" name="href_search" aria-label="hrefsearch"/>
                     </form>
                 </div>
             </div>
-            <div className="search-loading">
-                <div className="load-search-list"></div>
-            </div>
+
         </div>
     )
 }
