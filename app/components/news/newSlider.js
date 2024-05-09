@@ -38,7 +38,7 @@ const SwiperButtonPrev = ({ children }) => {
                 </button>;
 };
 
-export default ({data, slug}) => {
+export default function Slider ({data, slug}) {
 
     const pagination = {
         clickable: true,
