@@ -35,7 +35,7 @@ export default function SlidePartner({aboutData}){
                 <Swiper
                 ref={swiperRefLocal}
                 spaceBetween={10}
-                slidesPerView={3}
+                slidesPerView={2}
                 speed={2000}
                 loop={true}
                 autoplay={{
@@ -80,39 +80,7 @@ export default function SlidePartner({aboutData}){
                             />
                         </div>
                     </SwiperSlide>
-                    <SwiperSlide className=''>
-                        <div className='bg-cover relative'>
-                            <Image
-                                className={'desktop'}
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
-                                alt={'abc'}
-                                width={1000}
-                                height={1000}
-                            />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className=''>
-                        <div className='bg-cover relative'>
-                            <Image
-                                className={'desktop'}
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
-                                alt={'abc'}
-                                width={1000}
-                                height={1000}
-                            />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className=''>
-                        <div className='bg-cover relative'>
-                            <Image
-                                className={'desktop'}
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
-                                alt={'abc'}
-                                width={1000}
-                                height={1000}
-                            />
-                        </div>
-                    </SwiperSlide>
+                    
                 </Swiper>
             </div>
             <div className="ani-view-details">

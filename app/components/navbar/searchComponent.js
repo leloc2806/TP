@@ -11,15 +11,30 @@ export default function SearchComponent({show, display}){
 
     const onSearch = (e) => {
         e.preventDefault(); 
-        if (!searchQuery.trim()) {
+        const trimmedQuery = searchQuery.trim();
+        if (!trimmedQuery) {
             console.log(show);
             return; // Prevent further execution
         }
+
+        if (!/^[a-zA-Z0-9\s]*$/.test(trimmedQuery)) {
+            alert("Search query must contain only text."); // Show an alert if the query contains non-text characters
+            return; // Prevent further execution
+        }
+
         const encodedSearchQuery = encodeURI(searchQuery);
 
         router.push(`/search?q=${encodedSearchQuery}`)
 
     }
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        // Check if the search query is not empty before submitting
+        if (searchQuery.trim()) {
+            onSearch(e); // Call the onSearch function to submit the form
+        }
+    };
     
     return(
 
@@ -48,10 +63,10 @@ export default function SearchComponent({show, display}){
                             {/* <div className="search-error" id="errorsearch">
                                 <div className="search-error-content">Từ khóa không được dưới 3 kí tự, vui lòng nhập lại từ khóa tìm kiếm!</div>
                             </div> */}
-                            <button 
-                                className="display-none link-search-load-typing" 
-                                onClick={display}
-                                >
+                            <button
+                                className="display-none link-search-load-typing"
+                                onClick={submitForm}
+                            >
                             </button>
                         </div>
                         <button 
