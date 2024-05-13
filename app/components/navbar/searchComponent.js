@@ -55,14 +55,13 @@ export default function SearchComponent({show, display}){
                         <div className="input-text">
                             <input 
                                 type="text" 
-                                id="quicksearch" 
                                 value={searchQuery} 
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Tìm kiếm ..."
                             />
-                            {/* <div className="search-error" id="errorsearch">
-                                <div className="search-error-content">Từ khóa không được dưới 3 kí tự, vui lòng nhập lại từ khóa tìm kiếm!</div>
-                            </div> */}
+                            <div className="search-error" id="errorsearch">
+                                <div className="search-error-content">Từ khóa không được dưới 1 kí tự, vui lòng nhập lại từ khóa tìm kiếm!</div>
+                            </div>
                             <button
                                 className="display-none link-search-load-typing"
                                 onClick={submitForm}

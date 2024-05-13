@@ -2,6 +2,8 @@
 import { useState} from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import NavigationMenu from './navbar/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
   const { scrollYProgress } = useScroll();
@@ -9,7 +11,7 @@ export default function Header() {
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     // When the scroll progress is more than a certain amount, set isShrunk to true
-    if (latest > 0.1) { // Adjust this threshold based on your needs
+    if (latest > 0.01) { // Adjust this threshold based on your needs
       setIsShrunk(true);
     } else {
       setIsShrunk(false);
@@ -22,9 +24,10 @@ export default function Header() {
       transition={{ type: 'spring', stiffness: 150, damping: 20 }}
 
     >
-      <div className="logo absolute">
-        <h2>Logo</h2>
-      </div>
+      <Link href={`/`} className="logo absolute">
+        <Image className={`logo-white`} src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/9d5d7ff943cfe291bbde_26c0fd2efe.png`} alt={"logo"} width={500} height={500}/>
+        <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/logo_tp_2_083bc0adf9.png`} alt={"logo"} width={500} height={500}/>
+      </Link>
       
       <NavigationMenu/>
       <script dangerouslySetInnerHTML={{ __html: `history.scrollRestoration = "manual"` }} />
