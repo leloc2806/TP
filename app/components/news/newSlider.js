@@ -1,52 +1,61 @@
 "use client"
-import React, { useState } from 'react';
-import { Navigation, Pagination, Scrollbar, A11y, FreeMode, Grid } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
+import React, { useEffect } from 'react';
+import { Navigation, Pagination, Grid } from 'swiper/modules';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import ArticleCard from '../articlecard';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
-import { useSwiper } from "swiper/react";
+import 'swiper/css/grid';
 
 const SwiperButtonNext = ({ children }) => {
     const swiper = useSwiper();
-        return <button className='slidebox-arrow slidebox-arrow-next is-inview' onClick={() => swiper.slideNext()}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width={80} height={80}focusable="false">
-                        <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
-                        <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
-                    </svg>
-                    <div className="arrow"></div>
-                    {children}
-                </button>;
+    return (
+        <button className='slidebox-arrow slidebox-arrow-next is-inview' onClick={() => swiper.slideNext()}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width={80} height={80} focusable="false">
+                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+            </svg>
+            <div className="arrow"></div>
+            {children}
+        </button>
+    );
 };
 
 const SwiperButtonPrev = ({ children }) => {
     const swiper = useSwiper();
-        return <button className='slidebox-arrow slidebox-arrow-prev is-inview' onClick={() => swiper.slidePrev()}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width={80} height={80}focusable="false">
-                        <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
-                        <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
-                    </svg>
-                    <div className="arrow"></div>
-                    {children}
-                </button>;
+    return (
+        <button className='slidebox-arrow slidebox-arrow-prev is-inview' onClick={() => swiper.slidePrev()}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width={80} height={80} focusable="false">
+                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+                <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>
+            </svg>
+            <div className="arrow"></div>
+            {children}
+        </button>
+    );
 };
 
-export default function Slider ({data, slug}) {
-
+export default function Slider({ data, slug }) {
     const pagination = {
         clickable: true,
         renderBullet: function (index, className) {
-            const number = index  < 9 ? '0' + (index + 1) : (index + 1)
+            const number = index < 9 ? '0' + (index + 1) : (index + 1);
             return '<span class="' + className + '">' + number + '</span>';
         },
     };
+
+    useEffect(() => {
+        const handleResize = () => {
+            window.location.reload();
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
         <div className='relative m-auto py-[5vw] px-0 w-[var(--wrapcontent)] h-auto new-slide-relative'>
@@ -57,35 +66,52 @@ export default function Slider ({data, slug}) {
                 </div>
             </div>
             <Swiper
-                // install Swiper modules
-                spaceBetween={10}
-                freeMode={true}
-                loop={true}
+                spaceBetween={30}
                 pagination={pagination}
                 breakpoints={{
-                    960: {
+                    1100: {
                         slidesPerView: 4,
                         slidesPerGroup: 4,
                     },
-                    320: {
-                        slidesPerView: 2
+                    980: {
+                        slidesPerView: 2, // Number of columns in each row
+                        slidesPerGroup: 4, // Move 4 slides at a time
+                        grid: {
+                            rows: 2, // Number of rows
+                            fill: 'row', // Fill rows first
+                        },
                     },
-                  }}
-                modules={[FreeMode, Pagination, Navigation, Grid]}
+                    640: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 4,
+                        grid: {
+                            rows: 4,
+                            fill: 'row',
+                        },
+                    },
+
+                    100: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 4,
+                        grid: {
+                            rows: 4,
+                            fill: 'row',
+                        },
+                    },
+                }}
+                modules={[Pagination, Navigation, Grid]}
                 className="mySwiper"
             >
                 <div className='slidebox-arrows'>
-                    <SwiperButtonPrev/>
-                    <SwiperButtonNext/>
+                    <SwiperButtonPrev />
+                    <SwiperButtonNext />
                 </div>
 
                 {data.map((relativeArt) => (
-                
                     <SwiperSlide key={relativeArt.id}>
-                        <ArticleCard slug={slug} post={relativeArt.attributes} url={relativeArt.attributes.thumbnail.data.attributes.url} width={300} height={200}/>
+                        <ArticleCard slug={slug} post={relativeArt.attributes} url={relativeArt.attributes.thumbnail.data.attributes.url} width={300} height={200} />
                     </SwiperSlide>
                 ))}
-                
             </Swiper>
 
         </div>
