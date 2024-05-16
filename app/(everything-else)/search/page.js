@@ -23,7 +23,7 @@ export async function fetchPosts({queryKey, pageParam = 1}) {
 
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/projects?fields[0]=title&fields[1]=excerpt&fields[2]=slug&fields[3]=createdAt&populate[0]=product_category&populate[1]=logo&sort=createdAt:desc${searchUrl}${loadUrl}`
-      );
+    );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

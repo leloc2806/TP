@@ -5,9 +5,22 @@ import NavigationMenu from './navbar/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 
+async function fetchLogo() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/header-logo?populate=deep,2`);
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
+}
+
 export default function SideHeader() {
   const { scrollYProgress } = useScroll();
   const [isShrunk, setIsShrunk] = useState(false);
+
+  const { data: logos, error } = useQuery({
+    queryKey: ["logos"],
+    queryFn: fetchLogo,
+  });
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     // When the scroll progress is more than a certain amount, set isShrunk to true
@@ -18,6 +31,12 @@ export default function SideHeader() {
     }
   });
 
+  if (error) return(
+    <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/logo_tp_2_083bc0adf9.png`} alt={"logo"} width={400} height={400}/>
+  );
+  
+  const logoBlack = logos?.data?.attributes?.logoBlack?.data?.attributes?.url || `${process.env.NEXT_PUBLIC_API_URL}/uploads/logo_tp_2_083bc0adf9.png`;
+
   return (
     <motion.header
       className={`header black show ${isShrunk ? 'hide' : ''}`}
@@ -25,7 +44,7 @@ export default function SideHeader() {
 
     >
       <Link href={`/`} className="logo absolute">
-        <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/logo_tp_2_083bc0adf9.png`} alt={"logo"} width={400} height={400}/>
+        <Image className={`logo-black`} src={logoBlack} alt={"logo"} width={400} height={400} />
       </Link>
       
       <NavigationMenu/>

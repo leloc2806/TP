@@ -1,6 +1,5 @@
 import { Roboto } from "next/font/google";
 import "@/styles/globals.css";
-
 import Header from "../components/header";
 import Providers from "@/app/query_provider";
 import Footer from "../components/footer";
@@ -16,27 +15,29 @@ export const metadata = {
   description: "Thanh Phat JSC",
 };
 
-export default function HomeLayout({ children }) {
-
+function Loading() {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={roboto.className}>
-        <Suspense fallback={<Loading />}>
-          <Header/>
-            <Providers>{children}</Providers>
-          <Footer/>
-        </Suspense>
-      </body>
-    </html>
+    <div className="h-screen flex justify-center items-center bg-gray-400">
+      <svg className="animate-spin -ml-1 mr-3 h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    </div>
   );
 }
 
-function Loading() {
-  return <div className="h-screen flex justify-center items-center bg-gray-400">
-    <svg className="animate-spin -ml-1 mr-3 h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-    </svg>
-</div>;
-
+export default function HomeLayout({ children }) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <body className={roboto.className}>
+        <Providers>
+          <Header />
+          <Suspense fallback={<Loading />}>
+            {children}
+          </Suspense>
+          <Footer />
+        </Providers>
+      </body>
+    </html>
+  );
 }
