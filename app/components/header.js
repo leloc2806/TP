@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import flattenAttributes from '../lib/utils';
-import MotionHeader from './motionHeader';
+import MotionHeader from '@/app/components/motionHeader';
 
 async function fetchLogo() {
   try{
