@@ -12,9 +12,11 @@ const nextConfig = {
             },
         ],
     },
-    // eslint: {
-    //     ignoreDuringBuilds: true,
-    // },
+    eslint: {
+        // It's recommended to keep ESLint checks enabled during builds for better code quality.
+        // If needed, you can ignore ESLint errors during production builds by uncommenting the next line:
+        // ignoreDuringBuilds: true,
+    },
 };
 
 export default nextConfig;

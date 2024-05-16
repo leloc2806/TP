@@ -33,10 +33,11 @@ export default function SideHeader() {
   });
 
   if (error) return(
-    <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/logo_tp_2_083bc0adf9.png`} alt={"logo"} width={400} height={400}/>
+    <div>Error Heading</div>
   );
   
-  const logoBlack = logos?.data?.attributes?.logoBlack?.data?.attributes?.url || `${process.env.NEXT_PUBLIC_API_URL}/uploads/logo_tp_2_083bc0adf9.png`;
+  const logoBlack = logos?.data?.attributes?.logoBlack?.data?.attributes?.url || `${process.env.NEXT_PUBLIC_API_URL}/uploads/logo_tp_2_083bc0adf9.png`;;
+  
 
   return (
     <motion.header
