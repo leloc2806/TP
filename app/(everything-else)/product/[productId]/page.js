@@ -60,25 +60,7 @@ export default async function ProductId({params}){
                                                     </div>
                                                 </div>
                                             </div>
-                                        </Link>
-                                        // <Link class="item-product other_exists block relative">
-                                        //     <img src="https://jebgroup.com/wp-content/themes/jeb/assets/images/partition-product.jpg" alt="">
-                                        //     <div class="image-thumb">
-                                        //         <a href="https://jebgroup.com/product/xseries/">
-                                        //             <img src="https://jebgroup.com/wp-content/uploads/2023/01/White-Case_0872-scaled.jpg" alt="image thumb">
-                                        //         </a>
-                                        //     </div>
-                                        //     <div class="image-other">   
-                                        //         <a href="https://jebgroup.com/product/xseries/">
-                                        //             <img src="https://jebgroup.com/wp-content/uploads/2023/01/DSC_8906.jpg" alt="image other">
-                                        //         </a>
-                                        //     </div>
-                                        //     <div class="name-product name-wishlist">
-                                        //         <a href="https://jebgroup.com/product/xseries/">
-                                        //             <h6>X-SERIES</h6>
-                                        //         </a>
-                                        //     </div>
-                                        // </Link>     
+                                        </Link> 
                                     ))}
                                 </div>
                             </div>

@@ -2305,6 +2305,10 @@ img.trans-y {
     position: relative;
 }
 
+.product-cat-page .item-product-category .pic-img{
+    padding-bottom: 100%;
+}
+
 .product-cat-page .item-product-category .pic-img img,
 .category-product-page .item-product-category .pic-img img{
     position: absolute;
