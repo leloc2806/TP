@@ -140,7 +140,8 @@ export default async function Home() {
           </SectionComponent>
           <SectionComponent 
             className="home-news relative"
-            translate={"translateX(200px)"}>
+            translate={"translateX(200px)"}
+          >
             <div className="wrap-content">
               <div className="left-content">
                 <div className="title-big text-ani-item color-blue">
@@ -190,7 +191,7 @@ export default async function Home() {
                     <span className="o_h"><span>Xem them</span></span>     
                 </Link>
               </div>  
-          </div>
+            </div>
           </SectionComponent>
           <SectionComponent 
             className="home-partner relative"

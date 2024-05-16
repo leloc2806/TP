@@ -18,7 +18,7 @@ async function getTitleNewPage(){
 
 async function getArticleList(){
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3`,{ cache: 'no-store' }
 
     )
     if (!res.ok) {
@@ -29,7 +29,7 @@ async function getArticleList(){
 
 async function getNewCategory() {
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/news-categories?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/news-categories?populate=deep,3`, { cache: 'no-store' }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");

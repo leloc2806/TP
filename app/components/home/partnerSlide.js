@@ -95,7 +95,7 @@ export default function SlidePartner({aboutData}){
                     <div className="view_i"></div>
                     <span className="o_h"><span>Xem them</span></span>     
                 </Link>
-            </div>  
+              </div>  
         </div>
 
     );

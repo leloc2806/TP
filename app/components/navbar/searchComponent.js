@@ -24,14 +24,15 @@ export default function SearchComponent({ show, display }) {
     };
 
     return (
-        <div className={`search-overlay${show ? ' show opacity-1' : ''}`}>
-            <span></span>
-            <div className={`search-form${show ? ' active opacity-1' : ''}`}>
-                <div className="form-row-search">
-                    <form id="search" onSubmit={handleSubmit(onSearch)}>
-                        <div className="search-svg">
+
+        <>
+            <div className={`search-overlay${show ? ' show opacity-1' : ''}`}>
+                <span></span>
+                <div className={`search-form${show ? ' active opacity-1' : ''}`}>
+                    <div className="form-row-search">
+                        <form id="search" onSubmit={handleSubmit(onSearch)}>
                             <button
-                                className="search-submit-button"
+                                className="search-submit-button search-svg block"
                                 type="submit"
                             >
                                 <svg viewBox="0 0 50 50">
@@ -41,34 +42,34 @@ export default function SearchComponent({ show, display }) {
                                 </svg>
 
                             </button>
-                        </div>
-                        <div className="input-text">
-                            <input 
-                                type="text" 
-                                {...register("searchQuery", { 
-                                    required: "Search query is required", 
-                                    validate: (value) => value.trim() !== "" || "Search query cannot be empty",
-                                    pattern: {
-                                        value: /^[a-zA-Z0-9\s]*$/,
-                                        message: "Search query must contain only text"
-                                    } 
-                                })}
-                                placeholder="Tìm kiếm ..."
+                            <div className="input-text">
+                                <input 
+                                    type="text" 
+                                    {...register("searchQuery", { 
+                                        required: "Search query is required", 
+                                        validate: (value) => value.trim() !== "" || "Search query cannot be empty",
+                                        pattern: {
+                                            value: /^[a-zA-Z0-9\s]*$/,
+                                            message: "Search query must contain only text"
+                                        } 
+                                    })}
+                                    placeholder="Tìm kiếm ..."
+                                />
+                                {errors.searchQuery && (
+                                    <div className="search-error" id="errorsearch">
+                                        <div className="search-error-content">{errors.searchQuery.message}</div>
+                                    </div>
+                                )}
+                            </div>
+                            <button 
+                                type="button"
+                                className="close-search"
+                                onClick={display}
                             />
-                            {errors.searchQuery && (
-                                <div className="search-error" id="errorsearch">
-                                    <div className="search-error-content">{errors.searchQuery.message}</div>
-                                </div>
-                            )}
-                        </div>
-                        <button 
-                            type="button"
-                            className="close-search"
-                            onClick={display}
-                        />
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

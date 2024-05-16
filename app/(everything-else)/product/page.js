@@ -6,7 +6,7 @@ import CategoryProductComboBox from "@/app/components/product/CategoryProductCom
 async function getTitle() {
     try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/product-category-page?populate=deep,3`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/product-category-page?populate=deep,3`, { cache: 'no-store' }
         );
     
         if (!res.ok) {
@@ -24,7 +24,7 @@ async function getTitle() {
 async function getCategories() {
     try{
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/api/categories?populate=deep,3`
+            `${process.env.NEXT_PUBLIC_API_URL}/api/categories?populate=deep,3`, { cache: 'no-store' }
         );
         if (!res.ok) {
             throw new Error("Failed to fetch data");
