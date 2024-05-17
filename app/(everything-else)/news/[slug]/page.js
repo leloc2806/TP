@@ -2,10 +2,11 @@ import TitlePage from "@/app/components/titlepage"
 import Slider from "@/app/components/news/newSlider"
 import Markdown from 'react-markdown';
 import { MotionDiv } from "@/app/components/MotionDiv";
+import remarkGfm from "remark-gfm";
 
 async function fetchHeading({params}){
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3&filters[slug][$eq]=${params.slug}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3&filters[slug][$eq]=${params.slug}`, { next: { revalidate: 60 } }
 
     )
     if (!res.ok) {
@@ -68,7 +69,12 @@ export default async function News({params}) {
                                 <div className="date-thumb text-center">by admin | Mar 21, 2024</div>
                             </div>
                             <div className="load-text relative block my-0 mx-auto overflow-hidden p-[40px]">
-                                <Markdown>{content}</Markdown>
+                                <Markdown 
+                                    className={'markdown'} 
+                                    remarkPlugins={[remarkGfm]}
+                                >
+                                    {content}
+                                </Markdown>
                             </div>
                             {/* <div className="print">
                                 <div className="print-box">

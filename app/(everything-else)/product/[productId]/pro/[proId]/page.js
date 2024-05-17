@@ -2,6 +2,9 @@ import TitlePage from "@/app/components/titlepage";
 import flattenAttributes from "@/app/lib/utils";
 import Markdown from 'react-markdown';
 import { MotionDiv } from "@/app/components/MotionDiv";
+import Image from "next/image";
+import remarkGfm from "remark-gfm";
+import ProductSlider from "@/app/components/product/productSlider";
 
 async function getProductDetail({params}){
     try{
@@ -18,6 +21,17 @@ async function getProductDetail({params}){
         console.error("Error fetching product data:", error.message);
         throw error; // Re-throw the error to be handled by the caller if needed
     }
+}
+
+async function fetchRelativeProduct({ categorySlug}){
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,2&filters[product_category][slug][$eq]=${categorySlug}`, { next: { revalidate: 60 } }
+
+    )
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+    return res.json();
 }
 
 function getObjectFromSingleElementArray(array) {
@@ -37,30 +51,82 @@ export default async function Pro({params}){
     const product = flattenAttributes(pro.data);
     const productDetail = getObjectFromSingleElementArray(product)
 
+    const categorySlug = productDetail.product_category.slug
+
+    const resRelProduct = await fetchRelativeProduct({categorySlug})
+    const relProduct = flattenAttributes(resRelProduct.data)
+
     return (
         <>
             <TitlePage title={productDetail.title}/>
             <div className="load-content relative margin mt-[-1px] ml-0 mb-0 overflow-hidden w-full h-auto p-0">
                 <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
                     <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex">
-                        <div class="block w-1/2">
-                            <img class="w-auto lazyloaded" src="https://moderndoor.vn/wp-content/uploads/2024/01/cua-nhua-composite-5c-D3-MD.06-23.jpg"/>
+                        <div className="block w-1/2">
+                        {
+                            productDetail && productDetail.logo && productDetail.logo.url 
+                            ? (
+                                <Image 
+                                    className="w-full lazyloaded h-full object-center" 
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}${productDetail.logo.url}`}
+                                    alt={productDetail.logo.name || 'Product Logo'}
+                                    width={300}
+                                    height={300}
+                                />
+                                )
+                            : (
+                                <Image 
+                                    className="w-full lazyloaded h-full object-center" 
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/image_not_found_0457ab7ad4.jpg`}
+                                    alt="Image not found"
+                                    width={300}
+                                    height={300}
+                                />
+                                )
+                        }
+
+                            
                         </div>
-                        <div class="lg:w-[540px] w-1/2">
-                            <div class="rounded-xl p-4 lg:p-8 flex justify-between bg-primary/10">
-                                <div class="text-secondary font-medium text-3xl lg:text-4xl">
-                                    Liên hệ                            
+                        <div className="w-1/2">
+                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] lg:px-8 lg:py-4 flex justify-between bg-primary/10">
+                                <div className="text-secondary font-medium text-[30px] lg:text-4xl">
+                                    Danh mục: {productDetail.product_category.name}                           
                                 </div>
-                                <div class="flex gap-4 items-center"></div>
+                                <div className="flex gap-4 items-center"></div>
                             </div>
-                            <div class="mt-5">
-                                <span class="font-medium text-secondary">Danh mục: </span>
+                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] lg:px-8 lg:py-4 flex justify-between bg-primary/10">
+                                <span className="font-light text-secondary lg:text-[21px] text-[16px]">
+                                    <Markdown 
+                                        className={'markdown'} 
+                                        remarkPlugins={[remarkGfm]}
+                                    >
+                                        {productDetail.description}
+                                    </Markdown>
+                                </span>
                             </div>
+                        </div>
+                        <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+                        
+                    </div>
+                    <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[3rem] px-[0rem] pb-[3rem] max-[1100px]:pt-[40px] max-[1100px]:pb-[20px] max-[580px]:pt-[30px]">
+                        <div className="relative block w-full h-auto overflow-hidden">
+                            <h1 className="text-[4vw] font-normal relative block uppercase">Mô tả</h1>
+                        </div>   
+                    </div>  
+
+                    <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[2vw] px-0 relative h-auto z-10">
+                        <div className="load-text relative block my-0 mx-auto overflow-hidden p-[10px] text-[18px]">
+                            <Markdown 
+                                className={'markdown'} 
+                                remarkPlugins={[remarkGfm]}
+                            >
+                                {productDetail.content}
+                            </Markdown>
                         </div>
                     </div>
                 </div>
+                <ProductSlider data={relProduct} slug={params.slug}/>
             </div>
-            
         </>
     )
 }
