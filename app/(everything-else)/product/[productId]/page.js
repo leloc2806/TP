@@ -4,7 +4,7 @@ import Image from "next/image";
 async function getProductCategory({params}) {
     try{
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,3&filters[slug][$eq]=${params.productId}`
+            `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,3&filters[slug][$eq]=${params.productId}`, { next: { revalidate: 60 } }
         );
         if (!res.ok) {
             throw new Error("Failed to fetch data");

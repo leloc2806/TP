@@ -16,7 +16,7 @@ async function fetchHeading({params}){
 
 async function fetchRelativeArticle({ categorySlug}){
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,2&filters[news_categories][slug][$eq]=${categorySlug}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,2&filters[news_categories][slug][$eq]=${categorySlug}`, { next: { revalidate: 60 } }
 
     )
     if (!res.ok) {

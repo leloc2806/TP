@@ -11,7 +11,7 @@ import CollectionBox from "@/app/components/product/productCollectionBox"
 async function getCategories() {
   try{
       const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/categories?populate=deep,3`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/categories?populate=deep,3`, { next: { revalidate: 60 } }
       );
       if (!res.ok) {
           throw new Error("Failed to fetch data");
@@ -28,7 +28,7 @@ async function getCategories() {
 async function getArticleList(){
   try{
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3`, { next: { revalidate: 60 } }
   
     )
     if (!res.ok) {
@@ -48,7 +48,7 @@ async function getArticleList(){
 async function fetchHomePage() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/homepage?populate=deep,3`
+      `${process.env.NEXT_PUBLIC_API_URL}/api/homepage?populate=deep,3`, { next: { revalidate: 60 } }
     );
 
     if (!res.ok) {

@@ -5,7 +5,7 @@ import SectionComponent from "@/app/components/sectionComponent";
 
 async function getTitlePage() {
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us?populate=deep,3`, { next: { revalidate: 60 } }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -15,7 +15,7 @@ async function getTitlePage() {
 
 async function getOurStory() {
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-our-story?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-our-story?populate=deep,3`, { next: { revalidate: 60 } }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -26,7 +26,7 @@ async function getOurStory() {
 async function getAward(){
     
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-award?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-award?populate=deep,3`, { next: { revalidate: 60 } }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -37,7 +37,7 @@ async function getAward(){
 async function getMilestone(){
     
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-milestone?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-milestone?populate=deep,3`, { next: { revalidate: 60 } }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -48,7 +48,7 @@ async function getMilestone(){
 async function getStrategicPartner(){
     
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/strategic-partner?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/strategic-partner?populate=deep,3`, { next: { revalidate: 60 } }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -59,7 +59,7 @@ async function getStrategicPartner(){
 async function getJoinUs(){
     
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-join-us?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/about-us-join-us?populate=deep,3`, { next: { revalidate: 60 } }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");

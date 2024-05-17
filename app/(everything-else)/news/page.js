@@ -8,7 +8,7 @@ import NewComboBox from "@/app/components/news/new-combobox";
 
 async function getTitleNewPage(){
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/new-page?populate=deep,3`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/new-page?populate=deep,3`, { next: { revalidate: 60 } }
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");

@@ -6,7 +6,7 @@ import { MotionDiv } from "@/app/components/MotionDiv";
 async function getProductDetail({params}){
     try{
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,2&filters[slug][$eq]=${params.proId}`
+            `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,2&filters[slug][$eq]=${params.proId}`, { next: { revalidate: 60 } }
         );
         if (!res.ok) {
             throw new Error("Failed to fetch data");
