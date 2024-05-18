@@ -152,11 +152,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     line-height: 1.5;
 }
 
-.selected {
+.mobile-tab .selected {
     position: relative;
 }
 
-.selected::after{
+.mobile-tab .selected::after{
     content: "";
     position: absolute;
     right: 0;
@@ -3208,6 +3208,7 @@ img.trans-y {
         font-size: var(--titleSmall);
     }
 
+    .products-detail-page .load-text p,
     .news-detail-page .load-text p{
         font-size: 18px;
     }
@@ -3228,6 +3229,7 @@ img.trans-y {
     .item-search .title-news h3, .item-search .title-search h3 {
         font-size: 17px;
     }
+
 
     .products-detail-page .slidebox-arrows,
     .news-detail-page .slidebox-arrows{

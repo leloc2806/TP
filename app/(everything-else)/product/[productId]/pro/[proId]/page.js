@@ -77,8 +77,8 @@ export default async function Pro({params}){
             <TitlePage title={productDetail.title}/>
             <div className="load-content relative margin mt-[-1px] ml-0 mb-0 overflow-hidden w-full h-auto p-0">
                 <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
-                    <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex">
-                        <div className="block w-1/2">
+                    <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex max-[1100px]:flex-col">
+                        <div className="block w-[60%] max-[1100px]:w-full">
                         {
                             productDetail && productDetail.thumbnail && productDetail.thumbnail.url 
                             ? (
@@ -103,18 +103,17 @@ export default async function Pro({params}){
 
                             
                         </div>
-                        <div className="w-1/2">
-                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] lg:px-8 lg:py-4 bg-primary/10 product-information">
-                                <div className="text-secondary font-medium text-[30px] lg:text-4xl">
+                        <div className="w-[40%] max-[1100px]:w-full">
+                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] max-[1100px]:px-0 lg:py-4 bg-primary/10">
+                                <div className="text-secondary font-medium text-[30px] lg:text-[32px]">
                                     {productDetail.title}
                                                                
                                 </div>
-                                <div className="text-secondary font-thin text-[25px] lg:text-2xl">
-                                    Danh mục: {productDetail.product_category.name}
+                                <div className="text-secondary text-[26px] lg:text-[30px] font-normal text-red-600 lg:py-4 pt-[5px]">
+                                    Giá: Liên hệ
                                 </div>
-                                <span className="link-load relative flex items-center font-bold py-[5px] px-0 text-base uppercase my-0 mr-[10px] ml-0 text-[var(--color-black30)]">Giá: Liên hệ</span>
                             </div>
-                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] lg:px-8 lg:py-4 flex justify-between bg-primary/10">
+                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] max-[1100px]:px-0 lg:py-4 flex justify-between bg-primary/10">
                                 <span className="font-light text-secondary lg:text-[21px] text-[16px]">
                                     <Markdown 
                                         className={'markdown'} 
@@ -124,17 +123,20 @@ export default async function Pro({params}){
                                     </Markdown>
                                 </span>
                             </div>
+                            <div className="relative block w-full h-auto mt-[20px] mx-0 mb-0 px-[28px] max-[1100px]:px-0">
+                                <span className="relative inline-block p-[15px] rounded bg-red-600 uppercase font-bold text-white border-0 text-[18px] lg:text-[22px]">Hotline: 03999999999</span>
+                            </div>
                         </div>
                         <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
                         
                     </div>
-                    <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[3rem] px-[0rem] pb-[3rem] max-[1100px]:pt-[40px] max-[1100px]:pb-[20px] max-[580px]:pt-[30px]">
+                    <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[3rem] max-[1100px]:px-[0rem] pb-[3rem] max-[1100px]:pt-[40px] max-[1100px]:pb-[20px] max-[580px]:pt-[30px]">
                         <div className="relative block w-full h-auto overflow-hidden">
                             <h1 className="text-[5vw] font-thin relative block uppercase">Mô tả</h1>
                         </div>   
                     </div>  
 
-                    <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[2vw] px-0 relative h-auto z-10">
+                    <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[2vw] max-[1100px]:px-0 relative h-auto z-10">
                         <div className="load-text relative block my-0 mx-auto overflow-hidden p-[10px] text-[18px]">
                             <Markdown 
                                 className={'markdown'} 
