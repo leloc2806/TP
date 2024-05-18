@@ -47,8 +47,8 @@ export default async function ProductId({params}){
                                                 <div className="wrap-product-category-pic relative">
                                                     <div className="pic-img relative">
                                                         {
-                                                            product.attributes.logo.data && product.attributes.logo.data.attributes.url 
-                                                            ? ( <Image src={`${process.env.NEXT_PUBLIC_API_URL}${product.attributes.logo.data.attributes.url}`} alt={product.attributes.title} width={2000} height={1125}/> )
+                                                            product.attributes.thumbnail.data && product.attributes.thumbnail.data.attributes.url 
+                                                            ? ( <Image src={`${process.env.NEXT_PUBLIC_API_URL}${product.attributes.thumbnail.data.attributes.url}`} alt={product.attributes.title} width={2000} height={1125}/> )
                                                             : ( <Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/image_not_found_0457ab7ad4.jpg`} alt={product.attributes.title} width={2000} height={1125}/> )
                                                         }
                                                         

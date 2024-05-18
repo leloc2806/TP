@@ -3,6 +3,7 @@ import Slider from "@/app/components/news/newSlider"
 import Markdown from 'react-markdown';
 import { MotionDiv } from "@/app/components/MotionDiv";
 import remarkGfm from "remark-gfm";
+import flattenAttributes from "@/app/lib/utils";
 
 async function fetchHeading({params}){
     const res = await fetch(
@@ -36,7 +37,7 @@ export default async function News({params}) {
     const categorySlug = categories.map(itemSlug => itemSlug.attributes.slug)
     
     const resRelArticle = await fetchRelativeArticle({categorySlug})
-    const relativeArticle = resRelArticle.data
+    const relativeArticle = flattenAttributes(resRelArticle.data)
 
     const content = detailData.article_content[0].content;
 

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import TitlePage from "@/app/components/titlepage";
 import { MotionDiv } from "@/app/components/MotionDiv";
 import NewComboBox from "@/app/components/news/new-combobox";
+import flattenAttributes from "@/app/lib/utils";
 
 
 async function getTitleNewPage(){
@@ -40,30 +41,29 @@ async function getNewCategory() {
 function FeatureNew({data}){
 
     const featureItem = data;
-    const featureUrl = featureItem.attributes.thumbnail.data.attributes.url
 
     return (
         <div className="feature-new relative">
-            <div className="w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl z-10 py-[5vw] max-[1100px]:pt-[60px] px-0">
+            <div className="w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl z-10 py-[5vw] max-[1100px]:pt-[20px] px-0 relative">
                 <div className="title-post relative inline-block w-auto mx-0 mt-0 mb-8 h-auto text-[var(--bgactive)]">
                     <h2 className="inline-block relative font-normal text-titleMedium">Nổi bật</h2>
                 </div>
-                <Link href={`/news/${featureItem.attributes.slug}`} className="relative flex flex-row-reverse w-full mt-[-100px] mb-0 mx-0 p-0 cursor-pointer feateured-item">
+                <Link href={`/news/${featureItem.slug}`} className="relative flex flex-row-reverse w-full mt-[-100px] mb-0 mx-0 p-0 cursor-pointer feateured-item">
                     <div className="pic-news w-1/2 relative">
                         <div className="pic-img p-0 h-full relative block w-full overflow-hidden">
                             <Image
                                 className="absolute w-full h-full top-0 left-0 object-cover object-center pointer-events-none block" 
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${featureUrl}`}
+                                src={`${process.env.NEXT_PUBLIC_API_URL}${featureItem.thumbnail.url}`}
                                 width={800} 
                                 height={450}
-                                alt={featureItem.attributes.title}
+                                alt={featureItem.title}
                             />
                         </div>
                     </div>
                     <div className="txt-news w-1/2 pt-28 pr-20 pb-0 pl-0 relative text-[var(--bgactive)]">
                         <div className="date-thumb relative h-auto my-[15px] mx-0 text-[var(--color-black40)] font-medium text-xs text-left">by admin | Mar 25, 2024</div>
                         <h3 className="text-[var(--color-black80) text-3xl relative font-normal mb-4 mx-0 mt-0 line-clamp-2">
-                            {featureItem.attributes.title}
+                            {featureItem.title}
                         </h3>
                         <p className="line-clamp-3">Từ quyết tâm thực hiện chủ trương phát triển nhà ở xã hội thời gian qua của lãnh đạo Thành phố Hồ Chí Minh cho thấy, kết quả khả quan, nhiều đối tượng chính sách xã hội đã tạo lập được chỗ ở ổn định, bảo đảm an sinh, an tâm làm việc, góp phần cải thiện, nâng cao đời sống nhân dân trên địa bàn thành phố. Tuy nhiên, những rào cản về quy hoạch, thủ tục đầu tư, chính sách vay vốn... phát sinh từ thực tế cũng đã tác động không nhỏ đến hiệu quả đầu tư các dự án, dẫn đến kết quả xây dựng, phát triển nhà ở xã hội đạt rất thấp so với chỉ tiêu kế hoạch mà chính quyền thành phố đề ra.</p>
                         <div className="view-more relative inline-block my-8 mx-0">
@@ -87,7 +87,8 @@ export default async function News(){
     const categoriesList = await getNewCategory();
 
     const title = titlePage.data.attributes.Title;
-    const articleList = articlesList.data;
+    const articleList = flattenAttributes(articlesList.data);
+
     const featureItem = articleList[articleList.length - 1]
     const categoryList = categoriesList.data;
 
@@ -106,11 +107,20 @@ export default async function News(){
                 ease: "easeInOut",
                 duration: 0.5,
             }}
-            className="relative m-0">
+            className="relative m-0"
+        >
                 <TitlePage title={title} />
                 <FeatureNew data={featureItem} />
-                <NewTab data={[articleList, categoryList]}/>
-                <NewComboBox data={[articleList, categoryList]}/>
+                <div className="section-outernav">
+                    <div className="outer-nav min-h-[80vh] max-[1100px]:w-[90vw] w-[var(--wrapcontent)] mx-auto font-normal text-xl">
+                        <div className="sub-nav desktop-tab">
+                            <NewTab data={[articleList, categoryList]}/>
+                        </div> 
+                        <div className="sub-nav mobile-tab">
+                            <NewComboBox data={[articleList, categoryList]}/>
+                        </div> 
+                    </div>
+                </div>
         </MotionDiv>
     )
 }

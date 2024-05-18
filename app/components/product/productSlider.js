@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import { Navigation, Pagination, Grid } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import ArticleCard from '../articlecard';
+import ProductCard from '../productcard';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -58,11 +59,11 @@ export default function ProductSlider({ data, slug }) {
     }, []);
 
     return (
-        <div className='relative m-auto py-[5vw] px-0 w-[var(--wrapcontent)] h-auto new-slide-relative'>
+        <div className='title-page relative m-auto py-[5vw] px-0 w-[var(--wrapcontent)] h-auto new-slide-relative'>
             <div className='relative block w-full h-auto z-10 mb-16 mx-0 mt-0'>
-                <h2 className='absolute text-[5vw] overflow-hidden opacity-0'>Xem thêm</h2>
+                <h1 className='absolute text-[5vw] overflow-hidden opacity-0'>Xem thêm</h1>
                 <div className='w-full h-auto block relative'>
-                    <span className='text-[5vw] font-thin'>Xem thêm</span>
+                    <span className='title-span text-[5vw] font-thin uppercase'>Xem thêm</span>
                 </div>
             </div>
             <Swiper
@@ -109,7 +110,7 @@ export default function ProductSlider({ data, slug }) {
 
                 {data.map((relativeProduct) => (
                     <SwiperSlide key={relativeProduct.id}>
-                        <ArticleCard slug={slug} post={relativeProduct} url={relativeProduct.logo.url} width={300} height={200} />
+                        <ProductCard slug={slug} post={relativeProduct} url={relativeProduct.thumbnail.url} width={300} height={200} />
                     </SwiperSlide>
                 ))}
             </Swiper>

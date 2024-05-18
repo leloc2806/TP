@@ -1,20 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ArticleCard({post, url, width, height, slug}){
-
-    console.log(post.thumbnail)
+export default function ProductCard({post, url, width, height, slug}){
 
     return (
         <>
             
-            <Link href={`/news/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
+            <Link href={`/product/${post.product_category.slug}/pro/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
 
                 <div className="pic-news relative">
                     <div className="pic-img pt-[60%] relative block w-full h-auto overflow-hidden">
                         {
                             post.thumbnail && post.thumbnail.url 
-                            ? (<Image className='absolute w-full h-full top-0 left-0 object-cover object-center pointer-events-none' src={`${process.env.NEXT_PUBLIC_API_URL}${url}`} alt={post.title} width={width} height={height}/>)
+                            ? (<Image className='absolute w-full h-full top-0 left-0 object-cover object-center pointer-events-none' src={`${process.env.NEXT_PUBLIC_API_URL}${url}`} alt={post.thumbnail.name} width={width} height={height}/>)
                             : (<Image 
                                 className="absolute w-full h-full top-0 left-0 object-cover object-center pointer-events-none" 
                                 src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/image_not_found_0457ab7ad4.jpg`}

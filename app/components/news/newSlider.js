@@ -109,7 +109,7 @@ export default function Slider({ data, slug }) {
 
                 {data.map((relativeArt) => (
                     <SwiperSlide key={relativeArt.id}>
-                        <ArticleCard slug={slug} post={relativeArt.attributes} url={relativeArt.attributes.thumbnail.data.attributes.url} width={300} height={200} />
+                        <ArticleCard slug={slug} post={relativeArt} url={relativeArt.thumbnail.url} width={300} height={200} />
                     </SwiperSlide>
                 ))}
             </Swiper>

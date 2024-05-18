@@ -48,7 +48,7 @@ export default function ProductComboBox({products}){
                                     leave="transition-opacity duration-500"
                                     leaveFrom="opacity-100"
                                     leaveTo="opacity-0">
-                                    <div className='load-news-list relative w-full h-auto flex flex-wrap'>
+                                    <div className='load-news-list relative w-full h-auto flex flex-wrap pt-[20px]'>
                                         {product.attributes.product_categories.data.map((catProduct) => ( 
                                             <Link key={catProduct.id} className='item-product-category relative block' href={`/product/${catProduct.attributes.slug}`}>
                                                 <div className="product-category-pic relative">

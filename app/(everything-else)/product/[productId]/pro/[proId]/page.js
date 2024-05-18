@@ -56,6 +56,11 @@ export default async function Pro({params}){
     const resRelProduct = await fetchRelativeProduct({categorySlug})
     const relProduct = flattenAttributes(resRelProduct.data)
 
+    const variants = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1}
+    }
+
     return (
         <MotionDiv 
         variants={variants}
@@ -75,12 +80,12 @@ export default async function Pro({params}){
                     <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex">
                         <div className="block w-1/2">
                         {
-                            productDetail && productDetail.logo && productDetail.logo.url 
+                            productDetail && productDetail.thumbnail && productDetail.thumbnail.url 
                             ? (
                                 <Image 
                                     className="w-full lazyloaded h-full object-center" 
-                                    src={`${process.env.NEXT_PUBLIC_API_URL}${productDetail.logo.url}`}
-                                    alt={productDetail.logo.name || 'Product Logo'}
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}${productDetail.thumbnail.url}`}
+                                    alt={productDetail.thumbnail.name || 'Product Logo'}
                                     width={300}
                                     height={300}
                                 />
@@ -99,11 +104,15 @@ export default async function Pro({params}){
                             
                         </div>
                         <div className="w-1/2">
-                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] lg:px-8 lg:py-4 flex justify-between bg-primary/10">
+                            <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] lg:px-8 lg:py-4 bg-primary/10 product-information">
                                 <div className="text-secondary font-medium text-[30px] lg:text-4xl">
-                                    Danh mục: {productDetail.product_category.name}                           
+                                    {productDetail.title}
+                                                               
                                 </div>
-                                <div className="flex gap-4 items-center"></div>
+                                <div className="text-secondary font-thin text-[25px] lg:text-2xl">
+                                    Danh mục: {productDetail.product_category.name}
+                                </div>
+                                <span className="link-load relative flex items-center font-bold py-[5px] px-0 text-base uppercase my-0 mr-[10px] ml-0 text-[var(--color-black30)]">Giá: Liên hệ</span>
                             </div>
                             <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] lg:px-8 lg:py-4 flex justify-between bg-primary/10">
                                 <span className="font-light text-secondary lg:text-[21px] text-[16px]">
@@ -121,7 +130,7 @@ export default async function Pro({params}){
                     </div>
                     <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[3rem] px-[0rem] pb-[3rem] max-[1100px]:pt-[40px] max-[1100px]:pb-[20px] max-[580px]:pt-[30px]">
                         <div className="relative block w-full h-auto overflow-hidden">
-                            <h1 className="text-[4vw] font-normal relative block uppercase">Mô tả</h1>
+                            <h1 className="text-[5vw] font-thin relative block uppercase">Mô tả</h1>
                         </div>   
                     </div>  
 
