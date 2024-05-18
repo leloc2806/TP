@@ -1856,6 +1856,7 @@ img.trans-y {
     font-weight: 700;
 }
 
+.products-detail-page .date-thumb,
 .news-detail-page .date-thumb{
     text-align: center;
 }
@@ -1895,10 +1896,12 @@ img.trans-y {
     height: auto;
 }
 
+.products-detail-page .mySwiper,
 .news-detail-page .mySwiper{
     position: unset;
 }
 
+.products-detail-page .item-news,
 .news-detail-page .item-news {
     width: auto;
     padding: auto;
@@ -1907,6 +1910,7 @@ img.trans-y {
 
 }
 
+.products-detail-page .slidebox-arrows,
 .news-detail-page .slidebox-arrows{
     position: absolute;
     width: calc(100% + 12rem);
@@ -1919,6 +1923,7 @@ img.trans-y {
     color: var(--bgactive);
 }
 
+.products-detail-page .slidebox-arrow,
 .news-detail-page .slidebox-arrow {
     position: relative;
     display: flex;
@@ -1931,10 +1936,12 @@ img.trans-y {
     z-index: 1;
 }
 
+.products-detail-page .slidebox-arrow.is-inview svg, .news-detail-page .view-details.is-inview svg,
 .news-detail-page .slidebox-arrow.is-inview svg, .news-detail-page .view-details.is-inview svg {
     transform: rotate(0);
 }
 
+.products-detail-page .slidebox-arrow svg,.news-detail-page .thumb-item img,
 .news-detail-page .slidebox-arrow svg,.news-detail-page .thumb-item img {
     position: relative;
     display: block;
@@ -1942,10 +1949,12 @@ img.trans-y {
     height: 100%;
 }
 
+.products-detail-page .slidebox-arrow.is-inview svg circle:first-child,
 .news-detail-page .slidebox-arrow.is-inview svg circle:first-child {
     stroke-dashoffset: 0;
 }
 
+.products-detail-page .slidebox-arrow circle,
 .news-detail-page .slidebox-arrow circle {
     stroke-dasharray: 265;
     stroke-dashoffset: 265;
@@ -1957,29 +1966,35 @@ img.trans-y {
 
 /* media 1100px */
 
+.products-detail-page .slidebox-arrow.is-inview:hover svg circle:first-child
 .news-detail-page .slidebox-arrow.is-inview:hover svg circle:first-child {
     stroke-dashoffset: 265;
     transform: rotate(360deg);
 }
 
+.products-detail-page .slidebox-arrow.is-inview:hover svg circle:last-child
 .news-detail-page .slidebox-arrow.is-inview:hover svg circle:last-child {
     stroke-dashoffset: 22;
     transform: rotate(360deg);
 }
 
+.products-detail-page .slidebox-arrow.is-inview:hover svg circle,
 .news-detail-page .slidebox-arrow.is-inview:hover svg circle {
     transition: stroke-dashoffset .8s, transform .8s;
 }
 
+.products-detail-page .slidebox-arrow.is-inview:hover svg circle,
 .news-detail-page .slidebox-arrow.is-inview:hover svg circle {
     transition: stroke-dashoffset .8s, transform .8s;
 }
 
+.products-detail-page .slidebox-arrow:hover .arrow::before,
 .news-detail-page .slidebox-arrow:hover .arrow::before {
     transform: translateX(120%);
     transition: transform .3s;
 }
 
+.products-detail-page .slidebox-arrow:hover .arrow::after,
 .news-detail-page .slidebox-arrow:hover .arrow::after {
     transform: translateX(0);
     transition: transform .3s .1s;
@@ -1991,10 +2006,12 @@ img.trans-y {
 
 /* Media 1100px */
 
+.products-detail-page .slidebox-arrow-prev .arrow,
 .news-detail-page .slidebox-arrow-prev .arrow {
     transform: rotate(-180deg);
 }
 
+.products-detail-page .slidebox-arrow .arrow,
 .news-detail-page .slidebox-arrow .arrow {
     position: absolute;
     width: 1.625rem;
@@ -2007,10 +2024,12 @@ img.trans-y {
     pointer-events: none;
 }
 
+.products-detail-page .slidebox-arrows .arrow::before,
 .news-detail-page .slidebox-arrows .arrow::before {
     background: url(../public/arrow-details-blue.svg) no-repeat center center / contain;
 }
 
+.products-detail-page .slidebox-arrow .arrow::after, .slidebox-arrow .arrow::before,
 .news-detail-page .slidebox-arrow .arrow::after, .slidebox-arrow .arrow::before {
     content: '';
     position: absolute;
@@ -2021,14 +2040,17 @@ img.trans-y {
     transition: transform .3s;
 }
 
+.products-detail-page .slidebox-arrows .arrow::after,
 .news-detail-page .slidebox-arrows .arrow::after {
     background: url(../public/arrow-details-blue.svg) no-repeat center center / contain;
 }
 
+.products-detail-page .slidebox-arrow .arrow::after,
 .news-detail-page .slidebox-arrow .arrow::after {
     transform: translateX(-120%);
 }
 
+.products-detail-page .swiper-pagination-bullet,
 .news-detail-page .swiper-pagination-bullet{
     width: 1.8rem;
     height: 1.8rem;
@@ -2046,6 +2068,7 @@ img.trans-y {
     opacity: 1;
 }
 
+.products-detail-page .swiper-pagination,
 .news-detail-page .swiper-pagination{
     position: relative;
     text-align: unset;
@@ -2053,6 +2076,7 @@ img.trans-y {
     margin: 1rem 0;
 }
 
+.products-detail-page .swiper-pagination-bullet-active,
 .news-detail-page .swiper-pagination-bullet-active{
     background: var(--bgactive);
     border: 0;
@@ -2060,20 +2084,24 @@ img.trans-y {
     transform: none;
 }
 
+.products-detail-page .swiper-pagination::before,
 .news-detail-page .swiper-pagination::before{
     content: "Trang:";
     font-size: 14px;
 }
 
+.products-detail-page .item-news,
 .news-detail-page .item-news{
     padding: 10px 10px 70px;
     margin: 0;
 }
 
+.products-detail-page .txt-news,
 .news-detail-page .txt-news{
     padding: 0 8px;
 }
 
+.products-detail-page .view-more,
 .news-detail-page .view-more{
     position: absolute;
     bottom: 20px;
@@ -2081,19 +2109,23 @@ img.trans-y {
     margin: 0;
 }
 
+.products-detail-page .view-more span,
 .news-detail-page .view-more span{
     font-size: 14px;
 }
 
+.products-detail-page .item-news.current,
 .news-detail-page .item-news.current {
     pointer-events: none;
     background: var(--bg-current);
 }
 
+.products-detail-page .item-news .pic-img img,
 .news-detail-page .item-news .pic-img img{
     position: absolute;
 }
 
+.products-detail-page .date-thumb,
 .new-slide-relative .date-thumb{
     text-align: left;
 }
@@ -3174,14 +3206,17 @@ img.trans-y {
         font-size: 17px;
     }
 
+    .products-detail-page .slidebox-arrows,
     .news-detail-page .slidebox-arrows{
         display: none;
     }
 
+    .products-detail-page .swiper-slide,
     .news-detail-page .swiper-slide{
         margin: 0 0 20px;
     }
 
+    .products-detail-page .swiper-pagination-bullet,
     .news-detail-page .swiper-pagination-bullet{
         width: 27px;
         height: 27px;
@@ -3197,6 +3232,8 @@ img.trans-y {
 }
 
 @media screen and (max-width: 960px) {
+
+    .products-detail-page .slidebox-arrows,
     .news-detail-page .slidebox-arrows{
         display: none;
     }

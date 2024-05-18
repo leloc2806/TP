@@ -11,7 +11,7 @@ export default function ArticleCard({post, url, width, height, slug}){
                 <div className="pic-news relative">
                     <div className="pic-img pt-[60%] relative block w-full h-auto overflow-hidden">
                         {
-                            post && post.logo && post.logo.url
+                            post.thumbnail && post.thumbnail.url 
                             ? (<Image className='absolute w-full h-full top-0 left-0 object-cover object-center pointer-events-none' src={`${process.env.NEXT_PUBLIC_API_URL}${url}`} alt={post.title} width={width} height={height}/>)
                             : (<Image 
                                 className="absolute w-full h-full top-0 left-0 object-cover object-center pointer-events-none" 

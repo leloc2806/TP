@@ -57,7 +57,18 @@ export default async function Pro({params}){
     const relProduct = flattenAttributes(resRelProduct.data)
 
     return (
-        <>
+        <MotionDiv 
+        variants={variants}
+        initial="hidden"
+        animate="visible"   
+        transition={{
+            delay: 1,
+            ease: "easeInOut",
+            duration: 0.5,
+        }}
+            
+            className="relative m-0 products-detail-page"
+        >
             <TitlePage title={productDetail.title}/>
             <div className="load-content relative margin mt-[-1px] ml-0 mb-0 overflow-hidden w-full h-auto p-0">
                 <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
@@ -127,6 +138,6 @@ export default async function Pro({params}){
                 </div>
                 <ProductSlider data={relProduct} slug={params.slug}/>
             </div>
-        </>
+        </MotionDiv>
     )
 }
