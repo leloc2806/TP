@@ -46,17 +46,17 @@ export default function ProductSlider({ data, slug }) {
         },
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            window.location.reload();
-        };
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         window.location.reload();
+    //     };
 
-        window.addEventListener('resize', handleResize);
+    //     window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize);
+    //     };
+    // }, []);
 
     return (
         <div className='title-page relative m-auto py-[5vw] px-0 w-[var(--wrapcontent)] h-auto new-slide-relative'>
@@ -103,10 +103,13 @@ export default function ProductSlider({ data, slug }) {
                 modules={[Pagination, Navigation, Grid]}
                 className="mySwiper"
             >
-                <div className='slidebox-arrows'>
+                {data.length > 4 
+                ? <div className='slidebox-arrows'>
                     <SwiperButtonPrev />
                     <SwiperButtonNext />
                 </div>
+                : ''}
+                
 
                 {data.map((relativeProduct) => (
                     <SwiperSlide key={relativeProduct.id}>

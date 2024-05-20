@@ -9,7 +9,7 @@ import 'swiper/css/autoplay';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function SlidePartner({aboutData}){
+export default function SlidePartner({brands}){
 
     const swiperRefLocal = useRef()
 
@@ -33,9 +33,10 @@ export default function SlidePartner({aboutData}){
             </div>
             <div className='right-content' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <Swiper
+                className="h-full"
                 ref={swiperRefLocal}
-                spaceBetween={10}
-                slidesPerView={2}
+                spaceBetween={50}
+                slidesPerView={3}
                 speed={2000}
                 loop={true}
                 autoplay={{
@@ -47,40 +48,20 @@ export default function SlidePartner({aboutData}){
                 freeMode={true}
                 modules={[Autoplay, FreeMode]}
                 >
-                    <SwiperSlide className=''>
-                        <div className='bg-cover relative '>
-                            <Image
-                                className={'desktop'}
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
-                                alt={'abc'}
-                                width={1000}
-                                height={1000}
-                            />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className=''>
-                        <div className='bg-cover relative'>
-                            <Image
-                                className={'desktop'}
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
-                                alt={'abc'}
-                                width={1000}
-                                height={1000}
-                            />
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className=''>
-                        <div className='bg-cover relative'>
-                            <Image
-                                className={'desktop'}
-                                src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
-                                alt={'abc'}
-                                width={1000}
-                                height={1000}
-                            />
-                        </div>
-                    </SwiperSlide>
-                    
+                    {brands.map((brand) => (
+                        <SwiperSlide className='' key={brand.id}>
+                            <div className='bg-cover relative '>
+                                <Image
+                                    className={'desktop'}
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}${brand.Image.url}`}
+                                    alt={'abc'}
+                                    width={1000}
+                                    height={1000}
+                                />
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                                        
                 </Swiper>
             </div>
             <div className="ani-view-details">

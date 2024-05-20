@@ -102,10 +102,12 @@ export default function Slider({ data, slug }) {
                 modules={[Pagination, Navigation, Grid]}
                 className="mySwiper"
             >
-                <div className='slidebox-arrows'>
+                {data.length > 4 
+                ? <div className='slidebox-arrows'>
                     <SwiperButtonPrev />
                     <SwiperButtonNext />
                 </div>
+                : ''}
 
                 {data.map((relativeArt) => (
                     <SwiperSlide key={relativeArt.id}>

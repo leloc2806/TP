@@ -73,6 +73,7 @@ export default async function Home() {
   const aboutData = dataChange.ParallaxBlock;
   const categories = flattenAttributes(dataCategories);
   const articles = flattenAttributes(articleList);
+  const brandSlider = dataChange.BrandSlider;
 
   return (
     <div 
@@ -196,7 +197,7 @@ export default async function Home() {
           <SectionComponent 
             className="home-partner relative"
             translate={"translateX(-200px)"}>
-            <SlidePartner aboutData={aboutData}/>
+            <SlidePartner brands={brandSlider}/>
           </SectionComponent>
         </div>
     </div>
