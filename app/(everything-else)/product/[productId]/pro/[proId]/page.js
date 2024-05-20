@@ -137,7 +137,7 @@ export default async function Pro({params}){
                     </div>  
 
                     <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[2vw] max-[1100px]:px-0 relative h-auto z-10">
-                        <div className="load-text relative block my-0 mx-auto overflow-hidden p-[10px] text-[18px]">
+                        <div className="load-text relative block my-0 mx-auto overflow-hidden p-[10px] text-[18px] max-[560px]:px-[0px]">
                             <Markdown 
                                 className={'markdown'} 
                                 remarkPlugins={[remarkGfm]}

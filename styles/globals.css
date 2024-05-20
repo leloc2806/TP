@@ -3478,6 +3478,11 @@ img.trans-y {
         margin: 0 0 10px;
     }
 
+    .products-detail-page .load-text p{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
 }
 
 
