@@ -46,18 +46,6 @@ export default function ProductSlider({ data, slug }) {
         },
     };
 
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         window.location.reload();
-    //     };
-
-    //     window.addEventListener('resize', handleResize);
-
-    //     return () => {
-    //         window.removeEventListener('resize', handleResize);
-    //     };
-    // }, []);
-
     return (
         <div className='title-page relative m-auto py-[5vw] px-0 w-[var(--wrapcontent)] h-auto new-slide-relative'>
             <div className='relative block w-full h-auto z-10 mb-16 mx-0 mt-0'>
