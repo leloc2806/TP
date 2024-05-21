@@ -3483,6 +3483,11 @@ img.trans-y {
         padding-right: 0px;
     }
 
+    .home-partner .bg-cover img{
+        height: auto;
+        min-height: 100%;
+    }
+
 }
 
 
