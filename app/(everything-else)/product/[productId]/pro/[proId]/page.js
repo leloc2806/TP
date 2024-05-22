@@ -74,7 +74,7 @@ export default async function Pro({ params }) {
                     <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
                         <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex flex-wrap">
                             <div className="block product-gallery">
-                                <ProductImageSlider data={productDetail.Image_slider } />
+                                {productDetail.Image_slider ? <ProductImageSlider data={productDetail.Image_slider } /> : ''}
                             </div>
 
                             <div className="product-info">
@@ -112,6 +112,8 @@ export default async function Pro({ params }) {
                                     {productDetail.content}
                                 </Markdown>
                             </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+
                         </div>
                     </div>
                     <ProductSlider data={relProduct} slug={params.slug} />

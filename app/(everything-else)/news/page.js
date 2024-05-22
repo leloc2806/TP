@@ -44,7 +44,7 @@ function FeatureNew({data}){
 
     return (
         <div className="feature-new relative">
-            <div className="w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl z-10 py-[5vw] max-[1100px]:pt-[20px] px-0 relative">
+            <div className="w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl z-10 py-[5vw] max-[1100px]:pt-[20px] max-[950px]:pt-[40px] px-0 relative">
                 <div className="title-post relative inline-block w-auto mx-0 mt-0 mb-8 h-auto text-[var(--bgactive)]">
                     <h2 className="inline-block relative font-normal text-titleMedium">Nổi bật</h2>
                 </div>

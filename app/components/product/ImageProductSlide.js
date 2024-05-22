@@ -41,8 +41,6 @@ const SwiperButtonPrev = () => {
 export default function ProductImageSlider({ data }) {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-    console.log(data[1].id)
-
     return (
         <>
             <Swiper
