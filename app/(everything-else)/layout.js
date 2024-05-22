@@ -4,6 +4,7 @@ import Providers from "@/app/query_provider";
 import Footer from "../components/footer";
 import SideHeader from "../components/sideHeader";
 import { Suspense } from "react";
+import Social from "../components/social";
 
 const roboto = Roboto({ 
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function PageLayout({ children }) {
           <Providers>
             <SideHeader />
             <main>{children}</main>
+            <Social/>
             <Footer />
           </Providers>
         </Suspense>

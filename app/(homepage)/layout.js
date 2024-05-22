@@ -4,6 +4,7 @@ import Header from "../components/header";
 import Providers from "@/app/query_provider";
 import Footer from "../components/footer";
 import { Suspense } from "react";
+import SocialWhite from "../components/social-white";
 
 const roboto = Roboto({ 
   subsets: ["latin"],
@@ -30,13 +31,16 @@ export default function HomeLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={roboto.className}>
-        <Providers>
-          <Header />
-          <Suspense fallback={<Loading />}>
-            {children}
-          </Suspense>
-          <Footer />
-        </Providers>
+        <Suspense fallback={<Loading />}>
+          <Providers>
+            <Header />
+            <main>
+              {children}
+            </main>
+            <SocialWhite />
+            <Footer/>
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );

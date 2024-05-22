@@ -1,7 +1,27 @@
+import flattenAttributes from "../lib/utils";
 import ButtonTop from "./button-top";
 import Link from "next/link"
 
-export default function Footer() {
+async function fetchSocial(){
+    try{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      }
+      catch(error){
+          // Handle errors here, such as logging or displaying an error message
+          console.error("Error fetching slider data:", error.message);
+          throw error; // Re-throw the error to be handled by the caller if needed
+      }
+}
+
+export default async function Footer() {
+
+    const socialLink = await fetchSocial();
+    const social = flattenAttributes(socialLink);
+
     return(
         <>
             <footer className="footer">
@@ -24,7 +44,7 @@ export default function Footer() {
                                                 </g>
                                         </svg>
                                     </span> 
-                                    <a href="tel:+84-99-9999-9999">(+84) 99 9999 9999</a> 
+                                    <a href="tel:+84-99-9999-9999">{social.Phone}</a> 
                                 </li>   
                                 <li>
                                     <span className="email">
@@ -50,7 +70,7 @@ export default function Footer() {
                                             </g>
                                         </svg>
                                     </span> 
-                                    <a href="mailto:info@nhojsc.vn">info@thanhphat.vn</a> 
+                                    <Link href={`mailto:${social.Email}`}>{social.Email}</Link> 
                                 </li>   
                                 <li className="company-address">
                                     <span className="address">
@@ -74,7 +94,7 @@ export default function Footer() {
                                             </g>
                                         </svg>
                                     </span>  
-                                    137 Louis 1, Hoàng Văn Thụ, Quận Hoàng Mai, TP. Hà Nội 
+                                    {social.Address} 
                                 </li>  
                             </ul>
                         </div>
@@ -91,7 +111,7 @@ export default function Footer() {
                         <div className="social-footer">
                             <ul>
                                 <li>
-                                    <a className="facebook" href="https://www.facebook.com/NHO.OfficialPage" target="_blank" rel="noopener" aria-label="facebook">
+                                    <Link className="facebook" href={`${social.Facebook}`} target="_blank" rel="noopener" aria-label="facebook">
                                         <svg 
                                             fill="#000000" 
                                             className={
@@ -105,10 +125,10 @@ export default function Footer() {
                                                 <path d="M21.95 5.005l-3.306-.004c-3.206 0-5.277 2.124-5.277 5.415v2.495H10.05v4.515h3.317l-.004 9.575h4.641l.004-9.575h3.806l-.003-4.514h-3.803v-2.117c0-1.018.241-1.533 1.566-1.533l2.366-.001.01-4.256z"></path>
                                             </g>
                                         </svg>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a className="zalo" href=" https://zalo.me/4125005377308754169" target="_blank" rel="noopener" aria-label="zalo">
+                                    <Link className="zalo" href={`${social.Zalo}`} target="_blank" rel="noopener" aria-label="zalo">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             x="0px" y="0px"
                                             className={
@@ -121,19 +141,18 @@ export default function Footer() {
                                                 </g>
                                             </g>
                                         </svg>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
                         <div className="list-term-footer">
                             <ul>
-                                <li><a className="link-load link-footer " href="https://www.nhojsc.vn/lien-he.html" data-name="contact-page">Liên hệ</a></li>
+                                <li><Link className="link-load link-footer " href={'/contact'}>Liên hệ</Link></li>
                             </ul>
                         </div>
                     </div>
                     <div className="footer-bottom">
                         <div className="left-footer">   
-                            <a className="link-tern" href="https://www.nhojsc.vn/view-term-ajax.html?id=1&amp;language=vi">Chính Sách Bảo Mật và Điều Khoản Sử Dụng</a>     
                             <div className="copyright footer-copyright">
                                 <p>2024 © <strong>Thanh Phat Company</strong>. <span>All Rights Reserved.</span></p>
                             </div>
