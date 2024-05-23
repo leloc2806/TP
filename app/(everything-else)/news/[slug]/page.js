@@ -5,6 +5,65 @@ import { MotionDiv } from "@/app/components/MotionDiv";
 import remarkGfm from "remark-gfm";
 import flattenAttributes from "@/app/lib/utils";
 
+export async function generateMetadata({ params }) {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3&filters[slug][$eq]=${params.slug}`, { next: { revalidate: 60 } }
+    
+        )
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+        const post = await res.json();
+
+        const postDetail = flattenAttributes(post.data);
+        const postFin = getObjectFromSingleElementArray(postDetail);
+
+        return {
+            title: `${postFin.title} | Thanh Phat`,
+            authors: [
+                {
+                name: 'admin' || "Thanh Phat"
+                }
+            ],
+            description: postFin.description,
+            keywords: postFin.keywords,
+            openGraph: {
+                title: `${postFin.title} | Thanh Phat`,
+                description: postFin.description,
+                type: "website",
+                url: `${process.env.NEXT_PUBLIC_URL}news/${postFin.slug}`,
+                publishedTime: postFin.created_at,
+                authors: [`${process.env.NEXT_PUBLIC_URL}/about`],
+                tags: postFin.categories,
+                images: [
+                {
+                    url: `${process.env.NEXT_PUBLIC_API_URL}${postFin.thumbnail.url}`,
+                    width: 1024,
+                    height: 576,
+                    alt: post.title,
+                    type: "image/jpg"
+                }
+                ]
+            },
+            twitter: {
+                card: "summary_large_image",
+                site: "@thanhphat",
+                creator: "@thanhphat",
+                title: `${postFin.title} | thanhphat`,
+                description: postFin.excerpt,
+            },
+            alternates: {
+                canonical: `${process.env.NEXT_PUBLIC_URL}${postFin.slug}`
+            }
+        };
+    } catch (error) {
+        // Handle errors here, such as logging or displaying an error message
+        console.error("Error fetching product data:", error.message);
+        throw error; // Re-throw the error to be handled by the caller if needed
+    }
+}
+
 async function fetchHeading({params}){
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3&filters[slug][$eq]=${params.slug}`, { next: { revalidate: 60 } }
@@ -27,10 +86,17 @@ async function fetchRelativeArticle({ categorySlug}){
     return res.json();
 }
 
+function getObjectFromSingleElementArray(array) {
+    return Array.isArray(array) && array.length === 1 ? array[0] : null;
+}
+
 export default async function News({params}) {
     
     const dataSinglePage = await fetchHeading({params});
-    
+
+    const testDetail = flattenAttributes(dataSinglePage.data);
+    const test = getObjectFromSingleElementArray(testDetail);
+
     const detailData = dataSinglePage.data[0].attributes;
     const categories = detailData.news_categories.data;
     const category = categories.map(item => item.attributes.name)

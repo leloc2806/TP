@@ -7,6 +7,41 @@ import Image from 'next/image';
 import Markdown from 'react-markdown';
 import CollectionBox from "@/app/components/product/productCollectionBox"
 
+export const metadata = {
+  title: "Công ty cổ phần năng lượng Thành Phát",
+  description:
+    "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+  keywords: [
+    "cửa nhựa",
+    "cửa",
+    "sàn",
+    "trần",
+    "nhà máy",
+    "nhựa",
+    "sản xuất",
+    "nhập khẩu"
+
+  ],
+  openGraph: {
+    url: "https://www.nhuathanhphat.vn/",
+    type: "website",
+    title: "Công ty cổ phần năng lượng Thành Phát",
+    description:
+      "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Công ty cổ phần năng lượng Thành Phát",
+    description:
+      "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+    creator: "@thanhphat",
+    site: "@thanhphat",
+  },
+  alternates: {
+    canonical: "https://www.nhuathanhphat.vn/"
+  }
+};
+
 
 async function getCategories() {
   try{

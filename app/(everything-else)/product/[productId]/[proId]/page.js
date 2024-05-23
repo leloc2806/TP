@@ -6,6 +6,62 @@ import remarkGfm from "remark-gfm";
 import ProductSlider from "@/app/components/product/productSlider";
 import ProductImageSlider from "@/app/components/product/ImageProductSlide";
 
+export async function generateMetadata({ params }) {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,3&filters[slug][$eq]=${params.proId}`, { next: { revalidate: 60 } });
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+        const post = await res.json();
+
+        const produc = flattenAttributes(post.data);
+        const productD = getObjectFromSingleElementArray(produc);
+
+        return {
+            title: `${productD.title} | Thanh Phat`,
+            authors: [
+                {
+                name: 'admin' || "Thanh Phat"
+                }
+            ],
+            description: productD.description,
+            keywords: productD.keywords,
+            openGraph: {
+                title: `${productD.title} | Thanh Phat`,
+                description: productD.description,
+                type: "website",
+                url: `${process.env.NEXT_PUBLIC_URL}product/${params.productId}/${productD.slug}`,
+                publishedTime: productD.created_at,
+                authors: [`${process.env.NEXT_PUBLIC_URL}/about`],
+                tags: productD.categories,
+                images: [
+                {
+                    url: `${process.env.NEXT_PUBLIC_API_URL}${productD.thumbnail.url}`,
+                    width: 1024,
+                    height: 576,
+                    alt: post.title,
+                    type: "image/jpg"
+                }
+                ]
+            },
+            twitter: {
+                card: "summary_large_image",
+                site: "@thanhphat",
+                creator: "@thanhphat",
+                title: `${productD.title} | thanhphat`,
+                description: productD.excerpt,
+            },
+            alternates: {
+                canonical: `${process.env.NEXT_PUBLIC_URL}${productD.slug}`
+            }
+        };
+    } catch (error) {
+        // Handle errors here, such as logging or displaying an error message
+        console.error("Error fetching product data:", error.message);
+        throw error; // Re-throw the error to be handled by the caller if needed
+    }
+}
+
 // Fetch product details based on the slug
 async function getProductDetail({ proSlug }) {
     try {
@@ -79,7 +135,7 @@ export default async function Pro({ params }) {
 
                             <div className="product-info">
                                 <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] max-[1100px]:px-0 lg:py-4 bg-primary/10">
-                                    <div className="text-secondary font-medium text-[30px] lg:text-[32px]">
+                                    <div className="text-secondary font-medium text-[30px] lg:text-[32px] text-blue-500">
                                         {productDetail.title}
                                     </div>
                                     <div className="text-secondary text-[26px] lg:text-[30px] font-normal text-red-600 lg:py-4 pt-[5px]">

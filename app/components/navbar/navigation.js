@@ -120,7 +120,7 @@ export default function NavigationMenu(){
                             </g>
                         </svg>
                     </Link>
-                    <div className="language">
+                    <div className="language hidden">
                         <span>EN</span>
                     </div>
                     <div className="search-top">
@@ -183,7 +183,7 @@ export default function NavigationMenu(){
                         </g>
                     </svg>
                 </Link>
-                <div className="language">
+                <div className="language hidden">
                     <span>EN</span>
                 </div>
                 <div className="search-top">

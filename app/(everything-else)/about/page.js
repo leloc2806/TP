@@ -3,6 +3,41 @@ import { MotionDiv } from "../../components/MotionDiv";
 import AboutTab from "../../components/about/about-tab";
 import SectionComponent from "@/app/components/sectionComponent";
 
+export const metadata = {
+    title: "Công ty cổ phần năng lượng Thành Phát",
+    description:
+      "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+    keywords: [
+      "cửa nhựa",
+      "cửa",
+      "sàn",
+      "trần",
+      "nhà máy",
+      "nhựa",
+      "sản xuất",
+      "nhập khẩu"
+  
+    ],
+    openGraph: {
+      url: "https://www.nhuathanhphat.vn/",
+      type: "website",
+      title: "Công ty cổ phần năng lượng Thành Phát",
+      description:
+        "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Công ty cổ phần năng lượng Thành Phát",
+      description:
+        "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+      creator: "@thanhphat",
+      site: "@thanhphat",
+    },
+    alternates: {
+      canonical: "https://www.nhuathanhphat.vn/"
+    }
+  };
+
 async function getTitlePage() {
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/about-us?populate=deep,3`, { next: { revalidate: 60 } }

@@ -1,5 +1,66 @@
 import Link from "next/link";
 import Image from "next/image";
+import flattenAttributes from "@/app/lib/utils";
+
+export async function generateMetadata({ params }) {
+    try {
+        const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,2&filters[slug][$eq]=${params.productId}`, 
+        { next: { revalidate: 60 } }
+        );
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+        const post = await res.json();
+
+        let productCat = flattenAttributes(post.data[0])
+
+
+        return {
+            title: `${productCat.name} | Thanh Phat`,
+            authors: [
+                {
+                name: 'admin' || "Thanh Phat"
+                }
+            ],
+            description: productCat.description,
+            keywords: productCat.keywords,
+            openGraph: {
+                title: `${productCat.name} | Thanh Phat`,
+                description: productCat.description,
+                type: "website",
+                url: `${process.env.NEXT_PUBLIC_URL}product/${productCat.slug}`,
+                publishedTime: productCat.created_at,
+                authors: [`${process.env.NEXT_PUBLIC_URL}/about`],
+                tags: productCat.categories,
+                images: [
+                {
+                    url: `${process.env.NEXT_PUBLIC_API_URL}${productCat.picture.url}`,
+                    width: 1024,
+                    height: 576,
+                    alt: post.title,
+                    type: "image/jpg"
+                }
+                ]
+            },
+            twitter: {
+                card: "summary_large_image",
+                site: "@thanhphat",
+                creator: "@thanhphat",
+                title: `${productCat.name} | thanhphat`,
+                description: productCat.description,
+            },
+            alternates: {
+                canonical: `${process.env.NEXT_PUBLIC_URL}${productCat.slug}`
+            }
+        };
+    } catch (error) {
+        // Handle errors here, such as logging or displaying an error message
+        console.error("Error fetching product data:", error.message);
+        throw error; // Re-throw the error to be handled by the caller if needed
+    }
+}
+
 
 async function getProductCategory({params}) {
     try{
@@ -24,7 +85,16 @@ async function getProductCategory({params}) {
 export default async function ProductId({params}){
 
     const productCategory = await getProductCategory({params});
+
     const detailData = productCategory.data[0].attributes
+
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: detailData.name,
+        image: detailData.image,
+        description: detailData.description,
+    }
 
     return (
         <>
@@ -42,7 +112,7 @@ export default async function ProductId({params}){
                             <div className="wrap-content min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10">
                                 <div className='load-news-list relative w-full h-auto flex flex-wrap'>
                                     {detailData.products.data.map((product) => ( 
-                                        <Link key={product.id} className='item-product-category relative block' href={`/product/${params.productId}/pro/${product.attributes.slug}`}>
+                                        <Link key={product.id} className='item-product-category relative block' href={`/product/${params.productId}/${product.attributes.slug}`}>
                                             <div className="product-category-pic relative">
                                                 <div className="wrap-product-category-pic relative">
                                                     <div className="pic-img relative">

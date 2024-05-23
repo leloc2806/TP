@@ -64,7 +64,11 @@ export default function CategoryProductComboBox({categories}){
                                                 <div className="product-category-pic relative">
                                                     <div className="wrap-product-category-pic relative">
                                                         <div className="pic-img relative">
-                                                            <Image src={`${process.env.NEXT_PUBLIC_API_URL}${catProduct.picture.url}`} alt={catProduct.name} width={2000} height={1125}/>
+                                                            {
+                                                                catProduct.picture && catProduct.picture.url
+                                                                ? (<Image src={`${process.env.NEXT_PUBLIC_API_URL}${catProduct.picture.url}`} alt={catProduct.name} width={2000} height={1125}/>)
+                                                                : (<Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/image_not_found_0457ab7ad4.jpg`} alt={catProduct.picture.name} width={2000} height={1125}/>)
+                                                            }
                                                         </div>
                                                     </div>
                                                     <div className="absolute product-category-text text-[var(--color-white)]">

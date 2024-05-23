@@ -2,9 +2,12 @@ import Link from "next/link";
 import Image from 'next/image';
 
 export default function CollectionBox({category}){
+
+    const categoryIndex = category.id - 1;
+
     return (
         <div className="collection-box">
-            <Link className="link-load" href={`/product`}/>
+            <Link className="link-load" href={`/product?tab=${categoryIndex}`}/>
             <div className="pic-img pic-collection">
             <Image 
                 loading="lazy" 
