@@ -1,8 +1,28 @@
 import GMap, { Map } from "@/app/components/map";
 import SectionComponent from "@/app/components/sectionComponent";
 import TitlePage from "@/app/components/titlepage";
+import Link from "next/link";
 
-export default function Contact(){
+async function fetchSocial(){
+    try{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      }
+      catch(error){
+          // Handle errors here, such as logging or displaying an error message
+          console.error("Error fetching slider data:", error.message);
+          throw error; // Re-throw the error to be handled by the caller if needed
+      }
+}
+
+export default async function Contact(){
+
+    const socialLink = await fetchSocial();
+    const social = flattenAttributes(socialLink);
+
     return (
         <div className="relative m-0 contact-page">
             <SectionComponent
@@ -31,11 +51,11 @@ export default function Contact(){
                                     <h3>Trụ sở chính</h3>  
                                     <div>
                                         
-                                        <p>44B Nguyễn Văn Trỗi, Phường 15, Quận Phú Nhuận, Thành Phố Hồ Chí Minh</p>
+                                        <p>{social.Address}</p>
                                     </div>   
                                     <div>
                                         
-                                        <a href="tel:+84-28-3845-9963">(028) 3845 9963</a> 
+                                        <Link href={`tel:${social.Phone}`}>{social.Phone}</Link> 
                                     </div>   
                                     <div>
                                         
@@ -99,7 +119,7 @@ export default function Contact(){
                                 <li>
                                     <span>
                                     </span>
-                                    <a href="mailto:recruitment@nhojsc.vn">recruitment@tphat.vn</a> 
+                                    <a href={`mailto:${social.Email}`}>{social.Email}</a> 
                                 </li>
                                 <li>
                                     <span className="address">
@@ -111,7 +131,7 @@ export default function Contact(){
                                             C46.2,39.9,42,44.7,36.4,46.8L36.4,46.8z"></path>
                                         </svg>
                                     </span>
-                                    <a href="https://www.nhojsc.vn/gioi-thieu/tham-gia-cung-chung-toi.html" target="_blank" rel="noopener">www.thanhphat.vn/gioi-thieu/tham-gia-cung-chung-toi.html</a>
+                                    <Link href={`/about`}>Giới thiệu về chúng tôi</Link>
                                 </li>
                             </ul>
                         </div>

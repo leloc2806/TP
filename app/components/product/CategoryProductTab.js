@@ -7,6 +7,7 @@ import { Tab, Transition } from '@headlessui/react'
 import classNames from '@/app/lib/joinClass';
 import Image from 'next/image';
 import Link from 'next/link';
+import flattenAttributes from '@/app/lib/utils';
 
 export default function CategoryProductTab({categories}){
 
@@ -15,6 +16,8 @@ export default function CategoryProductTab({categories}){
     const handleTabChange = (index) => {
         setSelectedIndex(index);
     };
+
+    const categoriesData = flattenAttributes(categories)
     
 
     return(
@@ -26,7 +29,7 @@ export default function CategoryProductTab({categories}){
                 manual
             >
                 <Tab.List>
-                {categories.map((category, index) => (
+                {categoriesData.map((category, index) => (
                     <Tab 
                         key={category.id} 
                         data-index-number={category.id}
@@ -37,12 +40,12 @@ export default function CategoryProductTab({categories}){
                             : 'opacity-60 hover:opacity-100'
                         )}
                     >
-                    {category.attributes.name}
+                    {category.name}
                     </Tab>
                 ))}
                 </Tab.List>
                 <Tab.Panels>
-                    {Object.values(categories).map((category, index) => (
+                    {Object.values(categoriesData).map((category, index) => (
                         <Tab.Panel 
                             key={index}
                             className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10'>
@@ -54,17 +57,17 @@ export default function CategoryProductTab({categories}){
                                     leaveFrom="opacity-100"
                                     leaveTo="opacity-0">
                                     <div className='load-news-list relative w-full h-auto flex flex-wrap'>
-                                        {category.attributes.product_categories.data.map((catProduct) => ( 
-                                            <Link key={catProduct.id} className='item-product-category relative block' href={`/product/${catProduct.attributes.slug}`}>
+                                        {category.product_categories.data.map((catProduct) => ( 
+                                            <Link key={catProduct.id} className='item-product-category relative block' href={`/product/${catProduct.slug}`}>
                                                 <div className="product-category-pic relative">
                                                     <div className="wrap-product-category-pic relative">
                                                         <div className="pic-img relative">
-                                                            <Image src={`${process.env.NEXT_PUBLIC_API_URL}${catProduct.attributes.picture.data.attributes.url}`} alt={catProduct.attributes.name} width={2000} height={1125}/>
+                                                            <Image src={`${process.env.NEXT_PUBLIC_API_URL}${catProduct.picture.url}`} alt={catProduct.name} width={2000} height={1125}/>
                                                         </div>
                                                     </div>
                                                     <div className="absolute product-category-text text-[var(--color-white)]">
                                                         <div className="title-ani ani-item on-show">
-                                                            <h2 className='text-3xl'>{catProduct.attributes.name}</h2>
+                                                            <h2 className='text-3xl'>{catProduct.name}</h2>
                                                         </div>
                                                     </div>
                                                 </div>

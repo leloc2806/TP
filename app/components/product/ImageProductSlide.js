@@ -50,10 +50,14 @@ export default function ProductImageSlider({ data }) {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className={"product-gallery--slide"}
             >
-                <div className={"swiper-nav swiper-nav-main"}>
-                    <SwiperButtonPrev />
-                    <SwiperButtonNext />
-                </div>
+                {data > 2 
+                    ? <div className={"swiper-nav swiper-nav-main"}>
+                        <SwiperButtonPrev />
+                        <SwiperButtonNext />
+                    </div> 
+                    : ''
+                }
+                
 
                 {Object.values(data).map((image, index) => (
                     <SwiperSlide className={"product-gallery--photo"} key={index}>

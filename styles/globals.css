@@ -1697,8 +1697,8 @@ div,p,span {
 
 .collection-box{
     position: relative;
-    width: calc(50% - 20px);
-    margin: 10px;
+    width: calc(50% - 60px);
+    margin: 30px;
     cursor: pointer;
 }
 
@@ -1743,7 +1743,7 @@ img.trans-y {
 
 .inside-text h2 {
     font-size: 4rem;
-    font-weight: 100;
+    font-weight: 400;
     color: var(--color-white);
     text-transform: uppercase;
 }
