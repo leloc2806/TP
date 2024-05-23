@@ -1,6 +1,7 @@
 import GMap, { Map } from "@/app/components/map";
 import SectionComponent from "@/app/components/sectionComponent";
 import TitlePage from "@/app/components/titlepage";
+import flattenAttributes from "@/app/lib/utils";
 import Link from "next/link";
 
 async function fetchSocial(){
