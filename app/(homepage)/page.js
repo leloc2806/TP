@@ -185,7 +185,7 @@ export default async function Home() {
                 <div className="left-content">
                   <div className="title-big text-ani-item color-blue">
                     <div className="text-inner-ani">
-                      <h2 className="text-title-about block">đang diễn ra</h2>
+                      <h2 className="text-title-about block">tin tức</h2>
                     </div>
                   </div>
                 </div>

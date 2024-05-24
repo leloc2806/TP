@@ -27,8 +27,8 @@ export default function NewTab({data}){
                     className={({selected}) => classNames(
                         index === 0 ? 'first:ml-0 my-11 mr-9' : 'my-11 mx-9',
                         selected
-                        ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 selected' 
-                        : 'opacity-60 hover:opacity-100'
+                        ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 selected font-extrabold' 
+                        : 'opacity-70 hover:opacity-100'
                     )}
                 >
                 {category.name}
