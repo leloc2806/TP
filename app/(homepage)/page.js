@@ -129,13 +129,14 @@ export default async function Home() {
               translate={"translateY(200px)"}>
               <div className="pic-home-intro">
                 <div className="bg-cover">
-                  <Image 
+                  
+                  {/* <Image 
                     loading="lazy" 
                     src={`${process.env.NEXT_PUBLIC_API_URL}${aboutData.ParallaxImage.url}`}
                     alt={aboutData.LeftText} 
                     width={200} 
                     height={200}
-                  />
+                  /> */}
                 </div>
               </div>
 
@@ -169,9 +170,10 @@ export default async function Home() {
             <SectionComponent 
               className="home-commercial relative"
               translate={"translateY(-200px)"}>
-              <div className="flex flex-wrap w-full h-auto m-auto justify-start z-10 relative">
+              <div className="flex flex-wrap w-full h-auto m-auto justify-between z-10 relative">
                 {categories.data.map((category) => (
-                  <CollectionBox category={category} key={category.id}/>
+                  category.length % 2 === 0 ? <CollectionBox className={'even'} category={category} key={category.id}/> : <CollectionBox className={'odd'} category={category} key={category.id}/>
+                  
                 ))}
               </div>
             </SectionComponent>

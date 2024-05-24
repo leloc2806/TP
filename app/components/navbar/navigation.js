@@ -120,9 +120,9 @@ export default function NavigationMenu(){
                             </g>
                         </svg>
                     </Link>
-                    <div className="language hidden">
+                    {/* <div className="language hidden">
                         <span>EN</span>
-                    </div>
+                    </div> */}
                     <div className="search-top">
                         <button className="search-but" aria-label="search">
                             <svg className={
@@ -183,9 +183,9 @@ export default function NavigationMenu(){
                         </g>
                     </svg>
                 </Link>
-                <div className="language hidden">
+                {/* <div className="language hidden">
                     <span>EN</span>
-                </div>
+                </div> */}
                 <div className="search-top">
                     <button 
                         className="search-but" 
