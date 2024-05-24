@@ -201,7 +201,8 @@ export default async function Home() {
                               alt={article.title}
                               width={1000} 
                               height={1000}
-                              layout="responsive"
+                              quality={100}
+                              
                             />
                           </div>
                         </div>

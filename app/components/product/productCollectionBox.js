@@ -13,12 +13,12 @@ export default function CollectionBox({category, className}){
                 {
                     category.Image && category.Image.url
                     ? (<Image 
-                        loading="lazy" 
                         src={`${process.env.NEXT_PUBLIC_API_URL}${category.Image.url}`} 
                         alt={category.name}
                         className="trans-y lazy" 
-                        width={200}
-                        height={200}
+                        priority
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />)
                     :   (<Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/image_not_found_0457ab7ad4.jpg`} alt={category.name} width={200} height={200} />)
                 }
