@@ -34,7 +34,7 @@ export default function SlideHome({slides}){
                         alt={slide.Name}
                     />
                 </div>
-                <div className="text-banner">  
+                {/* <div className="text-banner">  
                     <div className="title-banner"> 
                         <h2 className="ani-title">
                             <span className="ani-title-inner">{slide.Name}</span>
@@ -46,7 +46,7 @@ export default function SlideHome({slides}){
                     <div className="hm-intro-text">
                         <p>Nhận thức sâu sắc rằng Con người - Vùng đất - Cộng đồng có sinh khí riêng, chúng ta sẽ hết lòng gìn giữ sự hài hoà giữa ba yếu tố này và cùng nhau lớn mạnh. </p>
                     </div>  
-                </div>
+                </div> */}
             </SwiperSlide>
 
             ))
