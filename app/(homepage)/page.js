@@ -196,11 +196,12 @@ export default async function Home() {
                         <div className="pic-news-home">
                           <div className="pic-img">
                             <Image 
-                              loading="lazy" 
+                              
                               src={`${process.env.NEXT_PUBLIC_API_URL}${article.thumbnail.url}`} 
                               alt={article.title}
                               width={1000} 
                               height={1000}
+                              layout="responsive"
                             />
                           </div>
                         </div>
