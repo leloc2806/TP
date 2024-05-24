@@ -1697,8 +1697,8 @@ div,p,span {
 
 .collection-box{
     position: relative;
-    width: calc(50% - 60px);
-    margin: 30px;
+    width: calc(50% - 120px);
+    margin: 60px;
     cursor: pointer;
 }
 
@@ -1741,11 +1741,16 @@ img.trans-y {
     top: 0;
 }
 
+
 .inside-text h2 {
     font-size: 4rem;
     font-weight: 400;
     color: var(--color-white);
     text-transform: uppercase;
+}
+
+.collection .inside-text h2{
+    font-size: 40px;
 }
 
 .item-product-category::after,
@@ -1875,7 +1880,13 @@ img.trans-y {
     text-align: center;
 }
 
-.load-text h2, .load-text h3, .load-text h4, .load-text p{
+.load-text ul li {list-style-type: disc;}
+
+.load-text ol li{
+    list-style-type: disc;
+}
+
+.load-text h2, .load-text h3, .load-text h4, .load-text p, .load-text ul, .load-text ol, .load-text li{
     position: relative;
     display: block;
     margin: 0 0 1.5rem;
@@ -2437,6 +2448,11 @@ img.trans-y {
     width: 100%;
     object-position: center;
     object-fit: cover;
+}
+
+.product-cat-page .item-product-category .pic-img img {
+    object-fit: contain;
+    padding: 30px;
 }
 
 .product-cat-page .item-product-category{
@@ -3387,7 +3403,8 @@ img.trans-y {
     }
 
     .products-detail-page .load-text p,
-    .news-detail-page .load-text p{
+    .news-detail-page .load-text p,
+    .load-text ul, .load-text ol, .load-text li{
         font-size: 18px;
     }
 
@@ -3725,7 +3742,7 @@ img.trans-y {
 
     .collection-box {
         width: 100%;
-        margin: 0 0 3px;
+        margin: 0 0 16px;
     }
 
     .pic-collection {

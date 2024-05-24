@@ -142,6 +142,12 @@ export default async function News({params}) {
                                 >
                                     {content}
                                 </Markdown>
+                                <Markdown
+                                    className={'markdown'} 
+                                    remarkPlugins={[remarkGfm]}
+                                >
+                                    {detailData.test}
+                                </Markdown>
                             </div>
                             {/* <div className="print">
                                 <div className="print-box">
