@@ -11,8 +11,6 @@ const nextConfig = {
                 pathname: "/uploads/**",
             },
         ],
-        loader: "custom",
-        loaderFile: "./app/lib/imageLoader.js",
     },
 
 };
