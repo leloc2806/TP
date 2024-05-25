@@ -139,6 +139,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     display: block;
 }
 
+.markdown > * {
+    all: revert;
+  }
+
 .markdown h1{
     font-size: 56px;
 }
