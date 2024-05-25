@@ -1,6 +1,7 @@
 import TitlePage from "@/app/components/titlepage";
 import flattenAttributes from "@/app/lib/utils";
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { MotionDiv } from "@/app/components/MotionDiv";
 import remarkGfm from "remark-gfm";
 import ProductSlider from "@/app/components/product/productSlider";
@@ -162,7 +163,7 @@ export default async function Pro({ params }) {
                                 </div>
                                 <div className="rounded-xl px-[28px] pb-[14px] pt-[5px] max-[1100px]:px-0 lg:py-4 flex justify-between bg-primary/10">
                                     <span className="font-light text-secondary lg:text-[21px] text-[16px]">
-                                        <Markdown className="markdown" remarkPlugins={[remarkGfm]}>
+                                        <Markdown className="markdown" remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                                             {productDetail.description}
                                         </Markdown>
                                     </span>
@@ -182,7 +183,7 @@ export default async function Pro({ params }) {
 
                         <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[2vw] max-[1100px]:px-0 relative h-auto z-10">
                             <div className="relative block my-0 mx-auto overflow-hidden p-[10px] lg:text-[21px] text-[16px] max-[560px]:px-[0px]">
-                                <Markdown className="markdown" remarkPlugins={[remarkGfm]}>
+                                <Markdown className="markdown" remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                                     {productDetail.content}
                                 </Markdown>
                             </div>

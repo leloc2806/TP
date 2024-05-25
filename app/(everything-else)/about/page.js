@@ -1,5 +1,4 @@
 import ComboBoxAbout from "@/app/components/about/about-combobox";
-import { MotionDiv } from "../../components/MotionDiv";
 import AboutTab from "../../components/about/about-tab";
 import SectionComponent from "@/app/components/sectionComponent";
 

@@ -1,6 +1,7 @@
 import TitlePage from "@/app/components/titlepage"
 import Slider from "@/app/components/news/newSlider"
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { MotionDiv } from "@/app/components/MotionDiv";
 import remarkGfm from "remark-gfm";
 import flattenAttributes from "@/app/lib/utils";
@@ -139,12 +140,14 @@ export default async function News({params}) {
                                 <Markdown 
                                     className={'markdown'} 
                                     remarkPlugins={[remarkGfm]}
+                                    rehypePlugins={[rehypeRaw]}
                                 >
                                     {content}
                                 </Markdown>
                                 <Markdown
                                     className={'markdown'} 
                                     remarkPlugins={[remarkGfm]}
+                                    rehypePlugins={[rehypeRaw]}
                                 >
                                     {detailData.test}
                                 </Markdown>
