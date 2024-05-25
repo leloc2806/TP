@@ -62,6 +62,21 @@ export async function generateMetadata({ params }) {
     }
 }
 
+async function fetchSocial(){
+    try{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      }
+      catch(error){
+          // Handle errors here, such as logging or displaying an error message
+          console.error("Error fetching slider data:", error.message);
+          throw error; // Re-throw the error to be handled by the caller if needed
+      }
+}
+
 // Fetch product details based on the slug
 async function getProductDetail({ proSlug }) {
     try {
@@ -99,6 +114,9 @@ export default async function Pro({ params }) {
 
     const proSlug = params.proId
 
+    const socialLink = await fetchSocial();
+    const social = flattenAttributes(socialLink);
+
     try {
         const pro = await getProductDetail({ proSlug });
         const product = flattenAttributes(pro.data);
@@ -130,7 +148,7 @@ export default async function Pro({ params }) {
                     <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
                         <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex flex-wrap">
                             <div className="block product-gallery">
-                                {productDetail.Image_slider ? <ProductImageSlider data={productDetail.Image_slider } /> : ''}
+                                {productDetail.Image_slider ? <ProductImageSlider data={productDetail.Image_slider } firstImage={productDetail.thumbnail} /> : ''}
                             </div>
 
                             <div className="product-info">
@@ -150,7 +168,7 @@ export default async function Pro({ params }) {
                                     </span>
                                 </div>
                                 <div className="relative block w-full h-auto mt-[20px] mx-0 mb-0 px-[28px] max-[1100px]:px-0">
-                                    <span className="relative inline-block p-[15px] rounded bg-red-600 uppercase font-bold text-white border-0 text-[18px] lg:text-[22px]">Hotline: 03999999999</span>
+                                    <span className="relative inline-block p-[15px] rounded bg-red-600 uppercase font-bold text-white border-0 text-[18px] lg:text-[22px]">Hotline: {social.Phone}</span>
                                 </div>
                             </div>
 
