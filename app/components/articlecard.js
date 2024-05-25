@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 export default function ArticleCard({post, url, width, height, slug}){
 
-    console.log(post.thumbnail)
-
     return (
         <>
             
