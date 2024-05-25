@@ -50,7 +50,7 @@ export default function ProductImageSlider({ data, firstImage }) {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className={"product-gallery--slide"}
             >
-                {data > 2 
+                {data && data > 2 
                     ? <div className={"swiper-nav swiper-nav-main"}>
                         <SwiperButtonPrev />
                         <SwiperButtonNext />
@@ -59,38 +59,44 @@ export default function ProductImageSlider({ data, firstImage }) {
                 }
                 
                 
+                {
+                    data
 
-                {Object.values(data).map((image, index) => (
-                    image.length < 1 
-                    ? <SwiperSlide className={"product-gallery--photo"} key={index}>
+                    ?(Object.values(data).map((image, index) => (
+                    
+                        <SwiperSlide className={"product-gallery--photo"} key={index}>
+                            <div className={"product-gallery--item boxlazy-img"}>
+                                <div className={"boxlazy-img--insert lazy-img--prod"}>
+                                    <Link className={"boxlazy-img--aspect"} href={"/"}>
+                                        <Image 
+                                            src={`${process.env.NEXT_PUBLIC_API_URL}${image.Image.url}`} 
+                                            alt={`Slide ${image.Name}`} 
+                                            width={200}
+                                            height={200}
+                                        />
+                                    </Link>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    )))
+
+                    :(<SwiperSlide className={"product-gallery--photo"}>
                         <div className={"product-gallery--item boxlazy-img"}>
                             <div className={"boxlazy-img--insert lazy-img--prod"}>
                                 <Link className={"boxlazy-img--aspect"} href={"/"}>
                                     <Image 
-                                        src={`${process.env.NEXT_PUBLIC_API_URL}${firstImage.thumbnail.url}`} 
-                                        alt={`Slide ${firstImage.title}`} 
+                                        src={`${process.env.NEXT_PUBLIC_API_URL}${firstImage.url}`} 
+                                        alt={`Slide ${firstImage.name}`} 
                                         width={200}
                                         height={200}
                                     />
                                 </Link>
                             </div>
                         </div>
-                    </SwiperSlide>
-                    : <SwiperSlide className={"product-gallery--photo"} key={index}>
-                        <div className={"product-gallery--item boxlazy-img"}>
-                            <div className={"boxlazy-img--insert lazy-img--prod"}>
-                                <Link className={"boxlazy-img--aspect"} href={"/"}>
-                                    <Image 
-                                        src={`${process.env.NEXT_PUBLIC_API_URL}${image.Image.url}`} 
-                                        alt={`Slide ${image.Name}`} 
-                                        width={200}
-                                        height={200}
-                                    />
-                                </Link>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                ))}
+                    </SwiperSlide>)
+                }
+
+                
             </Swiper>
             <Swiper
                 onSwiper={setThumbsSwiper}
@@ -102,45 +108,48 @@ export default function ProductImageSlider({ data, firstImage }) {
                 className="product-gallery--thumb"
             >
 
-                {Object.values(data).map((image, index) => (
-                    image.length < 1 
-                    ? <SwiperSlide 
+            {data ? (
+                Object.values(data).map((image, index) => (
+                    <SwiperSlide 
                     key={index}
+                    className={"product-thumb"}
+                    >
+                    <div className={"product-thumb--link boxlazy-img"}>
+                        <div className={"boxlazy-img--insert lazy-img--prod"}>
+                        <span className={"boxlazy-img--aspect"}>
+                            <Image 
+                            className={"gallery-demo swiper-lazy"}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${image.Image.url}`} 
+                            alt={`Thumb ${image.Name}`} 
+                            width={200}
+                            height={200}
+                            />
+                        </span>
+                        </div>
+                    </div>
+                    </SwiperSlide>
+                ))
+                ) : (
+                <SwiperSlide 
+                    key={"firstImage"}
                     className={"product-thumb"}
                 >
                     <div className={"product-thumb--link boxlazy-img"}>
-                        <div className={"boxlazy-img--insert lazy-img--prod"}>
-                            <span className={"boxlazy-img--aspect"}>
-                                <Image 
-                                    className={"gallery-demo swiper-lazy"}
-                                    src={`${process.env.NEXT_PUBLIC_API_URL}${firstImage.thumbnail.url}`} 
-                                    alt={`Thumb ${firstImage.title}`} 
-                                    width={200}
-                                    height={200}
-                                />
-                            </span>
-                        </div>
+                    <div className={"boxlazy-img--insert lazy-img--prod"}>
+                        <span className={"boxlazy-img--aspect"}>
+                        <Image 
+                            className={"gallery-demo swiper-lazy"}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${firstImage.url}`} 
+                            alt={`Thumb ${firstImage.name}`} 
+                            width={200}
+                            height={200}
+                        />
+                        </span>
+                    </div>
                     </div>
                 </SwiperSlide>
-                :<SwiperSlide 
-                        key={index}
-                        className={"product-thumb"}
-                    >
-                        <div className={"product-thumb--link boxlazy-img"}>
-                            <div className={"boxlazy-img--insert lazy-img--prod"}>
-                                <span className={"boxlazy-img--aspect"}>
-                                    <Image 
-                                        className={"gallery-demo swiper-lazy"}
-                                        src={`${process.env.NEXT_PUBLIC_API_URL}${image.Image.url}`} 
-                                        alt={`Thumb ${image.Name}`} 
-                                        width={200}
-                                        height={200}
-                                    />
-                                </span>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                ))}
+                )}
+
             </Swiper>
         </>
     );
