@@ -25,7 +25,8 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
     "swiper": "^11.1.0",
-    "use-debounce": "^10.0.0"
+    "use-debounce": "^10.0.0",
+    "yet-another-react-lightbox": "^3.19.0"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.28.6",
