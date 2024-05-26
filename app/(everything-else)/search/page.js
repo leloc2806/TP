@@ -22,7 +22,7 @@ export async function fetchPosts({queryKey, pageParam = 1}) {
       }
 
     const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/projects?fields[0]=title&fields[1]=excerpt&fields[2]=slug&fields[3]=createdAt&populate[0]=product_category&populate[1]=logo&sort=createdAt:desc${searchUrl}${loadUrl}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/projects?fields[0]=title&fields[1]=excerpt&fields[2]=slug&fields[3]=createdAt&populate[0]=product_category&populate[1]=thumbnail&sort=createdAt:desc${searchUrl}${loadUrl}`
     );
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -44,18 +44,21 @@ function Post({post}){
     const inputDate = new Date(post.createdAt);
     const dateObj = new Date(inputDate);
     const outputDate = format(dateObj, "MM/dd/yy");
+
+    console.log(post)
+    
     return(
         <>
             <Link 
                 className={"item-search ani-item on-show"}
-                href={`/product/${post.product_category.slug}/pro/${post.slug}`}
+                href={`/product/${post.product_category.slug}/${post.slug}`}
             >
                 <div className="pic-search">
                     {
-                        post.logo.url 
+                        post.thumbnail.url 
                         ?
                         <Image 
-                            src={`${process.env.NEXT_PUBLIC_API_URL}${post.logo.url}`} 
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${post.thumbnail.url}`} 
                             alt={post.title} 
                             width={1000}
                             height={1000} 

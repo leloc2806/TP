@@ -779,7 +779,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav{
     height: 100%;
     overflow: hidden;
     display: block;
-    max-height: 200px;
+    max-height: 400px;
 }
 
 .load-search-list .item-search .title-search {
@@ -4065,5 +4065,9 @@ img.trans-y {
 
     .feateured-item .view-more{
         font-size: 14px;
+    }
+
+    .item-search .title-search{
+        padding: 18px;
     }
 }
