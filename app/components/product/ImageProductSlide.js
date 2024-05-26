@@ -44,6 +44,7 @@ export default function ProductImageSlider({ data, firstImage }) {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [open, setOpen] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
+    
 
     const slides = data ? Object.values(data).map(image => ({
         src: `${process.env.NEXT_PUBLIC_API_URL}${image.Image.url}`,
@@ -83,8 +84,8 @@ export default function ProductImageSlider({ data, firstImage }) {
                                         <Image 
                                             src={slide.src} 
                                             alt={`Slide ${slide.alt}`} 
-                                            width={200}
-                                            height={200}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                     </button>
                                 </div>
@@ -127,6 +128,10 @@ export default function ProductImageSlider({ data, firstImage }) {
                 slides={slides}
                 plugins={[Zoom]}
                 index={currentSlide}
+                zoom={{
+                    scrollToZoom:true,
+                    maxZoomPixelRatio:5
+                }}
                 onClose={() => setOpen(false)}
             />
         </>
