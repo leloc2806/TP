@@ -10,17 +10,18 @@ export default function SearchComponent({ show, display }) {
     const onSearch = (data) => {
         const trimmedQuery = data.searchQuery.trim();
         if (!trimmedQuery) {
-            console.log(show);
             return; // Prevent further execution
         }
 
         if (!/^[a-zA-Z0-9\s]*$/.test(trimmedQuery)) {
-            alert("Search query must contain only text."); // Show an alert if the query contains non-text characters
+            alert("Chỉ được nhập chữ hoặc số"); // Show an alert if the query contains non-text characters
             return; // Prevent further execution
         }
 
         const encodedSearchQuery = encodeURIComponent(trimmedQuery);
         router.push(`/search?q=${encodedSearchQuery}`);
+
+        display(false);
     };
 
     return (
@@ -47,10 +48,10 @@ export default function SearchComponent({ show, display }) {
                                     type="text" 
                                     {...register("searchQuery", { 
                                         required: "Search query is required", 
-                                        validate: (value) => value.trim() !== "" || "Search query cannot be empty",
+                                        validate: (value) => value.trim() !== "" || "Không được để trống",
                                         pattern: {
                                             value: /^[a-zA-Z0-9\s]*$/,
-                                            message: "Search query must contain only text"
+                                            message: "Chỉ được nhập chữ hoặc số"
                                         } 
                                     })}
                                     placeholder="Tìm kiếm ..."

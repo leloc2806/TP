@@ -45,8 +45,6 @@ function Post({post}){
     const dateObj = new Date(inputDate);
     const outputDate = format(dateObj, "MM/dd/yy");
 
-    console.log(post)
-    
     return(
         <>
             <Link 
@@ -75,8 +73,7 @@ function Post({post}){
                 </div>
                 <div className="title-search">
                     <h3>{post.title}</h3>
-                    <span className="link-load">{post.excerpt}</span> 
-                    <span className="date-load">{outputDate}</span>
+                    <span className="link-load inline-block w-full">{post.excerpt}</span> 
                 </div>
             </Link>
         </>

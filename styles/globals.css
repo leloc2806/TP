@@ -2323,6 +2323,22 @@ img.trans-y {
     z-index: -1;
 }
 
+@media screen and (min-width: 1440px) {
+    .item-search .pic-search{
+        max-height: 600px;
+    }
+
+    .item-search .title-search h3{
+        font-size: 35px;
+        font-weight: 500;
+    }
+
+    .item-search span{
+        font-size: 25px;
+    }
+}
+    
+
 @media (hover: hover) and (pointer: fine) and (min-width: 1100px){
     
     .social ul {
@@ -2495,10 +2511,6 @@ img.trans-y {
 .product-cat-page .item-product-category{
     width: calc((100% / 3) - 29px);
     margin: 14.5px;
-}
-
-.search-result .wrap-content{
-    max-width: 1100px;
 }
 
 .products-detail-page .product-information span{
