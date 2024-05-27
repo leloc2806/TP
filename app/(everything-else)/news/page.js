@@ -100,7 +100,7 @@ function FeatureNew({data}){
                         <h3 className="text-[var(--color-black80) text-3xl relative font-normal mb-4 mx-0 mt-0 line-clamp-2">
                             {featureItem.title}
                         </h3>
-                        <p className="line-clamp-3">Từ quyết tâm thực hiện chủ trương phát triển nhà ở xã hội thời gian qua của lãnh đạo Thành phố Hồ Chí Minh cho thấy, kết quả khả quan, nhiều đối tượng chính sách xã hội đã tạo lập được chỗ ở ổn định, bảo đảm an sinh, an tâm làm việc, góp phần cải thiện, nâng cao đời sống nhân dân trên địa bàn thành phố. Tuy nhiên, những rào cản về quy hoạch, thủ tục đầu tư, chính sách vay vốn... phát sinh từ thực tế cũng đã tác động không nhỏ đến hiệu quả đầu tư các dự án, dẫn đến kết quả xây dựng, phát triển nhà ở xã hội đạt rất thấp so với chỉ tiêu kế hoạch mà chính quyền thành phố đề ra.</p>
+                        <p className="line-clamp-3">{featureItem.excerpt}</p>
                         <div className="view-more relative inline-block my-8 mx-0">
                             <span 
                                 className="link-load relative flex py-[5px] px-0 items-center font-bold text-sm uppercase my-0 mr-5 ml-0 text-[var(--color-black30)]"

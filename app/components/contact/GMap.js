@@ -1,7 +1,6 @@
 "use client";
+
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { useMemo } from "react";
-import ProTypes from "props-types"
 
 function Loading() {
     return <button type="button" className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed">
@@ -13,11 +12,10 @@ function Loading() {
   </button>;
 }
 
-export default function GMap({className}) {
+export default function GMap({ center, className }) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   });
-  const center = useMemo(() => ({ lat: 20.97654, lng: 105.8610 }), []);
 
   const renderMap = () => {
     return (
@@ -35,14 +33,11 @@ export default function GMap({className}) {
     return <div>Map cannot be loaded right now, sorry.</div>;
   }
   return (
-    <div
-      id="map-section"
-      className={className}
-    >
+    <div id="map-section" className={className}>
       {isLoaded ? (
         renderMap()
       ) : (
-        <Loading/>
+        <Loading />
       )}
     </div>
   );

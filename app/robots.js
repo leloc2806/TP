@@ -5,6 +5,6 @@ export default function robots() {
         allow: '/',
         disallow: '/private/',
       },
-      sitemap: 'https://blogging-leloc2806s-projects.vercel.app/sitemap.xml',
+      sitemap: 'https://www.nhuathanhphat.vn/sitemap.xml',
     }
   }

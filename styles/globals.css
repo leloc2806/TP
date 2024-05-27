@@ -2278,6 +2278,12 @@ img.trans-y {
     padding: 5vw 0;
 }
 
+.contact-page .list-view{
+    scrollbar-color: var(--color-grey);
+    scrollbar-width: none;
+    max-height: 58vh;
+}
+
 /* Contact Page End */
 
 .social.show {
