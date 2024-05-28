@@ -6,7 +6,6 @@ export async function generateMetadata({ params }) {
     try {
         const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,2&filters[slug][$eq]=${params.productId}`, 
-        { next: { revalidate: 60 } }
         );
         if (!res.ok) {
             throw new Error("Failed to fetch data");
@@ -65,7 +64,7 @@ export async function generateMetadata({ params }) {
 async function getProductCategory({params}) {
     try{
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,3&filters[slug][$eq]=${params.productId}`, { next: { revalidate: 60 } }
+            `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,3&filters[slug][$eq]=${params.productId}`, { cache: 'no-store' }
         );
         if (!res.ok) {
             throw new Error("Failed to fetch data");
@@ -111,7 +110,9 @@ export default async function ProductId({params}){
                         <div className="sub-nav">
                             <div className="wrap-content min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10">
                                 <div className='load-news-list relative w-full h-auto flex flex-wrap'>
-                                    {detailData.products.data.map((product) => ( 
+                                    {detailData.products.data
+                                    .sort((a, b) => new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt))
+                                    .map((product) => ( 
                                         <Link key={product.id} className='item-product-category relative block' href={`/product/${params.productId}/${product.attributes.slug}`}>
                                             <div className="product-category-pic relative">
                                                 <div className="wrap-product-category-pic relative">

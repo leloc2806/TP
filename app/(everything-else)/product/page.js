@@ -38,34 +38,46 @@ async function getCategories() {
     }
 }
 
-export default async function Product(){
+export default async function Product() {
+    try {
+        // Initiate fetch operations
+        const titlePagePromise = getTitle();
+        const categoryListPromise = getCategories();
 
-    const titlePage = await getTitle();
-    const categoryList = await getCategories();
+        // Wait for all fetch operations to complete
+        const [titlePage, categoryList] = await Promise.all([titlePagePromise, categoryListPromise]);
 
-    const title = titlePage.data.attributes.Title
-    const categories = categoryList.data;
+        const title = titlePage.data.attributes.Title;
+        const categories = categoryList.data;
 
-    return(
-        <div className="relative m-0 category-product-page">
-            <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem] max-[1100px]:pt-[160px] max-[1100px]:pb-[20px] max-[580px]:pt-[120px]">
-                <div className="relative block w-full h-auto overflow-hidden">
-                    <h1 className="text-[4vw] font-normal relative block">{title}</h1>
-                </div>   
-                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
-            </div>
+        return (
+            <div className="relative m-0 category-product-page">
+                <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem] max-[1100px]:pt-[160px] max-[1100px]:pb-[20px] max-[580px]:pt-[120px]">
+                    <div className="relative block w-full h-auto overflow-hidden">
+                        <h1 className="text-[4vw] font-normal relative block">{title}</h1>
+                    </div>   
+                    <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+                </div>
 
-            <div className="section-outernav">
-                <div className="outer-nav min-h-[80vh] max-[1100px]:w-[90vw] w-[var(--wrapcontent)] mx-auto font-normal text-xl">
-                    <div className="sub-nav desktop-tab">
-                        <CategoryProductTab categories={categories}/>
-                    </div> 
-                    <div className="sub-nav mobile-tab">
-                        <CategoryProductComboBox categories={categories}/>
-                    </div> 
+                <div className="section-outernav">
+                    <div className="outer-nav min-h-[80vh] max-[1100px]:w-[90vw] w-[var(--wrapcontent)] mx-auto font-normal text-xl">
+                        <div className="sub-nav desktop-tab">
+                            <CategoryProductTab categories={categories} />
+                        </div> 
+                        <div className="sub-nav mobile-tab">
+                            <CategoryProductComboBox categories={categories} />
+                        </div> 
+                    </div>
                 </div>
             </div>
-
-        </div>
-    )
+        );
+    } catch (error) {
+        // Handle error gracefully in the UI
+        return (
+            <div className="error-message">
+                <h1>Error loading product page</h1>
+                <p>{error.message}</p>
+            </div>
+        );
+    }
 }

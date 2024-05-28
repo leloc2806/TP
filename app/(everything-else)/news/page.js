@@ -44,7 +44,7 @@ export const metadata = {
 
 async function getTitleNewPage(){
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/new-page?populate=deep,3`, { next: { revalidate: 60 } }
+        `${process.env.NEXT_PUBLIC_API_URL}/api/new-page?populate=deep,3`
     );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
@@ -116,27 +116,35 @@ function FeatureNew({data}){
     )
 }
 
-export default async function News(){
-    const titlePage = await getTitleNewPage();
-    const articlesList = await getArticleList();
-    const categoriesList = await getNewCategory();
+export default async function News() {
+    // Define the fetch operations
+    const titlePagePromise = getTitleNewPage();
+    const articlesListPromise = getArticleList();
+    const categoriesListPromise = getNewCategory();
 
+    // Use Promise.all to wait for all fetch operations to complete
+    const [titlePage, articlesList, categoriesList] = await Promise.all([
+        titlePagePromise,
+        articlesListPromise,
+        categoriesListPromise
+    ]);
+
+    // Extract data
     const title = titlePage.data.attributes.Title;
     const articleList = flattenAttributes(articlesList.data);
-
-    const featureItem = articleList[articleList.length - 1]
+    const featureItem = articleList[articleList.length - 1];
     const categoryList = categoriesList.data;
 
     const variants = {
-        hidden: {opacity: 0},
-        visible: {opacity: 1}
-    }
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
+    };
 
     return (
         <MotionDiv
             variants={variants}
             initial="hidden"
-            animate="visible"   
+            animate="visible"
             transition={{
                 delay: 1,
                 ease: "easeInOut",
@@ -144,18 +152,18 @@ export default async function News(){
             }}
             className="relative m-0"
         >
-                <TitlePage title={title} />
-                <FeatureNew data={featureItem} />
-                <div className="section-outernav">
-                    <div className="outer-nav min-h-[80vh] max-[1100px]:w-[90vw] w-[var(--wrapcontent)] mx-auto font-normal text-xl">
-                        <div className="sub-nav desktop-tab">
-                            <NewTab data={[articleList, categoryList]}/>
-                        </div> 
-                        <div className="sub-nav mobile-tab">
-                            <NewComboBox data={[articleList, categoryList]}/>
-                        </div> 
+            <TitlePage title={title} />
+            <FeatureNew data={featureItem} />
+            <div className="section-outernav">
+                <div className="outer-nav min-h-[80vh] max-[1100px]:w-[90vw] w-[var(--wrapcontent)] mx-auto font-normal text-xl">
+                    <div className="sub-nav desktop-tab">
+                        <NewTab data={[articleList, categoryList]} />
+                    </div>
+                    <div className="sub-nav mobile-tab">
+                        <NewComboBox data={[articleList, categoryList]} />
                     </div>
                 </div>
+            </div>
         </MotionDiv>
-    )
+    );
 }

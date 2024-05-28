@@ -5,18 +5,18 @@ import flattenAttributes from "@/app/lib/utils";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Công ty cổ phần năng lượng Thành Phát",
+    title: "Liên hệ | Nhựa Thành Phát",
     description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
     keywords: ["cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
     openGraph: {
         url: "https://www.nhuathanhphat.vn/",
         type: "website",
-        title: "Công ty cổ phần năng lượng Thành Phát",
+        title: "Nhựa Thành Phát",
         description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
     },
     twitter: {
         card: "summary_large_image",
-        title: "Công ty cổ phần năng lượng Thành Phát",
+        title: "Nhựa Thành Phát",
         description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
         creator: "@thanhphat",
         site: "@thanhphat",
@@ -28,7 +28,7 @@ export const metadata = {
 
 async function fetchSocial() {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`, { cache: 'no-store' });
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }

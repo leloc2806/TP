@@ -81,7 +81,7 @@ async function fetchSocial(){
 // Fetch product details based on the slug
 async function getProductDetail({ proSlug }) {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,3&filters[slug][$eq]=${proSlug}`, { next: { revalidate: 60 } });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,3&filters[slug][$eq]=${proSlug}`, { cache: 'no-store' });
         if (!res.ok) {
             throw new Error("Failed to fetch data");
         }
@@ -95,7 +95,7 @@ async function getProductDetail({ proSlug }) {
 // Fetch related products based on the category slug
 async function fetchRelativeProduct({ categorySlug }) {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,2&filters[product_category][slug][$eq]=${categorySlug}`, { next: { revalidate: 60 } });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,2&filters[product_category][slug][$eq]=${categorySlug}`, { cache: 'no-store' });
         if (!res.ok) {
             throw new Error("Failed to fetch data");
         }
@@ -112,14 +112,17 @@ function getObjectFromSingleElementArray(array) {
 }
 
 export default async function Pro({ params }) {
-
-    const proSlug = params.proId
-
-    const socialLink = await fetchSocial();
-    const social = flattenAttributes(socialLink);
+    const proSlug = params.proId;
 
     try {
-        const pro = await getProductDetail({ proSlug });
+        // Initiate fetch operations
+        const socialLinkPromise = fetchSocial();
+        const proPromise = getProductDetail({ proSlug });
+
+        // Wait for all fetch operations to complete
+        const [socialLink, pro] = await Promise.all([socialLinkPromise, proPromise]);
+
+        const social = flattenAttributes(socialLink);
         const product = flattenAttributes(pro.data);
         const productDetail = getObjectFromSingleElementArray(product);
 
@@ -128,7 +131,10 @@ export default async function Pro({ params }) {
         }
 
         const categorySlug = productDetail.product_category.slug;
-        const resRelProduct = await fetchRelativeProduct({ categorySlug });
+        const resRelProductPromise = fetchRelativeProduct({ categorySlug });
+
+        // Wait for the related products fetch operation to complete
+        const resRelProduct = await resRelProductPromise;
         const relProduct = flattenAttributes(resRelProduct.data);
 
         const variants = {
@@ -149,7 +155,11 @@ export default async function Pro({ params }) {
                     <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
                         <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex flex-wrap">
                             <div className="block product-gallery">
-                                {productDetail.Image_slider ? <ProductImageSlider data={productDetail.Image_slider } /> : <ProductImageSlider firstImage={productDetail.thumbnail} />}
+                                {productDetail.Image_slider ? (
+                                    <ProductImageSlider data={productDetail.Image_slider} />
+                                ) : (
+                                    <ProductImageSlider firstImage={productDetail.thumbnail} />
+                                )}
                             </div>
 
                             <div className="product-info">
@@ -188,7 +198,6 @@ export default async function Pro({ params }) {
                                 </Markdown>
                             </div>
                             <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
-
                         </div>
                     </div>
                     <ProductSlider data={relProduct} slug={params.slug} />

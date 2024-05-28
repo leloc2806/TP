@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 
 export const metadata = {
-    title: "Category Product | Thanh Phat JSC",
+    title: "Danh mục sản phẩm | Nhựa Thành Phát",
     description:
-      "Danh muc san pham",
+      "Danh mục sản phẩm",
 };
 
 function Loading() {

@@ -1,5 +1,5 @@
 export const metadata = {
-    title: "News | Thanh Phat JSC",
+    title: "Tin tức | Nhựa Thành Phát",
     description:
       "Tin tuc",
   };
