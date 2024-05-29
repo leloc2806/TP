@@ -1,5 +1,4 @@
 "use client"
-import React, { useEffect } from 'react';
 import { Navigation, Pagination, Grid } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import ArticleCard from '../articlecard';

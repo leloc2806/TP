@@ -4,7 +4,7 @@ import flattenAttributes from "../lib/utils";
 
 async function fetchSocial(){
     try{
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`, { cache: 'no-store' });
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

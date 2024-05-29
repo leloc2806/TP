@@ -6,7 +6,7 @@ import MotionHeader from '@/app/components/motionHeader';
 
 async function fetchLogo() {
   try{
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/header-logo?populate=deep,2`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/header-logo?populate=deep,2`, { cache: 'no-store' });
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }

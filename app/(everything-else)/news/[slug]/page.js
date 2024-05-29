@@ -91,72 +91,73 @@ function getObjectFromSingleElementArray(array) {
     return Array.isArray(array) && array.length === 1 ? array[0] : null;
 }
 
-export default async function News({ params }) {
-    const dataSinglePagePromise = fetchHeading({ params });
+export default async function News({params}) {
 
-    const dataSinglePage = await dataSinglePagePromise;
+    const dataSinglePage = await fetchHeading({params});
+
     const testDetail = flattenAttributes(dataSinglePage.data);
     const test = getObjectFromSingleElementArray(testDetail);
+
     const detailData = dataSinglePage.data[0].attributes;
     const categories = detailData.news_categories.data;
-    const category = categories.map(item => item.attributes.name);
-    const categorySlug = categories.map(itemSlug => itemSlug.attributes.slug);
+    const category = categories.map(item => item.attributes.name)
+    const categorySlug = categories.map(itemSlug => itemSlug.attributes.slug)
 
-    const resRelArticlePromise = fetchRelativeArticle({ categorySlug });
+    const resRelArticle = await fetchRelativeArticle({categorySlug})
+    const relativeArticle = flattenAttributes(resRelArticle.data)
 
-    const [resRelArticle] = await Promise.all([resRelArticlePromise]);
-    const relativeArticle = flattenAttributes(resRelArticle.data);
     const content = detailData.article_content[0].content;
 
     const variants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-    };
-
+        hidden: {opacity: 0},
+        visible: {opacity: 1}
+    }
     return (
-        <MotionDiv
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{
-                delay: 1,
-                ease: "easeInOut",
-                duration: 0.5,
-            }}
+        <MotionDiv 
+        variants={variants}
+        initial="hidden"
+        animate="visible"   
+        transition={{
+            delay: 1,
+            ease: "easeInOut",
+            duration: 0.5,
+        }}
+
             className="relative m-0 news-detail-page"
         >
-            <TitlePage title={'tin tức'} />
-            <div className="load-content relative margin mt-[-1px] ml-0 mb-0 overflow-hidden w-full h-auto p-0">
-                <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
-                    <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10">
-                        <div className="load-title relative w-full h-auto m-0 p-0">
-                            <div className="news-group-name text-center px-0 pb-8 pt-0 text-xl font-bold text-[var(--color-black50)] relative block w-full h-auto">
-                                {category.length > 1 ? category.join(', ') : category}
+                <TitlePage title={'tin tức'} />
+                <div className="load-content relative margin mt-[-1px] ml-0 mb-0 overflow-hidden w-full h-auto p-0">
+                    <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
+                        <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10">
+                            <div className="load-title relative w-full h-auto m-0 p-0">
+                                <div className="news-group-name text-center px-0 pb-8 pt-0 text-xl font-bold text-[var(--color-black50)] relative block w-full h-auto">
+                                    {category.length > 1 ? category.join(', ') : category}
+                                </div>
+                                <h2>{detailData.title}</h2>
+                                <div className="date-thumb text-center">by admin | Mar 21, 2024</div>
                             </div>
-                            <h2>{detailData.title}</h2>
-                            <div className="date-thumb text-center">by admin | Mar 21, 2024</div>
+                            <div className="load-text relative block my-0 mx-auto overflow-hidden p-[40px]">
+                                <Markdown 
+                                    className={'markdown'} 
+                                    remarkPlugins={[remarkGfm]}
+                                    rehypePlugins={[rehypeRaw]}
+                                >
+                                    {content}
+                                </Markdown>
+                                <Markdown
+                                    className={'markdown'} 
+                                    remarkPlugins={[remarkGfm]}
+                                    rehypePlugins={[rehypeRaw]}
+                                >
+                                    {detailData.test}
+                                </Markdown>
+                            </div>
+                            <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
                         </div>
-                        <div className="load-text relative block my-0 mx-auto overflow-hidden p-[40px]">
-                            <Markdown
-                                className={'markdown'}
-                                remarkPlugins={[remarkGfm]}
-                                rehypePlugins={[rehypeRaw]}
-                            >
-                                {content}
-                            </Markdown>
-                            <Markdown
-                                className={'markdown'}
-                                remarkPlugins={[remarkGfm]}
-                                rehypePlugins={[rehypeRaw]}
-                            >
-                                {detailData.test}
-                            </Markdown>
-                        </div>
-                        <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
                     </div>
+
                 </div>
-            </div>
-            <Slider data={relativeArticle} slug={params.slug} />
+                <Slider data={relativeArticle} slug={params.slug}/>
         </MotionDiv>
-    );
+    )
 }
