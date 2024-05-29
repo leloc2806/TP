@@ -67,7 +67,7 @@ export async function generateMetadata({ params }) {
 
 async function fetchHeading({params}){
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3&filters[slug][$eq]=${params.slug}`, { next: { revalidate: 60 } }
+        `${process.env.NEXT_PUBLIC_API_URL}/api/articles?populate=deep,3&filters[slug][$eq]=${params.slug}`, { cache: 'no-store' }
 
     )
     if (!res.ok) {

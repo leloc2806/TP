@@ -5,6 +5,6 @@ export default function robots() {
         allow: '/',
         disallow: '/private/',
       },
-      sitemap: 'https://www.nhuathanhphat.vn/sitemap.xml',
+      sitemap: `${process.env.NEXT_PUBLIC_API_ENDPOINT}sitemap.xml`,
     }
   }

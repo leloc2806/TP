@@ -6,42 +6,6 @@ import { MotionDiv } from "@/app/components/MotionDiv";
 import NewComboBox from "@/app/components/news/new-combobox";
 import flattenAttributes from "@/app/lib/utils";
 
-export const metadata = {
-    title: "Công ty cổ phần năng lượng Thành Phát",
-    description:
-      "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
-    keywords: [
-      "cửa nhựa",
-      "cửa",
-      "sàn",
-      "trần",
-      "nhà máy",
-      "nhựa",
-      "sản xuất",
-      "nhập khẩu"
-  
-    ],
-    openGraph: {
-      url: "https://www.nhuathanhphat.vn/",
-      type: "article",
-      title: "Công ty cổ phần năng lượng Thành Phát",
-      description:
-        "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Công ty cổ phần năng lượng Thành Phát",
-      description:
-        "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
-      creator: "@thanhphat",
-      site: "@thanhphat",
-    },
-    alternates: {
-      canonical: "https://www.nhuathanhphat.vn/"
-    }
-  };
-
-
 async function getTitleNewPage(){
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/new-page?populate=deep,3`
