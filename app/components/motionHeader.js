@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import NavigationMenu from './navbar/navigation';
+
 
 export default function MotionHeader({children, className}) {
   const { scrollYProgress } = useScroll();
@@ -25,7 +25,7 @@ export default function MotionHeader({children, className}) {
       
       {children}
       
-      <NavigationMenu/>
+     
       <script dangerouslySetInnerHTML={{ __html: `history.scrollRestoration = "manual"` }} />
     </motion.header>
   );

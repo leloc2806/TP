@@ -3,7 +3,7 @@ import Link from "next/link"
 import React, { useState, useEffect, useRef } from 'react';
 import SearchComponent from "./searchComponent";
 
-export default function NavigationMenu(){
+export default function NavigationMenu({Email}){
 
     const [showNavBar, setShowNavBar] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
@@ -100,7 +100,7 @@ export default function NavigationMenu(){
                         </g>
                     </svg>
                     </Link>
-                    <Link className="email-but" href={`/`}>
+                    <Link className="email-but" href={`mailto:${Email}`}>
                         <svg className={
                             "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                         }
@@ -163,7 +163,7 @@ export default function NavigationMenu(){
                     </svg>
                     <span>Contact</span>    
                 </Link>
-                <Link className="email-but" href={`/`}>
+                <Link className="email-but" href={`mailto:${Email}`}>
                     <svg className={
                         "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                     }

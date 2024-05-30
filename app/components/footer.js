@@ -128,7 +128,7 @@ export default async function Footer() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link className="zalo" href={`${social.Zalo}`} target="_blank" rel="noopener" aria-label="zalo">
+                                    <Link className="zalo" href={`https://zalo.me/${social.Zalo}`} target="_blank" rel="noopener" aria-label="zalo">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             x="0px" y="0px"
                                             className={
