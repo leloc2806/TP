@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
         const postFin = getObjectFromSingleElementArray(postDetail);
 
         return {
-            title: `${postFin.title} | Thanh Phat`,
+            title: `${postFin.SEO.title} | Thanh Phat`,
             authors: [
                 {
                 name: 'admin' || "Thanh Phat"
