@@ -6,9 +6,7 @@ on:
       - main
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,18 +34,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Install ssh-agent
+      run: sudo apt-get install -y openssh-client
 
-      - name: Deploy code to VPS
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} '
-            cd /path/to/your/project &&
-            git pull origin main &&
-            # Additional deployment steps (e.g., build, restart services)
-          '
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy code to VPS
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} << EOF
+          cd /root/front-end/Blogging &&
+          git pull origin main &&
+          npm install &&
+          npm run build &&
+          pm2 restart web
+        EOF
