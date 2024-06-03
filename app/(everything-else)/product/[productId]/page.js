@@ -87,13 +87,13 @@ export default async function ProductId({params}){
 
     const detailData = productCategory.data[0].attributes
 
-    // const jsonLd = {
-    //     '@context': 'https://schema.org',
-    //     '@type': 'Product',
-    //     name: detailData.name,
-    //     image: detailData.image,
-    //     description: detailData.description,
-    // }
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: detailData.name,
+        image: detailData.image,
+        description: detailData.description,
+    }
 
     return (
         <>
