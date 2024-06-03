@@ -48,6 +48,9 @@ jobs:
     - name: Deploy code to VPS
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} << EOF
+
+          export PATH=$PATH:/usr/local/bin
+        
           cd /root/front-end/TP &&
           git pull origin main && 
           npm install &&
