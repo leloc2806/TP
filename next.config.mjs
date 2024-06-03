@@ -2,11 +2,11 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['api.nhuathanhphat.vn'],
+        domains: ['admin.nhuathanhphat.vn'],
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "api.nhuathanhphat.vn",
+                hostname: "admin.nhuathanhphat.vn",
                 port: "",
                 pathname: "/uploads/**",
             },
