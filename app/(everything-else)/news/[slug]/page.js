@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
                 }
             ],
             description: postFin.SEO.description,
-            keywords: postFin.keywords,
+            keywords: postFin.SEO.keywords,
             openGraph: {
                 title: `${postFin.title} | Thanh Phat`,
                 description: postFin.description,
