@@ -2,9 +2,8 @@ name: Deploy to VPS
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,7 +12,6 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
@@ -32,6 +30,7 @@ jobs:
       run: npm run build --if-present
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +38,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install ssh-agent
-      run: sudo apt-get install -y openssh-client
+      run: sudo apt-get install openssh-client
 
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
@@ -48,16 +47,17 @@ jobs:
 
     - name: Deploy code to VPS
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} << EOF
-
-          export PATH=$PATH:/root/.nvm/versions/node/v20.14.0/bin
-        
-          cd /root/front-end/TP &&
-           if [ -f package-lock.json ]; then
+        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }} << 'EOF'
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          export PATH=$PATH:$HOME/.nvm/versions/node/v20.14.0/bin
+          cd /root/front-end/Blogging &&
+          git pull origin main &&
+          if [ -f package-lock.json ]; then
             npm ci
           else
             npm install
           fi &&
-          npm run build &&
-          pm2 restart --name=web npm -- run start
+          npm run build --debug &&
+          pm2 restart web
         EOF
