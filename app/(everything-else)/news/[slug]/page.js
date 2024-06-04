@@ -21,17 +21,17 @@ export async function generateMetadata({ params }) {
         const postFin = getObjectFromSingleElementArray(postDetail);
 
         return {
-            title: `${postFin.SEO.title} | Thanh Phat`,
+            title: `${postFin.SEO.metaTitle} | Thành Phát`,
             authors: [
                 {
-                name: 'admin' || "Thanh Phat"
+                name: 'admin' || "Thành Phát"
                 }
             ],
-            description: postFin.SEO.description,
+            description: postFin.SEO.metaDescription,
             keywords: postFin.SEO.keywords,
             openGraph: {
-                title: `${postFin.title} | Thanh Phat`,
-                description: postFin.description,
+                title: `${postFin.title} | Thành Phát`,
+                description: postFin.SEO.metaDescription,
                 type: "website",
                 url: `${process.env.NEXT_PUBLIC_URL}news/${postFin.slug}`,
                 publishedTime: postFin.created_at,
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }) {
                 tags: postFin.categories,
                 images: [
                 {
-                    url: `${process.env.NEXT_PUBLIC_API_URL}${postFin.thumbnail.url}`,
+                    url: `${process.env.NEXT_PUBLIC_API_URL}${postFin.SEO.metaImage.url}`,
                     width: 1024,
                     height: 576,
                     alt: post.title,
@@ -51,8 +51,16 @@ export async function generateMetadata({ params }) {
                 card: "summary_large_image",
                 site: "@thanhphat",
                 creator: "@thanhphat",
-                title: `${postFin.title} | thanhphat`,
+                title: `${postFin.SEO.metaSocial[1].title} | Thành Phát`,
                 description: postFin.excerpt,
+                images: [
+                    {
+                        url: `${process.env.NEXT_PUBLIC_API_URL}${postFin.SEO.metaImage.url}`,
+                        width: 1200,
+                        height: 630,
+                        alt: "thanhphat"
+                    }
+                  ]
             },
             alternates: {
                 canonical: `${process.env.NEXT_PUBLIC_URL}${postFin.slug}`

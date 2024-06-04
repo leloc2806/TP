@@ -83,12 +83,11 @@ export default async function Home() {
           <>
               <div className="relative m-0 w-full h-auto p-0">
                   <div className="relative m-0 overflow-hidden" id="home-page">
-                      <SectionComponent 
+                      <div 
                           className="home-banner relative" 
-                          translate={"translateX(-10px)"}
                       >
                           <SlideHome slides={slideData} />
-                      </SectionComponent>
+                      </div>
                       <SectionComponent 
                           className="home-intro relative"
                           translate={"translateY(200px)"}
