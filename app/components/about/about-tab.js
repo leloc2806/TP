@@ -5,7 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
 import { useState } from 'react';
-
+import rehypeRaw from 'rehype-raw';
+import remarkGfm from "remark-gfm";
+import flattenAttributes from '@/app/lib/utils';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -28,33 +30,57 @@ function OurStory({data}){
                     <span className='text-7xl'>{ourStoryTitleLeft1}</span>
                 </div>
                 <div className="right-content w-3/5">
-                    <Markdown>{ourStoryRightContent1}</Markdown>
+                    <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                    >
+                        {ourStoryRightContent1}
+                    </Markdown>
                 </div>
-                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+               
         
             </div>
-            <div className="our-philosophy flex w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
-                <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
-                    <span className='text-7xl'>{ourStoryTitleLeft2}</span>
-                </div>
-                <div className="right-content w-3/5">
-                    <Markdown>{ourStoryRightContent2}</Markdown>
-                </div>
-                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
 
-            </div>
-            <div className="our-people w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
+            {ourStoryTitleLeft2 
+            ?   (
+                <>
+                <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+                <div className="our-philosophy flex w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
+                    <div className="left-content text-[4vw] font-extralight w-2/5 pr-6">
+                        <span className='text-7xl'>{ourStoryTitleLeft2}</span>
+                    </div>
+                    <div className="right-content w-3/5">
+                        <Markdown 
+                            remarkPlugins={[remarkGfm]}
+                            rehypePlugins={[rehypeRaw]}>{ourStoryRightContent2}</Markdown>
+                    </div>
+                    <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
+
+                </div>
+                </>)
+            : ''
+            }
+
+            {ourStoryUpperTitle3
+                ? <div className="our-people w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
                 <div className="left-content text-[4vw] font-extralight pr-6 mb-20">
                     <span className='text-7xl'>{ourStoryUpperTitle3}</span>
                 </div>
                 <div className="right-content">
                     <div>
-                        <Markdown>{ourStoryBottomContent3}</Markdown>
+                        <Markdown 
+                            remarkPlugins={[remarkGfm]}
+                            rehypePlugins={[rehypeRaw]}
+                            >{ourStoryBottomContent3}</Markdown>
                     </div>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
 
             </div>
+                : ''
+            }
+            
+            
         </div>
      
     )
@@ -64,14 +90,13 @@ function OurStory({data}){
 function Award({data}){
     
     const awards = data.Award;
-
     return(
         <div className="about-award w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal py-[5vw] relative">
             <div className="list-award flex flex-wrap">
                 {awards.map((award, index) => (
                     <div key={index} className="box flex w-1/4 items-center mx-[15px] my-10">
                         <div className="pic-award w-1/4 relative">
-                            <Image className="relative block w-full h-auto" src={`${process.env.NEXT_PUBLIC_API_URL}${award.picture.data.attributes.url}`} width={142}
+                            <Image className="relative block w-full h-auto" src={`${process.env.NEXT_PUBLIC_API_URL}${award.picture.url}`} width={142}
       height={312} alt={award.Title}/>
                         </div>
                         <div className="text-award w-3/4 py-0 px-4"> <p>N.H.O</p>
@@ -100,7 +125,10 @@ function Milestone({data}){
                 </div>
                 <div className="right-content w-3/5">
                     <div className="text-field">
-                        <p>{milestoneRightContent1}</p>
+                    <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                    >{milestoneRightContent1}</Markdown>
                     </div>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
@@ -153,7 +181,10 @@ function StrategicPartner({data}){
                     <span className='text-7xl'>{ourStrategicPartnerLeftTitle1}</span>
                 </div>
                 <div className="right-content w-3/5">
-                    <Markdown>{ourStrategicPartnerRightContent1}</Markdown>
+                    <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                    >{ourStrategicPartnerRightContent1}</Markdown>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
             </div>
@@ -165,8 +196,8 @@ function StrategicPartner({data}){
                             <div className="pic-partner h-auto w-[45%] relative block">
                                 <Image 
                                     className="w-full h-auto object-left object-center"
-                                    alt={partner.LeftLogo.data.attributes.name}
-                                    src={`${process.env.NEXT_PUBLIC_API_URL}${partner.LeftLogo.data.attributes.url}`}
+                                    alt={partner.LeftLogo.name}
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}${partner.LeftLogo.url}`}
                                     width={294}
                                     height={215}
                                 />
@@ -197,88 +228,53 @@ function StrategicPartner({data}){
     )
 }
 
-export default function TabAbout({ data }) {
 
-    const [selectedIndex, setSelectedIndex] = useState(0)
+export default function TabAbout({ data }) {
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const dataTab = flattenAttributes(data);
 
     return (
-        <>
-            <Tab.Group
-                vertical
-                selectedIndex={selectedIndex}
-                onChange={setSelectedIndex}
-            >
-                <Tab.List>
-                {data[5].map((tab, index) => (
-                    <Tab 
-                    key={index}
-                    className={({selected}) => 
-                        classNames(
-                            `opacity-60 hover:opacity-100 ${index === 0 ? 'first:ml-0 my-11 mr-9' : 'my-11 mx-9'}`,
-                            selected 
-                                ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 target:opacity-100 focus-visible:content-none selected font-bold' 
-                                : ''
-                        )
-                    }
-                    >
-                        {tab}
-                    </Tab>
+        <Tab.Group
+            vertical
+            selectedIndex={selectedIndex}
+            onChange={setSelectedIndex}
+        >
+            <Tab.List>
+                {dataTab.map((tab, index) => (
+                    tab.display ? (
+                        <Tab
+                            key={index}
+                            className={({selected}) => 
+                                classNames(
+                                    `opacity-60 hover:opacity-100 ${index === 0 ? 'first:ml-0 my-11 mr-9' : 'my-11 mx-9'}`,
+                                    selected 
+                                        ? 'active:opacity-100 visited:opacity-100 focus:opacity-100 target:opacity-100 focus-visible:content-none selected font-bold' 
+                                        : ''
+                                )
+                            }
+                        >
+                            {tab.Title}
+                        </Tab>
+                    )
+                    : ''
                 ))}
-                </Tab.List>
+            </Tab.List>
 
-                
-                <Tab.Panels>
-                    <Tab.Panel>
-                        <Transition 
-                            appear show={selectedIndex == 0}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
+            <Tab.Panels>
+                {dataTab.map((tab, index) => (
+                tab.display === true && (
+                    <Tab.Panel key={index}>
+                        {index === 0 && <OurStory data={tab} />}
+                        {index === 1 && <Award data={tab} />}
+                        {index === 2 && <Milestone data={tab} />}
+                        {index === 3 && <StrategicPartner data={tab} />}
+                    </Tab.Panel>
+                )
+                ))}
+            </Tab.Panels>
 
-                            <OurStory data={data[0].data.attributes}/>
-                        </Transition>
-                    </Tab.Panel>
-                    <Tab.Panel>
-                        <Transition appear show={selectedIndex == 1}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
-                                
-                            <Award data={data[1].data.attributes}/>
-                        </Transition>
-                    </Tab.Panel>
-                    <Tab.Panel>
-                        <Transition appear show={selectedIndex == 2}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
 
-                            <Milestone data={data[2].data.attributes}/>
-                        </Transition>
-                    </Tab.Panel>
-                    <Tab.Panel>
-                        <Transition appear show={selectedIndex == 3}
-                            enter="transition-opacity duration-500"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-500"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0">
-
-                            <StrategicPartner data={data[3].data.attributes}/>
-                        </Transition>
-                    </Tab.Panel>
-                </Tab.Panels>
-            </Tab.Group>
-        </>
+        </Tab.Group>
     );
 }

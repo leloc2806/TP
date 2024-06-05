@@ -5,7 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
 import { useState } from 'react';
-
+import rehypeRaw from 'rehype-raw';
+import remarkGfm from "remark-gfm";
+import flattenAttributes from '@/app/lib/utils';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -28,7 +30,12 @@ function OurStory({data}){
                     <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{ourStoryTitleLeft1}</span>
                 </div>
                 <div className="right-content w-3/5">
-                    <Markdown>{ourStoryRightContent1}</Markdown>
+                    <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                    >
+                        {ourStoryRightContent1}
+                    </Markdown>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
         
@@ -38,7 +45,12 @@ function OurStory({data}){
                     <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{ourStoryTitleLeft2}</span>
                 </div>
                 <div className="right-content w-3/5">
-                    <Markdown>{ourStoryRightContent2}</Markdown>
+                    <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                    >
+                        {ourStoryRightContent2}
+                    </Markdown>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
 
@@ -49,7 +61,12 @@ function OurStory({data}){
                 </div>
                 <div className="right-content">
                     <div>
-                        <Markdown>{ourStoryBottomContent3}</Markdown>
+                        <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                        >
+                            {ourStoryBottomContent3}
+                        </Markdown>
                     </div>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
@@ -71,7 +88,7 @@ function Award({data}){
                 {awards.map((award, index) => (
                     <div key={index} className="box flex w-1/4 items-center mx-[15px] my-10">
                         <div className="pic-award w-1/4 relative">
-                            <Image className="relative block w-full h-auto" src={`${process.env.NEXT_PUBLIC_API_URL}${award.picture.data.attributes.url}`} width={142}
+                            <Image className="relative block w-full h-auto" src={`${process.env.NEXT_PUBLIC_API_URL}${award.picture.url}`} width={142}
       height={312} alt={award.Title}/>
                         </div>
                         <div className="text-award w-3/4 py-0 px-4"> <p>N.H.O</p>
@@ -100,7 +117,10 @@ function Milestone({data}){
                 </div>
                 <div className="right-content w-3/5">
                     <div className="text-field">
-                        <p>{milestoneRightContent1}</p>
+                    <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                    >{milestoneRightContent1}</Markdown>
                     </div>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
@@ -116,7 +136,7 @@ function Milestone({data}){
                                     <div className="pic-history pt-[25%] w-1/4 relative block">
                                         <Image
                                             className="absolute w-full h-full top-0 left-0 object-contain"
-                                            src={`${process.env.NEXT_PUBLIC_API_URL}${milestone.imageProject.data.attributes.url}`}
+                                            src={`${process.env.NEXT_PUBLIC_API_URL}${milestone.imageProject.url}`}
                                             alt={milestone.ProjectTitle}
                                             width={80}
                                             height={186}
@@ -153,7 +173,10 @@ function StrategicPartner({data}){
                     <span className='text-7xl max-[1100px]:text-[45px] max-[580px]:text-[35px]'>{ourStrategicPartnerLeftTitle1}</span>
                 </div>
                 <div className="right-content w-3/5">
-                    <Markdown>{ourStrategicPartnerRightContent1}</Markdown>
+                    <Markdown 
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw]}
+                    >{ourStrategicPartnerRightContent1}</Markdown>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-black"></span>
             </div>
@@ -165,8 +188,8 @@ function StrategicPartner({data}){
                             <div className="pic-partner h-auto w-[45%] relative block">
                                 <Image 
                                     className="w-full h-auto object-left object-center"
-                                    alt={partner.LeftLogo.data.attributes.name}
-                                    src={`${process.env.NEXT_PUBLIC_API_URL}${partner.LeftLogo.data.attributes.url}`}
+                                    alt={partner.LeftLogo.name}
+                                    src={`${process.env.NEXT_PUBLIC_API_URL}${partner.LeftLogo.url}`}
                                     width={294}
                                     height={215}
                                 />
@@ -201,6 +224,8 @@ export default function ComboBoxAbout({ data }) {
 
     const [selectedItem, setDropdown] = useState(false)
 
+    const dataTab = flattenAttributes(data)
+
     const handleClick = () => {
         setDropdown((prev) => !prev);
     }
@@ -209,7 +234,8 @@ export default function ComboBoxAbout({ data }) {
         <>
             <Tab.Group>
                 <Tab.List className="flex flex-col">
-                    {data[5].map((tab, index) => (
+                    {dataTab.map((tab, index) => (
+                        tab.display ?
                         <Tab 
                         key={index} 
                         className={({selected}) => 
@@ -223,25 +249,25 @@ export default function ComboBoxAbout({ data }) {
                         }
                         onClick={() => handleClick()}
                         >
-                            {tab}
+                            {tab.Title}
                         
                         </Tab>
+                        : ''
                     ))}
                 </Tab.List>
                 <Tab.Panels>
-                    <Tab.Panel>
-                        <OurStory data={data[0].data.attributes}/>
-                    </Tab.Panel>
-                    <Tab.Panel>
-                        <Award data={data[1].data.attributes}/>
-                    </Tab.Panel>
-                    <Tab.Panel>
-                        <Milestone data={data[2].data.attributes}/>
-                    </Tab.Panel>
-                    <Tab.Panel>
-                        <StrategicPartner data={data[3].data.attributes}/>
-                    </Tab.Panel>
+                    {dataTab.map((tab, index) => (
+                        tab.display === true && (
+                        <Tab.Panel key={index}>
+                            {index === 0 && <OurStory data={tab} />}
+                            {index === 1 && <Award data={tab} />}
+                            {index === 2 && <Milestone data={tab} />}
+                            {index === 3 && <StrategicPartner data={tab} />}
+                        </Tab.Panel>
+                        )
+                    ))}
                 </Tab.Panels>
+
             </Tab.Group>
         </>
 
