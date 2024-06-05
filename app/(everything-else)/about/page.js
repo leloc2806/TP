@@ -33,7 +33,7 @@ export const metadata = {
       site: "@thanhphat",
     },
     alternates: {
-      canonical: "https://www.nhuathanhphat.vn/"
+      canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}about`
     }
   };
 

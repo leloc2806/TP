@@ -9,7 +9,7 @@ export const metadata = {
     description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
     keywords: ["cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
     openGraph: {
-        url: "https://www.nhuathanhphat.vn/",
+        url: "https://nhuathanhphat.vn/",
         type: "website",
         title: "Nhựa Thành Phát",
         description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
@@ -22,7 +22,7 @@ export const metadata = {
         site: "@thanhphat",
     },
     alternates: {
-        canonical: "https://www.nhuathanhphat.vn/",
+        canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}contact`,
     },
 };
 

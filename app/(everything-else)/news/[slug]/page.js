@@ -33,9 +33,9 @@ export async function generateMetadata({ params }) {
                 title: `${postFin.title} | Thành Phát`,
                 description: postFin.SEO.metaDescription,
                 type: "website",
-                url: `${process.env.NEXT_PUBLIC_URL}news/${postFin.slug}`,
+                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}news/${postFin.slug}`,
                 publishedTime: postFin.created_at,
-                authors: [`${process.env.NEXT_PUBLIC_URL}/about`],
+                authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
                 tags: postFin.categories,
                 images: [
                 {
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }) {
                   ]
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_URL}${postFin.slug}`
+                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}${postFin.slug}`
             }
         };
     } catch (error) {

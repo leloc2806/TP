@@ -14,7 +14,7 @@ export const metadata = {
     
       ],
       openGraph: {
-        url: "https://www.nhuathanhphat.vn/",
+        url: "https://nhuathanhphat.vn/",
         type: "article",
         title: "Công ty cổ phần năng lượng Thành Phát",
         description:
@@ -29,7 +29,7 @@ export const metadata = {
         site: "@thanhphat",
       },
       alternates: {
-        canonical: "https://www.nhuathanhphat.vn/"
+        canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}news`
       }
   };
 export default function NewsLayout({ children }) {

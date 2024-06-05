@@ -31,9 +31,9 @@ export async function generateMetadata({ params }) {
                 title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | Thanh Phat`,
                 description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
                 type: "website",
-                url: `${process.env.NEXT_PUBLIC_URL}product/${params.productId}/${productD.slug}`,
+                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${params.productId}/${productD.slug}`,
                 publishedTime: productD.created_at,
-                authors: [`${process.env.NEXT_PUBLIC_URL}/about`],
+                authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
                 tags: productD.categories,
                 images: [
                     {
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }) {
                 description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_URL}/product/${productD.categories}/${productD.slug}`
+                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${productD.categories}/${productD.slug}`
             }
         };
     } catch (error) {

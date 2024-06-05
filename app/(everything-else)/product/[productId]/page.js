@@ -5,52 +5,55 @@ import flattenAttributes from "@/app/lib/utils";
 export async function generateMetadata({ params }) {
     try {
         const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,2&filters[slug][$eq]=${params.productId}`, 
+            `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,2&filters[slug][$eq]=${params.productId}`,
         );
         if (!res.ok) {
             throw new Error("Failed to fetch data");
         }
         const post = await res.json();
 
-        let productCat = flattenAttributes(post.data[0])
+        let productCat = flattenAttributes(post.data[0]);
 
+        const metaTitle = productCat.SEO?.metaTitle || productCat.name;
+        const metaDescription = productCat.SEO?.metaDescription || productCat.description;
+        const metaImage = productCat.SEO?.metaImage?.url || productCat.picture.url;
 
         return {
-            title: `${productCat.name} | Thanh Phat`,
+            title: `${metaTitle} | Thanh Phat`,
             authors: [
                 {
-                name: 'admin' || "Thanh Phat"
+                    name: 'admin' || "Thanh Phat"
                 }
             ],
-            description: productCat.description,
+            description: metaDescription,
             keywords: productCat.keywords,
             openGraph: {
-                title: `${productCat.name} | Thanh Phat`,
-                description: productCat.description,
+                title: `${metaTitle} | Thanh Phat`,
+                description: metaDescription,
                 type: "website",
-                url: `${process.env.NEXT_PUBLIC_URL}product/${productCat.slug}`,
+                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${productCat.slug}`,
                 publishedTime: productCat.created_at,
-                authors: [`${process.env.NEXT_PUBLIC_URL}/about`],
+                authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
                 tags: productCat.categories,
                 images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_API_URL}${productCat.picture.url}`,
-                    width: 1024,
-                    height: 576,
-                    alt: post.title,
-                    type: "image/jpg"
-                }
+                    {
+                        url: `${process.env.NEXT_PUBLIC_API_URL}${metaImage}`,
+                        width: 1024,
+                        height: 576,
+                        alt: post.title,
+                        type: "image/jpg"
+                    }
                 ]
             },
             twitter: {
                 card: "summary_large_image",
                 site: "@thanhphat",
                 creator: "@thanhphat",
-                title: `${productCat.name} | thanhphat`,
-                description: productCat.description,
+                title: `${metaTitle} | thanhphat`,
+                description: metaDescription,
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_URL}${productCat.slug}`
+                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}${productCat.slug}`
             }
         };
     } catch (error) {

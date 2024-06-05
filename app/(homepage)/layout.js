@@ -14,7 +14,7 @@ const roboto = Roboto({
 export const metadata = {
   title: "Nhua Thanh Phat",
   description: "Nhua Thanh Phat",
-  metadataBase: new URL("https://www.nhuathanhphat.vn/"),
+  metadataBase: new URL("https://nhuathanhphat.vn/"),
   openGraph: {
     siteName: "Nhua Thanh Phat",
     type: "website",
@@ -30,7 +30,7 @@ export const metadata = {
   },
   alternates: {
     types: {
-      "application/rss+xml": "https://www.nhuathanhphat.vn/rss.xml"
+      "application/rss+xml": "https://nhuathanhphat.vn/rss.xml"
     }
   },
   applicationName: "Nhua Thanh Phat",
@@ -47,87 +47,6 @@ export const metadata = {
       "facebook-domain-verification": ["YOUR_DATA"]
     }
   },
-  icons: {
-    icon: [
-      {
-        url: "/favicon.ico",
-        type: "image/x-icon"
-      },
-      {
-        url: "/favicon-16x16.png",
-        sizes: "16x16",
-        type: "image/png"
-      },
-      {
-        url: "/favicon-32x32.png",
-        sizes: "32x32",
-        type: "image/png"
-      },
-      {
-        url: "/favicon-96x96.png",
-        sizes: "96x96",
-        type: "image/png"
-      },
-      {
-        url: "/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png"
-      }
-    ],
-    shortcut: [
-      {
-        url: "/favicon.ico",
-        type: "image/x-icon"
-      }
-    ],
-    apple: [
-      {
-        url: "/apple-icon-57x57.png",
-        sizes: "57x57",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-60x60.png",
-        sizes: "60x60",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-72x72.png",
-        sizes: "72x72",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-76x76.png",
-        sizes: "76x76",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-114x114.png",
-        sizes: "114x114",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-120x120.png",
-        sizes: "120x120",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-144x144.png",
-        sizes: "144x144",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-152x152.png",
-        sizes: "152x152",
-        type: "image/png"
-      },
-      {
-        url: "/apple-icon-180x180.png",
-        sizes: "180x180",
-        type: "image/png"
-      }
-    ]
-  }
 };
 
 function Loading() {
