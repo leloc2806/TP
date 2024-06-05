@@ -19,41 +19,41 @@ export async function generateMetadata({ params }) {
         const productD = getObjectFromSingleElementArray(produc);
 
         return {
-            title: `${productD.title} | Thanh Phat`,
+            title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | Thanh Phat`,
             authors: [
                 {
-                name: 'admin' || "Thanh Phat"
+                    name: productD.SEO ? 'admin' : 'Thanh Phat'
                 }
             ],
-            description: productD.description || productD.SEO.metaDescription,
+            description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
             keywords: productD.keywords,
             openGraph: {
-                title: `${productD.title} | Thanh Phat`,
-                description: productD.description,
+                title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | Thanh Phat`,
+                description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
                 type: "website",
                 url: `${process.env.NEXT_PUBLIC_URL}product/${params.productId}/${productD.slug}`,
                 publishedTime: productD.created_at,
                 authors: [`${process.env.NEXT_PUBLIC_URL}/about`],
                 tags: productD.categories,
                 images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_API_URL}${productD.thumbnail.url}`,
-                    width: 1024,
-                    height: 576,
-                    alt: post.title,
-                    type: "image/jpg"
-                }
+                    {
+                        url: `${process.env.NEXT_PUBLIC_API_URL}${productD.SEO ? (productD.SEO.metaImage.url) : productD.thumbnail.url}`,
+                        width: 1024,
+                        height: 576,
+                        alt: post.title,
+                        type: "image/jpg"
+                    }
                 ]
             },
             twitter: {
                 card: "summary_large_image",
                 site: "@thanhphat",
                 creator: "@thanhphat",
-                title: `${productD.title} | thanhphat`,
-                description: productD.excerpt,
+                title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | thanhphat`,
+                description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_URL}${productD.slug}`
+                canonical: `${process.env.NEXT_PUBLIC_URL}/product/${productD.categories}/${productD.slug}`
             }
         };
     } catch (error) {
