@@ -47,6 +47,14 @@ export const metadata = {
       "facebook-domain-verification": ["YOUR_DATA"]
     }
   },
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon"
+      },
+    ],
+  }
 };
 
 function Loading() {
