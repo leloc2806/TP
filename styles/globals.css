@@ -85,6 +85,10 @@
     --widthmenu: 38vw;
 }
 
+.no-doc-scroll {
+    overflow:hidden;
+}
+
 html{
     font-size: 1vw;
 }

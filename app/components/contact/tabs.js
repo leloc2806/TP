@@ -9,6 +9,10 @@ const locations = [
   // Add more locations as needed
 ];
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
 export default function Tabs({ onSelect }) {
   return (
     <Tab.Group>
@@ -16,32 +20,30 @@ export default function Tabs({ onSelect }) {
         {locations.map((location) => (
           <Tab
             key={location.name}
+            onClick={() => onSelect(location.center)}
             className={({ selected }) =>
-              selected
-                ? 'p-[25px] leading-5 font-medium bg-[var(--bgactive)] text-[var(--color-white)] text-left'
-                : 'p-[25px] leading-5 font-medium text-[var(--bgactive)] text-left'
+              classNames(
+                'p-[25px] leading-5 font-medium text-left',
+                selected ? 'bg-[var(--bgactive)] text-[var(--color-white)]' : 'text-[var(--bgactive)]'
+              )
             }
           >
-            <>    
-                <h3 className={'mb-[10px]'}>Trụ sở chính</h3>
-                <div>
-                    <p>{location.name}</p>
-                </div>
-                <div>
-                    <Link href={`tel:${location.phone}`}>{location.phone}</Link>
-                </div>
+            <>
+              <h3 className="mb-[10px]">Trụ sở chính</h3>
+              <div>
+                <p>{location.name}</p>
+              </div>
+              <div>
+                <Link href={`tel:${location.phone}`}>{location.phone}</Link>
+              </div>
             </>
           </Tab>
         ))}
       </Tab.List>
+      {/* Hidden Tab.Panels to avoid React state updates during rendering */}
       <Tab.Panels className="hidden">
         {locations.map((location) => (
-          <Tab.Panel key={location.name}>
-            {() => {
-              onSelect(location.center);
-              return null;
-            }}
-          </Tab.Panel>
+          <Tab.Panel key={location.name} />
         ))}
       </Tab.Panels>
     </Tab.Group>

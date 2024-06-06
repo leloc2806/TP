@@ -20,8 +20,8 @@ export default function NavigationMenu({Email}){
 
     useEffect(() => {
         showNavBar
-          ? (document.body.style.overflow = 'hidden')
-          : (document.body.style.overflow = 'auto');
+          ? (document.documentElement.classList.add('no-doc-scroll'))
+          : (document.documentElement.classList.remove('no-doc-scroll'));
       }, [showNavBar]);
       
     const handleOutsideClick = (e) => {
