@@ -2632,6 +2632,11 @@ img.trans-y {
     max-width: 100%;
 }
 
+.products-detail-page .product-info .markdown p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 @media screen and (min-width: 768px) {
     .products-detail-page .product-gallery{
         flex: 0 0 45%;
