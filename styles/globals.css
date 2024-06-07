@@ -2121,6 +2121,7 @@ img.trans-y {
     transform: translateX(-120%);
 }
 
+.pagination-bullet,
 .products-detail-page .swiper-pagination-bullet,
 .news-detail-page .swiper-pagination-bullet{
     width: 1.8rem;
@@ -2147,6 +2148,7 @@ img.trans-y {
     margin: 1rem 0;
 }
 
+.pagination-bullet-active,
 .products-detail-page .swiper-pagination-bullet-active,
 .news-detail-page .swiper-pagination-bullet-active{
     background: var(--bgactive);
@@ -2155,6 +2157,7 @@ img.trans-y {
     transform: none;
 }
 
+.pagination::before,
 .products-detail-page .swiper-pagination::before,
 .news-detail-page .swiper-pagination::before{
     content: "Trang:";
@@ -2654,6 +2657,12 @@ img.trans-y {
 
     .box-footer .company-address{
         font-size: 16px;
+    }
+
+    .pagination-bullet{
+        width: 40px!important;
+        height: 40px!important;
+        font-size: 14px!important;
     }
 }
 
@@ -3507,6 +3516,7 @@ img.trans-y {
         margin: 0 0 20px;
     }
 
+    .pagination-bullet,
     .products-detail-page .swiper-pagination-bullet,
     .news-detail-page .swiper-pagination-bullet{
         width: 27px;
@@ -4040,6 +4050,13 @@ img.trans-y {
     /* .news-detail-page .item-news.current{
         display: none;
     } */
+
+    .pagination-bullet{
+        width: 20px!important;
+        height: 20px!important;
+        font-size: 9px!important;
+        padding: 0!important;
+    }
 
 }
 
