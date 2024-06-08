@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 
-const ProductList = ({ params, data, currentPage, pageSize }) => {
+const ProductList = ({ params, data, currentPage, pageSize, title }) => {
     const [productCategory, setProductCategory] = useState(data);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -28,14 +28,13 @@ const ProductList = ({ params, data, currentPage, pageSize }) => {
         return <div>Loading...</div>;
     }
 
-    const detailCategoryData = productCategory.data[0].attributes.product_category.data.attributes;
     const detailData = productCategory.data
 
     return (
         <div className="relative m-0 product-cat-page">
             <div className="title-page block relative h-auto w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-[5vw] pt-[13rem] px-[0rem] pb-[3rem] max-[1100px]:pt-[160px] max-[1100px]:pb-[20px] max-[580px]:pt-[120px]">
                 <div className="relative block w-full h-auto overflow-hidden">
-                    <h1 className="text-[4vw] font-normal relative block">{detailCategoryData.name}</h1>
+                    <h1 className="text-[4vw] font-normal relative block">{title}</h1>
                 </div>
                 <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
             </div>
@@ -69,17 +68,21 @@ const ProductList = ({ params, data, currentPage, pageSize }) => {
                                         </Link>
                                     ))}
                             </div>
-                            <div className="pagination relative my-[20px]">
-                            {[...Array(totalPages)].map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => handlePageChange(index + 1)}
-                                    className={`pagination-bullet ${index + 1 === currentPage ? 'pagination-bullet-active' : ''}`}
-                                >
-                                    {index < 9 ? `0${index + 1}` : index + 1}
-                                </button>
-                            ))}
-                            </div>
+                            {totalPages > 1 
+                                ? <div className="pagination relative my-[20px]">
+                                {[...Array(totalPages)].map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => handlePageChange(index + 1)}
+                                        className={`pagination-bullet ${index + 1 === currentPage ? 'pagination-bullet-active' : ''}`}
+                                    >
+                                        {index < 9 ? `0${index + 1}` : index + 1}
+                                    </button>
+                                ))}
+                                </div>
+                                : ''
+                            }
+                            
                         </div>
                     </div>
                 </div>

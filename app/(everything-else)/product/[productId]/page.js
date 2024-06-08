@@ -1,9 +1,8 @@
-import Link from "next/link";
-import Image from "next/image";
+
 import flattenAttributes from "@/app/lib/utils";
 import ProductList from "@/app/components/product/ProductList";
 
-export async function generateMetadata({ params }) {
+async function getCategoryProductTitle(params) {
     try {
         const res = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/api/product-categories?populate=deep,2&filters[slug][$eq]=${params.productId}`,
@@ -11,7 +10,16 @@ export async function generateMetadata({ params }) {
         if (!res.ok) {
             throw new Error("Failed to fetch data");
         }
-        const post = await res.json();
+        return await res.json();
+    } catch (error) {
+        console.error("Error fetching product data:", error.message);
+        throw error; // Re-throw the error to be handled by the caller if needed
+    }
+}
+
+export async function generateMetadata({ params }) {
+    try {
+        const post = await getCategoryProductTitle(params);
 
         let productCat = flattenAttributes(post.data[0]);
 
@@ -54,16 +62,14 @@ export async function generateMetadata({ params }) {
                 description: metaDescription,
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}${productCat.slug}`
+                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${productCat.slug}`
             }
         };
     } catch (error) {
-        // Handle errors here, such as logging or displaying an error message
         console.error("Error fetching product data:", error.message);
-        throw error; // Re-throw the error to be handled by the caller if needed
+        throw error;
     }
 }
-
 
 async function getProductCategory({ params, page = 1, pageSize = 9 }) {
     try{
@@ -90,8 +96,10 @@ export default async function ProductId({ params, searchParams }) {
     const pageSize = 9;
 
     const data = await getProductCategory({ params, page, pageSize });
+    const titleCategoryProduct = await getCategoryProductTitle(params)
+    const title= titleCategoryProduct.data[0].attributes.name
 
     return (
-        <ProductList params={params} data={data} currentPage={parseInt(page)} pageSize={pageSize} />
+        <ProductList params={params} data={data} currentPage={parseInt(page)} title={title} pageSize={pageSize} />
     );
-}
+}   
