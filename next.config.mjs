@@ -2,7 +2,6 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['admin.nhuathanhphat.vn'],
         remotePatterns: [
             {
                 protocol: "https",
