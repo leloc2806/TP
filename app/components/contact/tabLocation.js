@@ -10,11 +10,11 @@ export default function MapTabs() {
     const [center, setCenter] = useState(initialCenter);
 
     return (
-        <div className="flex">
-            <div className="flex-1">
+        <div className="flex max-[680px]:block">
+            <div className="flex-1 h-[75vh] max-[1100px]:h-[80vh]">
                 <GoogleMap center={center} />
             </div>
-            <div className="w-2/5 overflow-x-hidden overflow-y-auto list-view">
+            <div className="w-2/5 max-[680px]:w-full h-[75vh] max-[1100px]:h-[80vh] overflow-x-hidden overflow-y-auto list-view">
                 <Tabs onSelect={setCenter} />
             </div>
         </div>

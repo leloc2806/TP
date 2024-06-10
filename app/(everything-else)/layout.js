@@ -12,11 +12,11 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Nhua Thanh Phat",
-  description: "Nhua Thanh Phat",
+  title: "Công ty Cổ phần Nhựa Thành Phát",
+  description: "Công ty Cổ phần Nhựa Thành Phát",
   metadataBase: new URL("https://nhuathanhphat.vn/"),
   openGraph: {
-    siteName: "Nhua Thanh Phat",
+    siteName: "Công ty Cổ phần Nhựa Thành Phát",
     type: "website",
   },
   robots: {
@@ -32,9 +32,9 @@ export const metadata = {
       "application/rss+xml": "https://nhuathanhphat.vn/rss.xml"
     }
   },
-  applicationName: "Nhua Thanh Phat",
+  applicationName: "Công ty Cổ phần Nhựa Thành Phát",
   appleWebApp: {
-    title: "Nhua Thanh Phat",
+    title: "Công ty Cổ phần Nhựa Thành Phát",
     statusBarStyle: "default",
     capable: true
   },
