@@ -44,7 +44,7 @@ export default async function Footer() {
                                                 </g>
                                         </svg>
                                     </span> 
-                                    <a href="tel:+84-99-9999-9999">{social.Phone}</a> 
+                                    <Link href={`tel:${social.Phone}`}>{social.Phone}</Link> 
                                 </li>   
                                 <li>
                                     <span className="email">

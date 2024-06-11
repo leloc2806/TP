@@ -47,7 +47,7 @@ export default function SearchComponent({ show, display }) {
                                 <input 
                                     type="text" 
                                     {...register("searchQuery", { 
-                                        required: "Search query is required", 
+                                        required: "Hãy nhập nội dung tìm kiếm", 
                                         validate: (value) => value.trim() !== "" || "Không được để trống",
                                         pattern: {
                                             value: /^[a-zA-Z0-9\s]*$/,
