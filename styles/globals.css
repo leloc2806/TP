@@ -1802,7 +1802,7 @@ img.trans-y {
 .item-product-category::after,
 .collection-box::after {
     content: '';
-    background: var(--bg-gradient);
+    background: var(--bg-banner);
     height: 100%;
     z-index: 1;
     opacity: 1;
