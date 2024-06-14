@@ -1,10 +1,12 @@
+// app/layout.js
 import { Roboto } from "next/font/google";
 import "@/styles/globals.css";
+import 'nprogress/nprogress.css'; // Import the nprogress CSS
 import Providers from "@/app/query_provider";
 import Footer from "../components/footer";
 import SideHeader from "../components/sideHeader";
-import { Suspense } from "react";
 import Social from "../components/social";
+import { Suspense } from "react";
 
 const roboto = Roboto({ 
   subsets: ["latin"],
@@ -84,14 +86,14 @@ function Loading() {
 }
 
 export default function PageLayout({ children }) {
-  return (
+  return (  
     <html lang="en" className="scroll-smooth">
       <body className={roboto.className}>
         <Suspense fallback={<Loading />}>
           <Providers>
             <SideHeader />
             <main>{children}</main>
-            <Social/>
+            <Social />
             <Footer />
           </Providers>
         </Suspense>
