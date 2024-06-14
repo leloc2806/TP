@@ -14,7 +14,7 @@ export default function Providers({children}){
             <ProgressBar
                 color="#29D"
                 startPosition={0.3}
-                stopDelayMs={200}
+                stopDelayMs={250}
                 height={3}
                 showOnShallow={true}
                 options={{ showSpinner: false }}
