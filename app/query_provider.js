@@ -15,7 +15,7 @@ export default function Providers({children}){
                 color="#29D"
                 startPosition={0.3}
                 stopDelayMs={250}
-                height={3}
+                height={10}
                 showOnShallow={true}
                 options={{ showSpinner: false }}
                 shallowRouting={true}
