@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
                 }
             ],
             description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
-            keywords: productD.keywords,
+            keywords: productD.SEO.keywords ? productD.SEO.keywords : '',
             openGraph: {
                 title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | Thanh Phat`,
                 description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),

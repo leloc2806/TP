@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
                 }
             ],
             description: postFin.SEO.metaDescription,
-            keywords: postFin.SEO.keywords,
+            keywords: postFin.SEO.keywords ? postFin.SEO.keywords : '',
             openGraph: {
                 title: `${postFin.title} | Thành Phát`,
                 description: postFin.SEO.metaDescription,
