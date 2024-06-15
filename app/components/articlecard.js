@@ -15,7 +15,7 @@ export default function ArticleCard({post, url, width, height, slug}){
 
         <>
             
-            <Link href={`/news/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
+            <Link href={`/tin-tuc/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
 
                 <div className="pic-news relative">
                     <div className="pic-img pt-[60%] relative block w-full h-auto overflow-hidden">

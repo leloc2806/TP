@@ -117,7 +117,7 @@ export default async function Home() {
                                   <div className="ani-view-details">
                                       <Link
                                           className="view-details dark sticky-button detect-on-view is-inview relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-[4rem] h-[4rem]"
-                                          href="/about"
+                                          href="/gioi-thieu"
                                           replace
                                       >
                                           <svg className="w_100 h_100" viewBox="0 0 80 80">
@@ -178,7 +178,7 @@ export default async function Home() {
                                               <a 
                                                   className="link-load" 
                                                   aria-label="view" 
-                                                  href={`/news/${article.slug}`}
+                                                  href={`/tin-tuc/${article.slug}`}
                                               ></a>
                                           </div>  
                                       ))}  
@@ -187,7 +187,7 @@ export default async function Home() {
                               <div className="ani-view-details">
                                   <Link
                                       className="view-details dark sticky-button detect-on-view is-inview relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-[5rem] h-[5rem]"
-                                      href="/news"
+                                      href="/tin-tuc"
                                   >
                                       <svg className="w_100 h_100" viewBox="0 0 80 80">
                                           <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>

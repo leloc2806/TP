@@ -104,7 +104,7 @@ export default async function Footer() {
                             <ul>
                                 <li><Link className="link-load link-footer" href={"/"}>Trang chủ</Link></li>
                                 <li><Link className="link-load link-footer" href={"/product"}>Dự án</Link></li>
-                                <li><Link className="link-load link-footer" href={"/news"}>Tin tức</Link></li>
+                                <li><Link className="link-load link-footer" href={"/tin-tuc"}>Tin tức</Link></li>
                                 <li><Link className="link-load link-footer" href={"/about"}>Giới thiệu</Link></li>
                             </ul>
                         </div>

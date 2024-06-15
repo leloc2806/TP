@@ -55,7 +55,7 @@ function FeatureNew({data}){
                 <div className="title-post relative inline-block w-auto mx-0 mt-0 mb-8 h-auto text-[var(--bgactive)]">
                     <h2 className="inline-block relative font-normal text-titleMedium">Nổi bật</h2>
                 </div>
-                <Link href={`/news/${featureItem.slug}`} className="relative flex flex-row-reverse w-full mt-[-100px] mb-0 mx-0 p-0 cursor-pointer feateured-item">
+                <Link href={`/tin-tuc/${featureItem.slug}`} className="relative flex flex-row-reverse w-full mt-[-100px] mb-0 mx-0 p-0 cursor-pointer feateured-item">
                     <div className="pic-news w-1/2 relative">
                         <div className="pic-img p-0 h-full relative block w-full overflow-hidden">
                             <Image

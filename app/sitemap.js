@@ -1,31 +1,31 @@
 export default function sitemap() {
     return [
       {
-        url: 'https://www.nhuathanhphat.vn/',
+        url: 'https://nhuathanhphat.vn/',
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.5,
       },
       {
-        url: 'https://www.nhuathanhphat.vn/about',
+        url: 'https://nhuathanhphat.vn/gioi-thieu',
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.5,
       },
       {
-        url: 'https://www.nhuathanhphat.vn/news',
+        url: 'https://nhuathanhphat.vn/tin-tuc',
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.5,
       },
       {
-        url: 'https://www.nhuathanhphat.vn/product',
+        url: 'https://nhuathanhphat.vn/san-pham',
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.5,
       },
       {
-        url: 'https://www.nhuathanhphat.vn/contact',
+        url: 'https://nhuathanhphat.vn/lien-he',
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: 0.5,

@@ -73,17 +73,17 @@ export default function NavigationMenu({Email}){
                                 </svg>
                             </Link>
                         </li>
-                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/product`} onClick={toggleMenu} prefetch={null}>Sản phẩm</Link></li>
-                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/news`} onClick={toggleMenu} prefetch={null}>Tin tức</Link></li>
-                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/about`} onClick={toggleMenu} prefetch={null}>Giới thiệu</Link></li>
-                        <li className="nav-item small-nav-item first-small"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/contact`} onClick={toggleMenu} prefetch={null}>Liên hệ</Link></li>
+                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/san-pham`} onClick={toggleMenu} prefetch={null}>Sản phẩm</Link></li>
+                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/tin-tuc`} onClick={toggleMenu} prefetch={null}>Tin tức</Link></li>
+                        <li className="nav-item"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/gioi-thieu`} onClick={toggleMenu} prefetch={null}>Giới thiệu</Link></li>
+                        <li className="nav-item small-nav-item first-small"><Link className={`link-load nav-item-a${showNavBar ? ' animation-menu' : ' animation-menu-showup'}`} href={`/lien-he`} onClick={toggleMenu} prefetch={null}>Liên hệ</Link></li>
                     </ul>
                 </nav>
                 <div className={`overlay-menu${showNavBar ? ' show opacity-1' : ''}`}></div>
                 <div 
                     className={`right-header right-header-clone${showNavBar ? ' animation-menu' : ' animation-menu-showdown'}`}
                 >
-                    <Link className="hotline-contacts link-load" href={`/contact`} prefetch={null}>
+                    <Link className="hotline-contacts link-load" href={`/lien-he`} prefetch={null}>
                         <svg 
                         className={
                             "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px] mr-[10px]"
@@ -145,7 +145,7 @@ export default function NavigationMenu({Email}){
             </div>
 
             <div className="right-header right-header-main flex">
-                <Link className="hotline-contacts link-load" href={`/contact`}>
+                <Link className="hotline-contacts link-load" href={`/lien-he`}>
                     <svg 
                         className={
                             "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px] mr-[10px]"

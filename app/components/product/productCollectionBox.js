@@ -8,7 +8,7 @@ export default function CollectionBox({category, className}){
 
     return (
         <div className={`collection-box ${className}`}>
-            <Link className="link-load" href={`/product?tab=${categoryIndex}`}/>
+            <Link className="link-load" href={`/san-pham?tab=${categoryIndex}`}/>
             <div className="pic-img pic-collection">
                 {
                     category.Image && category.Image.url

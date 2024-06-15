@@ -60,7 +60,7 @@ export default function CategoryProductComboBox({categories}){
                                     leaveTo="opacity-0">
                                     <div className='load-news-list relative w-full h-auto flex flex-wrap'>
                                         {category.product_categories.data.map((catProduct) => ( 
-                                            <Link key={catProduct.id} className='item-product-category relative block' href={`/product/${catProduct.slug}`}>
+                                            <Link key={catProduct.id} className='item-product-category relative block' href={`/san-pham/${catProduct.slug}`}>
                                                 <div className="product-category-pic relative">
                                                     <div className="wrap-product-category-pic relative">
                                                         <div className="pic-img relative">

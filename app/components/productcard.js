@@ -6,7 +6,7 @@ export default function ProductCard({post, url, width, height, slug}){
     return (
         <>
             
-            <Link href={`/product/${post.product_category.slug}/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
+            <Link href={`/san-pham/${post.product_category.slug}/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
 
                 <div className="pic-news relative">
                     <div className="pic-img pt-[60%] relative block w-full h-auto overflow-hidden">

@@ -21,7 +21,7 @@ const ProductList = ({ params, data, currentPage, pageSize, title }) => {
         const newData = await res.json();
         setProductCategory(newData);
         setIsLoading(false);
-        router.push(`/product/${params.productId}?page=${page}`);
+        router.push(`/san-pham/${params.productId}?page=${page}`);
     };
 
     if (isLoading) {
@@ -47,7 +47,7 @@ const ProductList = ({ params, data, currentPage, pageSize, title }) => {
                                 {detailData
                                     .sort((a, b) => new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt))
                                     .map((product) => (
-                                        <Link key={product.id} className='item-product-category relative block' href={`/product/${params.productId}/${product.attributes.slug}`}>
+                                        <Link key={product.id} className='item-product-category relative block' href={`/san-pham/${params.productId}/${product.attributes.slug}`}>
                                             <div className="product-category-pic relative">
                                                 <div className="wrap-product-category-pic relative">
                                                     <div className="pic-img relative">
