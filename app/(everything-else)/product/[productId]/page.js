@@ -1,7 +1,7 @@
-
 import flattenAttributes from "@/app/lib/utils";
 import ProductList from "@/app/components/product/ProductList";
 
+// Fetch category product title data
 async function getCategoryProductTitle(params) {
     try {
         const res = await fetch(
@@ -13,19 +13,19 @@ async function getCategoryProductTitle(params) {
         return await res.json();
     } catch (error) {
         console.error("Error fetching product data:", error.message);
-        throw error; // Re-throw the error to be handled by the caller if needed
+        throw error;
     }
 }
 
+// Generate metadata for the page
 export async function generateMetadata({ params }) {
     try {
         const post = await getCategoryProductTitle(params);
-
         let productCat = flattenAttributes(post.data[0]);
 
         const metaTitle = productCat.SEO?.metaTitle || productCat.name;
         const metaDescription = productCat.SEO?.metaDescription || productCat.description;
-        const metaImage = productCat.SEO?.metaImage?.url || productCat.picture.url;
+        const metaImage = productCat.SEO?.metaImage?.url || productCat.picture?.url || '';
 
         return {
             title: `${metaTitle} | Thanh Phat`,
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
                 }
             ],
             description: metaDescription,
-            keywords: productCat.SEO.keywords ? productCat.SEO.keywords : '',
+            keywords: productCat.SEO?.keywords || '',
             openGraph: {
                 title: `${metaTitle} | Thanh Phat`,
                 description: metaDescription,
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }) {
                         url: `${process.env.NEXT_PUBLIC_API_URL}${metaImage}`,
                         width: 1024,
                         height: 576,
-                        alt: post.title,
+                        alt: metaTitle,
                         type: "image/jpg"
                     }
                 ]
@@ -66,40 +66,43 @@ export async function generateMetadata({ params }) {
             }
         };
     } catch (error) {
-        console.error("Error fetching product data:", error.message);
+        console.error("Error generating metadata:", error.message);
         throw error;
     }
 }
 
+// Fetch products by category
 async function getProductCategory({ params, page = 1, pageSize = 9 }) {
-    try{
+    try {
         const res = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,3&filters[product_category][slug][$eq]=${params.productId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`, { cache: 'no-store' }
+            `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,3&filters[product_category][slug][$eq]=${params.productId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
+            { cache: 'no-store' }
         );
         if (!res.ok) {
             throw new Error("Failed to fetch data");
         }
         return res.json();
-    }
-    catch(error){
-        // Handle errors here, such as logging or displaying an error message
+    } catch (error) {
         console.error("Error fetching product data:", error.message);
-        throw error; // Re-throw the error to be handled by the caller if needed
+        throw error;
     }
 }
 
-
-
-
+// Main component to display products by category
 export default async function ProductId({ params, searchParams }) {
     const page = searchParams.page || 1;
     const pageSize = 9;
 
-    const data = await getProductCategory({ params, page, pageSize });
-    const titleCategoryProduct = await getCategoryProductTitle(params)
-    const title= titleCategoryProduct.data[0].attributes.name
+    try {
+        const data = await getProductCategory({ params, page, pageSize });
+        const titleCategoryProduct = await getCategoryProductTitle(params);
+        const title = titleCategoryProduct.data[0].attributes.name;
 
-    return (
-        <ProductList params={params} data={data} currentPage={parseInt(page)} title={title} pageSize={pageSize} />
-    );
-}   
+        return (
+            <ProductList params={params} data={data} currentPage={parseInt(page)} title={title} pageSize={pageSize} />
+        );
+    } catch (error) {
+        console.error("Error in ProductId component:", error.message);
+        return <div>Error loading products. Please try again later.</div>;
+    }
+}

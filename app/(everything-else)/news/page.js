@@ -41,6 +41,14 @@ function FeatureNew({data}){
 
     const featureItem = data;
 
+    const formatDate = (timestamp) => {
+        const date = new Date(timestamp);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    };
+
     return (
         <div className="feature-new relative">
             <div className="w-[80vw] max-[1100px]:w-[90vw] mx-auto font-normal text-xl z-10 py-[5vw] max-[1100px]:pt-[20px] max-[950px]:pt-[40px] px-0 relative">
@@ -60,7 +68,7 @@ function FeatureNew({data}){
                         </div>
                     </div>
                     <div className="txt-news w-1/2 pt-28 pr-20 pb-0 pl-0 relative text-[var(--bgactive)]">
-                        <div className="date-thumb relative h-auto my-[15px] mx-0 text-[var(--color-black40)] font-medium text-xs text-left">by admin | Mar 25, 2024</div>
+                        <div className="date-thumb relative h-auto my-[15px] mx-0 text-[var(--color-black40)] font-medium text-xs text-left">by admin | {formatDate(featureItem.createdAt)}</div>
                         <h3 className="text-[var(--color-black80) text-3xl relative font-normal mb-4 mx-0 mt-0 line-clamp-2">
                             {featureItem.title}
                         </h3>

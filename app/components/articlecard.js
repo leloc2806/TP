@@ -2,8 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ArticleCard({post, url, width, height, slug}){
+    const formatDate = (timestamp) => {
+        const date = new Date(timestamp);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    };
 
     return (
+
+
         <>
             
             <Link href={`/news/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
@@ -25,7 +34,7 @@ export default function ArticleCard({post, url, width, height, slug}){
                     </div>
                 </div>
                 <div className="txt-news relative block w-full h-auto text-[var(--bgactive)] pt-[0.5rem] pr-[10px] pb-0 pl-0">
-                    <div className="date-thumb">by admin | {post.date} </div>
+                    <div className="date-thumb">by admin | {formatDate(post.createdAt)} </div>
                     <h3 className="line-clamp-3 overflow-hidden text-ellipsis uppercase">{post.title}</h3>
                 </div>
                 <div className="view-more absolute bottom-0 left-0 inline-block my-8 mx-0">

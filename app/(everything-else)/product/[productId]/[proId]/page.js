@@ -7,6 +7,12 @@ import remarkGfm from "remark-gfm";
 import ProductSlider from "@/app/components/product/productSlider";
 import ProductImageSlider from "@/app/components/product/ImageProductSlide";
 
+// Helper function to extract single element array
+function getObjectFromSingleElementArray(array) {
+    return Array.isArray(array) && array.length === 1 ? array[0] : null;
+}
+
+// Generate metadata for the page
 export async function generateMetadata({ params }) {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=deep,3&filters[slug][$eq]=${params.proId}`, { next: { revalidate: 60 } });
@@ -19,17 +25,17 @@ export async function generateMetadata({ params }) {
         const productD = getObjectFromSingleElementArray(produc);
 
         return {
-            title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | Thanh Phat`,
+            title: `${productD.SEO?.metaTitle || productD.title} | Thanh Phat`,
             authors: [
                 {
                     name: productD.SEO ? 'admin' : 'Thanh Phat'
                 }
             ],
-            description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
-            keywords: productD.SEO.keywords ? productD.SEO.keywords : '',
+            description: productD.SEO?.metaDescription || productD.excerpt || productD.description,
+            keywords: productD.SEO?.keywords || '',
             openGraph: {
-                title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | Thanh Phat`,
-                description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
+                title: `${productD.SEO?.metaTitle || productD.title} | Thanh Phat`,
+                description: productD.SEO?.metaDescription || productD.excerpt || productD.description,
                 type: "website",
                 url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${params.productId}/${productD.slug}`,
                 publishedTime: productD.created_at,
@@ -37,10 +43,10 @@ export async function generateMetadata({ params }) {
                 tags: productD.categories,
                 images: [
                     {
-                        url: `${process.env.NEXT_PUBLIC_API_URL}${productD.SEO ? (productD.SEO.metaImage.url) : productD.thumbnail.url}`,
+                        url: `${process.env.NEXT_PUBLIC_API_URL}${productD.SEO?.metaImage?.url || productD.thumbnail.url}`,
                         width: 1024,
                         height: 576,
-                        alt: post.title,
+                        alt: productD.title,
                         type: "image/jpg"
                     }
                 ]
@@ -49,33 +55,31 @@ export async function generateMetadata({ params }) {
                 card: "summary_large_image",
                 site: "@thanhphat",
                 creator: "@thanhphat",
-                title: `${productD.SEO ? (productD.SEO.metaTitle) : productD.title} | thanhphat`,
-                description: productD.SEO ? (productD.SEO.metaDescription) : (productD.excerpt || productD.description),
+                title: `${productD.SEO?.metaTitle || productD.title} | thanhphat`,
+                description: productD.SEO?.metaDescription || productD.excerpt || productD.description,
             },
             alternates: {
                 canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${productD.categories}/${productD.slug}`
             }
         };
     } catch (error) {
-        // Handle errors here, such as logging or displaying an error message
-        console.error("Error fetching product data:", error.message);
-        throw error; // Re-throw the error to be handled by the caller if needed
+        console.error("Error generating metadata:", error.message);
+        throw error;
     }
 }
 
-async function fetchSocial(){
-    try{
+// Fetch social links
+async function fetchSocial() {
+    try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/social?populate=deep,2`);
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+            throw new Error("Network response was not ok");
         }
         return response.json();
-      }
-      catch(error){
-          // Handle errors here, such as logging or displaying an error message
-          console.error("Error fetching slider data:", error.message);
-          throw error; // Re-throw the error to be handled by the caller if needed
-      }
+    } catch (error) {
+        console.error("Error fetching social links:", error.message);
+        throw error;
+    }
 }
 
 // Fetch product details based on the slug
@@ -87,7 +91,7 @@ async function getProductDetail({ proSlug }) {
         }
         return res.json();
     } catch (error) {
-        console.error("Error fetching product data:", error.message);
+        console.error("Error fetching product details:", error.message);
         throw error;
     }
 }
@@ -106,21 +110,12 @@ async function fetchRelativeProduct({ categorySlug }) {
     }
 }
 
-// Extracts a single element from an array if it contains exactly one element
-function getObjectFromSingleElementArray(array) {
-    return Array.isArray(array) && array.length === 1 ? array[0] : null;
-}
-
+// Main component to display product details
 export default async function Pro({ params }) {
     const proSlug = params.proId;
 
     try {
-        // Initiate fetch operations
-        const socialLinkPromise = fetchSocial();
-        const proPromise = getProductDetail({ proSlug });
-
-        // Wait for all fetch operations to complete
-        const [socialLink, pro] = await Promise.all([socialLinkPromise, proPromise]);
+        const [socialLink, pro] = await Promise.all([fetchSocial(), getProductDetail({ proSlug })]);
 
         const social = flattenAttributes(socialLink);
         const product = flattenAttributes(pro.data);
@@ -131,10 +126,7 @@ export default async function Pro({ params }) {
         }
 
         const categorySlug = productDetail.product_category.slug;
-        const resRelProductPromise = fetchRelativeProduct({ categorySlug });
-
-        // Wait for the related products fetch operation to complete
-        const resRelProduct = await resRelProductPromise;
+        const resRelProduct = await fetchRelativeProduct({ categorySlug });
         const relProduct = flattenAttributes(resRelProduct.data);
 
         const variants = {
@@ -205,7 +197,6 @@ export default async function Pro({ params }) {
             </MotionDiv>
         );
     } catch (error) {
-        // Handle error gracefully in the UI
         return (
             <div className="error-message">
                 <h1>Error loading product details</h1>
