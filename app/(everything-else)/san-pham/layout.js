@@ -1,9 +1,25 @@
 import { Suspense } from "react";
 
 export const metadata = {
-    title: "Danh mục sản phẩm | Nhựa Thành Phát",
-    description:
-      "Danh mục sản phẩm",
+  title: "Danh mục sản phẩm | Nhựa Thành Phát",
+  description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+  keywords: ["cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
+  openGraph: {
+      url: "https://nhuathanhphat.vn/",
+      type: "website",
+      title: "Nhựa Thành Phát",
+      description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+  },
+  twitter: {
+      card: "summary_large_image",
+      title: "Nhựa Thành Phát",
+      description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+      creator: "@thanhphat",
+      site: "@thanhphat",
+  },
+  alternates: {
+      canonical: `/san-pham`,
+  },
 };
 
 function Loading() {

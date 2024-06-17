@@ -48,8 +48,8 @@ export default async function Header() {
   return (
     <MotionHeader className={`header show`}>
       <Link href={`/`} className="logo absolute">
-        <Image className={`logo-white`} src={`${process.env.NEXT_PUBLIC_API_URL}${logoWhite}`} alt={"logo"} width={500} height={500} priority/>
-        <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}${logoBlack}`} alt={"logo"} width={500} height={500} priority/>
+        <Image className={`logo-white`} src={`${process.env.NEXT_PUBLIC_API_URL}${logoWhite}`} alt={"logo"} width={Logos.whiteLogo.width} height={Logos.whiteLogo.height} priority/>
+        <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}${logoBlack}`} alt={"logo"} width={Logos.blackLogo.width} height={Logos.blackLogo.height} priority/>
       </Link>
       <NavigationMenu Email={mail.Email} />
     </MotionHeader>

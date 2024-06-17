@@ -51,7 +51,7 @@ export default async function SideHeader() {
       className={`header black show`}
     >
       <Link href={`/`} className="logo absolute">
-        <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}${logoBlack}`} alt={"logo"} width={400} height={400} priority/>
+        <Image className={`logo-black`} src={`${process.env.NEXT_PUBLIC_API_URL}${logoBlack}`} alt={"logo"} width={Logos.blackLogo.width} height={Logos.blackLogo.height} priority/>
       </Link>
       <NavigationMenu Email={mail.Email} />
     </MotionHeader>

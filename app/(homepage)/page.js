@@ -82,6 +82,7 @@ export default async function Home() {
       return (
           <>
               <div className="relative m-0 w-full h-auto p-0">
+                <h1 className="hidden">Trang chủ</h1>
                   <div className="relative m-0 overflow-hidden" id="home-page">
                       <div 
                           className="home-banner relative" 

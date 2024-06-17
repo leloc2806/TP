@@ -29,6 +29,7 @@ export const metadata = {
     googleBot: "index, follow"
   },
   alternates: {
+    canonical: `/`,
     types: {
       "application/rss+xml": "https://nhuathanhphat.vn/rss.xml"
     }

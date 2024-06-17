@@ -15,15 +15,16 @@ export default function CategoryProductTab({ categories }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     useEffect(() => {
-        const tabIndex = parseInt(searchParams.get('tab'), 10);
-        if (!isNaN(tabIndex)) {
+        const tabSlug = searchParams.get('tab');
+        const tabIndex = categoriesData.findIndex(category => category.slug === tabSlug);
+        if (tabIndex !== -1) {
             setSelectedIndex(tabIndex);
         }
     }, [searchParams]);
 
     const handleTabChange = (index) => {
         setSelectedIndex(index);
-        const newUrl = `/san-pham?tab=${index}`;
+        const newUrl = `/san-pham?tab=${categoriesData[index].slug}`;
         router.push(newUrl, undefined, { shallow: true });
     };
 

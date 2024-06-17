@@ -21,7 +21,7 @@ export const metadata = {
         site: "@thanhphat",
     },
     alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}du-an`,
+        canonical: `/du-an`,
     },
 };
 

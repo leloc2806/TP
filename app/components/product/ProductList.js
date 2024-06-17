@@ -53,8 +53,22 @@ const ProductList = ({ params, data, currentPage, pageSize, title }) => {
                                                     <div className="pic-img relative">
                                                         {
                                                             product.attributes.thumbnail.data && product.attributes.thumbnail.data.attributes.url
-                                                                ? (<Image src={`${process.env.NEXT_PUBLIC_API_URL}${product.attributes.thumbnail.data.attributes.url}`} alt={product.attributes.title} width={2000} height={1125} />)
-                                                                : (<Image src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/image_not_found_0457ab7ad4.jpg`} alt={product.attributes.title} width={2000} height={1125} />)
+                                                            ? (<Image 
+                                                                src={`${process.env.NEXT_PUBLIC_API_URL}${product.attributes.thumbnail.data.attributes.url}`} 
+                                                                alt={`Thumbnail image of ${product.attributes.title}`}
+                                                                width={2000} 
+                                                                height={1125} 
+                                                                className="trans-y lazy" 
+                                                                priority 
+                                                            />)
+                                                            : (<Image 
+                                                                src={`${process.env.NEXT_PUBLIC_API_URL}/uploads/image_not_found_0457ab7ad4.jpg`} 
+                                                                alt="Image not found" 
+                                                                width={2000} 
+                                                                height={1125} 
+                                                                className="trans-y lazy" 
+                                                                priority 
+                                                            />)
                                                         }
 
                                                     </div>

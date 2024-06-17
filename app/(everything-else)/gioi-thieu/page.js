@@ -18,7 +18,7 @@ export const metadata = {
   
     ],
     openGraph: {
-      url: "https://www.nhuathanhphat.vn/",
+      url: "https://nhuathanhphat.vn/",
       type: "website",
       title: "Nhựa Thành Phát",
       description:
@@ -33,7 +33,7 @@ export const metadata = {
       site: "@thanhphat",
     },
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}about`
+      canonical: `/gioi-thieu`
     }
   };
 

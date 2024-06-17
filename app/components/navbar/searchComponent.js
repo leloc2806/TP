@@ -35,6 +35,7 @@ export default function SearchComponent({ show, display }) {
                             <button
                                 className="search-submit-button search-svg block"
                                 type="submit"
+                                aria-label="submit-search"
                             >
                                 <svg viewBox="0 0 50 50">
                                     <path fill="currentColor" d="M33.3,31.9c-0.6,0.6-1.3,1-2,1.4l5.9,5.9c1,0.9,2.5,0.9,3.4,0c0.9-1,0.9-2.5,0-3.4l-5.9-5.9C34.4,30.6,33.9,31.3,33.3,31.9z"></path>
@@ -66,6 +67,7 @@ export default function SearchComponent({ show, display }) {
                                 type="button"
                                 className="close-search"
                                 onClick={display}
+                                aria-label="close-search"
                             />
                         </form>
                     </div>

@@ -22,7 +22,7 @@ export const metadata = {
         site: "@thanhphat",
     },
     alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}contact`,
+        canonical: `/lien-he`,
     },
 };
 

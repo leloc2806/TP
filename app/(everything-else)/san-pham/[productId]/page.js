@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
                 title: `${metaTitle} | Thanh Phat`,
                 description: metaDescription,
                 type: "website",
-                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${productCat.slug}`,
+                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}san-pham/${productCat.slug}`,
                 publishedTime: productCat.created_at,
                 authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
                 tags: productCat.categories,

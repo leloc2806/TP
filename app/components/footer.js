@@ -103,9 +103,9 @@ export default async function Footer() {
                         <div className="menu-footer">
                             <ul>
                                 <li><Link className="link-load link-footer" href={"/"}>Trang chủ</Link></li>
-                                <li><Link className="link-load link-footer" href={"/product"}>Dự án</Link></li>
+                                <li><Link className="link-load link-footer" href={"/san-pham"}>Dự án</Link></li>
                                 <li><Link className="link-load link-footer" href={"/tin-tuc"}>Tin tức</Link></li>
-                                <li><Link className="link-load link-footer" href={"/about"}>Giới thiệu</Link></li>
+                                <li><Link className="link-load link-footer" href={"/gioi-thieu"}>Giới thiệu</Link></li>
                             </ul>
                         </div>
                         <div className="social-footer">
@@ -147,7 +147,7 @@ export default async function Footer() {
                         </div>
                         <div className="list-term-footer">
                             <ul>
-                                <li><Link className="link-load link-footer " href={'/contact'}>Liên hệ</Link></li>
+                                <li><Link className="link-load link-footer " href={'/lien-he'}>Liên hệ</Link></li>
                             </ul>
                         </div>
                     </div>

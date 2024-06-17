@@ -44,16 +44,21 @@ export default function ProductImageSlider({ data, firstImage }) {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [open, setOpen] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
-    
 
-    const slides = data ? Object.values(data).map(image => ({
+    // Check if data[0].Image is null
+    const slides = data[0]?.Image?.url ? Object.values(data).map(image => ({
         src: `${process.env.NEXT_PUBLIC_API_URL}${image.Image.url}`,
-        alt: image.Name
+        alt: image.Name || 'Image',
+        width: image.Image.width || 1024,
+        height: image.Image.height || 576,
     })) : [{
         src: `${process.env.NEXT_PUBLIC_API_URL}${firstImage.url}`,
-        alt: firstImage.name
+        alt: firstImage.name,
+        width: firstImage.width,
+        height: firstImage.height,
     }];
 
+    // Handle image click to open Lightbox
     const handleImageClick = (index) => {
         setCurrentSlide(index);
         setOpen(true);
@@ -84,7 +89,8 @@ export default function ProductImageSlider({ data, firstImage }) {
                                         <Image 
                                             src={slide.src} 
                                             alt={`Slide ${slide.alt}`} 
-                                            fill
+                                            width={slide.width} // Use the provided width
+                                            height={slide.height} // Use the provided height
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                     </button>
@@ -94,6 +100,8 @@ export default function ProductImageSlider({ data, firstImage }) {
                     ))
                 }
             </Swiper>
+
+            {/* Thumbnail Swiper */}
             <Swiper
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}
@@ -112,8 +120,8 @@ export default function ProductImageSlider({ data, firstImage }) {
                                         className={"gallery-demo swiper-lazy"}
                                         src={slide.src} 
                                         alt={`Thumb ${slide.alt}`} 
-                                        width={200}
-                                        height={200}
+                                        width={slide.width}
+                                        height={slide.height}
                                     />
                                 </span>
                             </div>
@@ -122,6 +130,7 @@ export default function ProductImageSlider({ data, firstImage }) {
                 ))}
             </Swiper>
 
+            {/* Lightbox Component */}
             <Lightbox
                 open={open}
                 close={() => setOpen(false)}
@@ -129,8 +138,8 @@ export default function ProductImageSlider({ data, firstImage }) {
                 plugins={[Zoom]}
                 index={currentSlide}
                 zoom={{
-                    scrollToZoom:true,
-                    maxZoomPixelRatio:5
+                    scrollToZoom: true,
+                    maxZoomPixelRatio: 5
                 }}
                 onClose={() => setOpen(false)}
             />

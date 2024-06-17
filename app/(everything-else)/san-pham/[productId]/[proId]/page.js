@@ -6,6 +6,7 @@ import { MotionDiv } from "@/app/components/MotionDiv";
 import remarkGfm from "remark-gfm";
 import ProductSlider from "@/app/components/product/productSlider";
 import ProductImageSlider from "@/app/components/product/ImageProductSlide";
+import Image from 'next/image';
 
 // Helper function to extract single element array
 function getObjectFromSingleElementArray(array) {
@@ -134,6 +135,9 @@ export default async function Pro({ params }) {
             visible: { opacity: 1 }
         };
 
+        // console.log(productDetail.Image_slider)
+        // console.log(productDetail.thumbnail)
+
         return (
             <MotionDiv
                 variants={variants}
@@ -147,11 +151,7 @@ export default async function Pro({ params }) {
                     <div className="load-details m-0 p-0 z-10 text-[var(--color-black)]">
                         <div className="wrap-content w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 flex flex-wrap">
                             <div className="block product-gallery">
-                                {productDetail.Image_slider ? (
-                                    <ProductImageSlider data={productDetail.Image_slider} />
-                                ) : (
-                                    <ProductImageSlider firstImage={productDetail.thumbnail} />
-                                )}
+                                <ProductImageSlider data={productDetail.Image_slider} firstImage={productDetail.thumbnail}/>
                             </div>
 
                             <div className="product-info">

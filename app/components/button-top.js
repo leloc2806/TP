@@ -4,7 +4,7 @@ export default function ButtonTop(){
     const backToTop = () => window.scrollTo({ top: 0 })
 
     return (
-        <button className="go-top block" onClick={backToTop}>
+        <button className="go-top block" onClick={backToTop} aria-label="button-to-top">
             <svg className={
                 "h-[32px] w-[32px] mh5:h-[32px] mh5:w-[32px]"
             } 

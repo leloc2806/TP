@@ -8,7 +8,6 @@ export default function NavigationMenu({Email}){
     const [showNavBar, setShowNavBar] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
     const menuRef = useRef(null);
-    const itemRef = useRef(null);
 
     const toggleMenu = () => {
         setShowNavBar((prev) => !prev);
@@ -45,6 +44,7 @@ export default function NavigationMenu({Email}){
             <button 
                 className="nav-click block"
                 onClick={toggleMenu}
+                aria-label="menu"
             >
                 <div className="active-nav">
                     <span className="line-toggle toggle-1"></span> 
@@ -59,6 +59,7 @@ export default function NavigationMenu({Email}){
                 <button 
                     className={`close-menu${showNavBar ? ' show opacity-1' : ''}`}
                     onClick={toggleMenu}
+                    aria-label="menu"
                 >
                     <span className="line-toggle toggle-1"></span> 
                     <span className="line-toggle toggle-2"></span>
@@ -83,7 +84,7 @@ export default function NavigationMenu({Email}){
                 <div 
                     className={`right-header right-header-clone${showNavBar ? ' animation-menu' : ' animation-menu-showdown'}`}
                 >
-                    <Link className="hotline-contacts link-load" href={`/lien-he`} prefetch={null}>
+                    <Link className="hotline-contacts link-load" href={`/lien-he`} prefetch={null} aria-label="phone">
                         <svg 
                         className={
                             "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px] mr-[10px]"
@@ -100,7 +101,7 @@ export default function NavigationMenu({Email}){
                         </g>
                     </svg>
                     </Link>
-                    <Link className="email-but" href={`mailto:${Email}`}>
+                    <Link className="email-but" href={`mailto:${Email}`} aria-label="email">
                         <svg className={
                             "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                         }
@@ -145,7 +146,7 @@ export default function NavigationMenu({Email}){
             </div>
 
             <div className="right-header right-header-main flex">
-                <Link className="hotline-contacts link-load" href={`/lien-he`}>
+                <Link className="hotline-contacts link-load" href={`/lien-he`} aria-label="phone">
                     <svg 
                         className={
                             "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px] mr-[10px]"
@@ -163,7 +164,7 @@ export default function NavigationMenu({Email}){
                     </svg>
                     <span>Contact</span>    
                 </Link>
-                <Link className="email-but" href={`mailto:${Email}`}>
+                <Link className="email-but" href={`mailto:${Email}`} aria-label="email">
                     <svg className={
                         "h-[32px] w-[32px] max-[1100px]:h-[26px] max-[1100px]:w-[26px]"
                     }
