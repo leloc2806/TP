@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from 'next/navigation';
 
 const ProductList = ({ params, data, currentPage, pageSize, title }) => {
-    console.log(params)
+
     const [productCategory, setProductCategory] = useState(data);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -22,7 +22,7 @@ const ProductList = ({ params, data, currentPage, pageSize, title }) => {
         const newData = await res.json();
         setProductCategory(newData);
         setIsLoading(false);
-        router.push(`/san-pham/${params.productId}?page=${page}`);
+        router.push(`/san-pham/${params.categoryId}/${params.productId}?page=${page}`);
     };
 
     if (isLoading) {
