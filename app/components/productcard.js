@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ProductCard({post, url, width, height, slug}){
+export default function ProductCard({post, url, slug, catSlug}){
 
     return (
         <>
             
-            <Link href={`/san-pham/${post.product_category.slug}/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
+            <Link href={`/san-pham/${catSlug}/${post.product_category.slug}/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
 
                 <div className="pic-news relative">
                     <div className="pic-img pt-[60%] relative block w-full h-auto overflow-hidden">

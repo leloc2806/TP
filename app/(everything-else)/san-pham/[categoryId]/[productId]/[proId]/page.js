@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
         const productD = getObjectFromSingleElementArray(produc);
 
         return {
-            title: `${productD.SEO?.metaTitle || productD.title} | Thanh Phat`,
+            title: `${productD.SEO ? productD.SEO?.metaTitle : productD.title} | Thanh Phat`,
             authors: [
                 {
                     name: productD.SEO ? 'admin' : 'Thanh Phat'
@@ -38,10 +38,10 @@ export async function generateMetadata({ params }) {
                 title: `${productD.SEO?.metaTitle || productD.title} | Thanh Phat`,
                 description: productD.SEO?.metaDescription || productD.excerpt || productD.description,
                 type: "website",
-                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${params.productId}/${productD.slug}`,
+                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}san-pham/${productD.product_category.slug}/${productD.slug}`,
                 publishedTime: productD.created_at,
-                authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
-                tags: productD.categories,
+                authors: [`admin`],
+                tags: productD.product_category.slug,
                 images: [
                     {
                         url: `${process.env.NEXT_PUBLIC_API_URL}${productD.SEO?.metaImage?.url || productD.thumbnail.url}`,
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
                 description: productD.SEO?.metaDescription || productD.excerpt || productD.description,
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${productD.categories}/${productD.slug}`
+                canonical: `/san-pham/${productD.product_category.slug}/${productD.slug}`
             }
         };
     } catch (error) {
@@ -192,7 +192,7 @@ export default async function Pro({ params }) {
                             <span className="absolute bottom-0 left-0 block w-full h-px opacity-60 bg-[var(--color-black20)]"></span>
                         </div>
                     </div>
-                    <ProductSlider data={relProduct} slug={params.slug} />
+                    <ProductSlider data={relProduct} slug={params.slug} catSlug={params.categoryId} />
                 </div>
             </MotionDiv>
         );

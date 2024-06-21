@@ -62,7 +62,7 @@ export async function generateMetadata({ params }) {
                 description: metaDescription,
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}product/${productCat.slug}`
+                canonical: `/san-pham/${productCat.slug}`
             }
         };
     } catch (error) {

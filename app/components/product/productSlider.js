@@ -37,7 +37,7 @@ const SwiperButtonPrev = ({ children }) => {
     );
 };
 
-export default function ProductSlider({ data, slug }) {
+export default function ProductSlider({ data, slug, catSlug }) {
     const pagination = {
         clickable: true,
         renderBullet: function (index, className) {
@@ -101,7 +101,7 @@ export default function ProductSlider({ data, slug }) {
 
                 {data.map((relativeProduct) => (
                     <SwiperSlide key={relativeProduct.id}>
-                        <ProductCard slug={slug} post={relativeProduct} url={relativeProduct.thumbnail.url} width={300} height={200} />
+                        <ProductCard slug={slug} catSlug={catSlug} post={relativeProduct} url={relativeProduct.thumbnail.url} width={300} height={200} />
                     </SwiperSlide>
                 ))}
             </Swiper>

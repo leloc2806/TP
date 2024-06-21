@@ -49,7 +49,7 @@ function Post({post}){
         <>
             <Link 
                 className={"item-search ani-item on-show"}
-                href={`/product/${post.product_category.slug}/${post.slug}`}
+                href={`/san-pham/${post.product_category.slug}/${post.slug}`}
             >
                 <div className="pic-search">
                     {

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from 'next/navigation';
 
 const ProductList = ({ params, data, currentPage, pageSize, title }) => {
+    console.log(params)
     const [productCategory, setProductCategory] = useState(data);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -47,7 +48,7 @@ const ProductList = ({ params, data, currentPage, pageSize, title }) => {
                                 {detailData
                                     .sort((a, b) => new Date(b.attributes.createdAt) - new Date(a.attributes.createdAt))
                                     .map((product) => (
-                                        <Link key={product.id} className='item-product-category relative block' href={`/san-pham/${params.productId}/${product.attributes.slug}`}>
+                                        <Link key={product.id} className='item-product-category relative block' href={`/san-pham/${params.categoryId}/${params.productId}/${product.attributes.slug}`}>
                                             <div className="product-category-pic relative">
                                                 <div className="wrap-product-category-pic relative">
                                                     <div className="pic-img relative">

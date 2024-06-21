@@ -70,7 +70,7 @@ export default function CategoryProductTab({ categories }) {
                         >
                             <div className='load-news-list relative w-full h-auto flex flex-wrap'>
                                 {category.product_categories.data.map((catProduct) => (
-                                    <Link key={catProduct.id} className='item-product-category relative block' href={`/san-pham/${catProduct.slug}`}>
+                                    <Link key={catProduct.id} className='item-product-category relative block' href={`/san-pham/${category.slug}/${catProduct.slug}`}>
                                         <div className="product-category-pic relative">
                                             <div className="wrap-product-category-pic relative">
                                                 <div className="pic-img relative">

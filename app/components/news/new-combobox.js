@@ -43,7 +43,7 @@ export default function NewComboBox({data}){
             ))}
             </Tab.List>
             <Tab.Panels>
-            {tabData.map((posts, index) => (
+            {tabData.map((category, index) => (
                 <Tab.Panel 
                     key={index}
                     className='wrap-content pt-0 min-h-[80vh] block w-[var(--wrapcontent)] m-auto py-[5vw] px-0 relative h-auto z-10 animate-fade'
@@ -57,8 +57,8 @@ export default function NewComboBox({data}){
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0">
                             <div className='news-list flex justify-start flex-wrap m-auto'>
-                                {posts.articles.data.map((post) => (   
-                                    <ArticleCard key={post.id} post={post} url={post.thumbnail.url} width={2000} height={1333}/>
+                                {category.articles.data.map((post) => (   
+                                    <ArticleCard key={post.id} post={post} url={post.thumbnail.url} categorySlug={category.slug} width={2000} height={1333}/>
                                 ))}
                             </div>
                         </Transition>

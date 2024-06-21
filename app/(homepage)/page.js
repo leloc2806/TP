@@ -179,7 +179,7 @@ export default async function Home() {
                                               <a 
                                                   className="link-load" 
                                                   aria-label="view" 
-                                                  href={`/tin-tuc/${article.slug}`}
+                                                  href={`/tin-tuc/${article.news_categories.data[0].slug}/${article.slug}`}
                                               ></a>
                                           </div>  
                                       ))}  

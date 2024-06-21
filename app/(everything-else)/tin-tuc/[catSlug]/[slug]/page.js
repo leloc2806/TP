@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
                 title: `${postFin.title} | Thành Phát`,
                 description: postFin.SEO?.metaDescription || postFin.excerpt,
                 type: "website",
-                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}news/${postFin.slug}`,
+                url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}tin-tuc/${postFin.slug}`,
                 publishedTime: postFin.created_at,
                 authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
                 tags: postFin.categories,
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }) {
                 ]
             },
             alternates: {
-                canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}${postFin.slug}`
+                canonical: `/tin-tuc/${postFin.slug}`
             }
         };
     } catch (error) {
@@ -97,6 +97,7 @@ async function fetchRelativeArticle({ categorySlug }) {
 }
 
 export default async function News({ params }) {
+
     const dataSinglePage = await fetchHeading({ params });
     const testDetail = flattenAttributes(dataSinglePage.data);
     const test = getObjectFromSingleElementArray(testDetail);

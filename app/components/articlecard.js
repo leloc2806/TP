@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ArticleCard({post, url, width, height, slug}){
+export default function ArticleCard({post, url, width, height, slug, categorySlug}){
     const formatDate = (timestamp) => {
         const date = new Date(timestamp);
         const day = date.getDate().toString().padStart(2, '0');
@@ -15,7 +15,7 @@ export default function ArticleCard({post, url, width, height, slug}){
 
         <>
             
-            <Link href={`/tin-tuc/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
+            <Link href={`/tin-tuc/${categorySlug}/${post.slug}`} className={`item-news ${slug && post.slug === slug ? 'current' : ''}`}>
 
                 <div className="pic-news relative">
                     <div className="pic-img pt-[60%] relative block w-full h-auto overflow-hidden">
