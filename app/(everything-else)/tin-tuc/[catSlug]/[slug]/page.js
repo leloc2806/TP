@@ -172,7 +172,7 @@ export default async function News({ params }) {
                     </div>
                 </div>
             </div>
-            <Slider data={relativeArticle} slug={params.slug} />
+            <Slider data={relativeArticle} slug={params.slug} catSlug={params.catSlug}/>
         </MotionDiv>
     );
 }
