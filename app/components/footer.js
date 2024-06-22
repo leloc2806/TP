@@ -29,7 +29,7 @@ export default async function Footer() {
                     <ButtonTop/>
                     <div className="wrap-box-footer">
                         <div className="company-text">
-                            <h2>Công ty CP Năng Lượng Thành Phát</h2>
+                            <h2>Công ty Cổ phần Năng Lượng Thành Phát</h2>
                             <ul className="company-info"> 
                                 <li>
                                     <span className="call">
