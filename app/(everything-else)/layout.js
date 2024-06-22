@@ -41,7 +41,7 @@ export const metadata = {
     capable: true
   },
   verification: {
-    google: process.env.GOOGLE_VERIFICATION,
+    google: 'yhym5Tw30zTdLHOlXHfhdX0iCNFIZgFu9AlNpx6NINs',
   },
   icons: {
     icon: [
