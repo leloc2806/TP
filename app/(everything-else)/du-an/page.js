@@ -4,19 +4,19 @@ import flattenAttributes from "@/app/lib/utils";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Dự Án | Nhựa Thành Phát",
+    title: "Dự Án",
     description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
     keywords: ["cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
     openGraph: {
         url: "https://nhuathanhphat.vn/",
         type: "website",
-        title: "Nhựa Thành Phát",
-        description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+        title: "Công ty Cổ phần Năng lượng Thành Phát",
+        description: "Công ty Cổ phần Năng lượng Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
     },
     twitter: {
         card: "summary_large_image",
-        title: "Nhựa Thành Phát",
-        description: "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+        title: "Công ty Cổ phần Năng lượng Thành Phát",
+        description: "Công ty Cổ phần Năng lượng Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
         creator: "@thanhphat",
         site: "@thanhphat",
     },

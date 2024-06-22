@@ -5,6 +5,7 @@ import Providers from "@/app/query_provider";
 import Footer from "../components/footer";
 import { Suspense } from "react";
 import SocialWhite from "../components/social-white";
+import Analytics from "../components/Analytics";
 
 const roboto = Roboto({ 
   subsets: ["latin"],
@@ -12,11 +13,11 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Công ty Cổ phần Nhựa Thành Phát",
-  description: "Công ty Cổ phần Nhựa Thành Phát",
+  title: "Công ty Cổ phần Năng lượng Thành Phát",
+  description: "Công ty Cổ phần Năng lượng Thành Phát",
   metadataBase: new URL("https://nhuathanhphat.vn/"),
   openGraph: {
-    siteName: "Công ty Cổ phần Nhựa Thành Phát",
+    siteName: "Công ty Cổ phần Năng lượng Thành Phát",
     type: "website",
     locale: "vi_VN"
   },
@@ -34,9 +35,9 @@ export const metadata = {
       "application/rss+xml": "https://nhuathanhphat.vn/rss.xml"
     }
   },
-  applicationName: "Công ty Cổ phần Nhựa Thành Phát",
+  applicationName: "Công ty Cổ phần Năng lượng Thành Phát",
   appleWebApp: {
-    title: "Công ty Cổ phần Nhựa Thành Phát",
+    title: "Công ty Cổ phần Năng lượng Thành Phát",
     statusBarStyle: "default",
     capable: true
   },
@@ -76,6 +77,7 @@ export default function HomeLayout({ children }) {
             </main>
             <SocialWhite />
             <Footer/>
+            <Analytics />
           </Providers>
         </Suspense>
       </body>

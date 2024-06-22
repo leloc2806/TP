@@ -1,5 +1,5 @@
 export const metadata = {
-    title: "Tin tức | Nhựa Thành Phát",
+    title: "Tin tức",
     description:
       "Tin tuc",
       keywords: [
@@ -16,13 +16,13 @@ export const metadata = {
       openGraph: {
         url: "https://nhuathanhphat.vn/",
         type: "article",
-        title: "Công ty cổ phần năng lượng Thành Phát",
+        title: "Công ty Cổ phần Năng lượng Thành Phát",
         description:
-          "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
+          "Công ty Cổ phần Năng lượng Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
       },
       twitter: {
         card: "summary_large_image",
-        title: "Công ty cổ phần năng lượng Thành Phát",
+        title: "Công ty Cổ phần Năng lượng Thành Phát",
         description:
           "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
         creator: "@thanhphat",

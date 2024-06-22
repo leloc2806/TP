@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
         const productD = getObjectFromSingleElementArray(produc);
 
         return {
-            title: `${productD.SEO ? productD.SEO?.metaTitle : productD.title} | Thanh Phat`,
+            title: `${productD.SEO ? productD.SEO?.metaTitle : productD.title}`,
             authors: [
                 {
                     name: productD.SEO ? 'admin' : 'Thanh Phat'

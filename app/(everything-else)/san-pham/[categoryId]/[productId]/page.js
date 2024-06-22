@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
         const metaImage = productCat.SEO?.metaImage?.url || productCat.picture?.url || '';
 
         return {
-            title: `${metaTitle} | Thanh Phat`,
+            title: `${metaTitle}`,
             authors: [
                 {
                     name: 'admin' || "Thanh Phat"
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
                 type: "website",
                 url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}san-pham/${productCat.slug}`,
                 publishedTime: productCat.created_at,
-                authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
+                authors: `admin`,
                 tags: productCat.categories,
                 images: [
                     {

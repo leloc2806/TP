@@ -23,7 +23,7 @@ export async function generateMetadata({ params }) {
         const postFin = getObjectFromSingleElementArray(postDetail);
 
         return {
-            title: `${postFin.SEO?.metaTitle || postFin.title} | Thành Phát`,
+            title: `${postFin.SEO?.metaTitle || postFin.title}`,
             authors: [
                 {
                     name: 'admin' || "Thành Phát"
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
                 type: "website",
                 url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}tin-tuc/${postFin.slug}`,
                 publishedTime: postFin.created_at,
-                authors: [`${process.env.NEXT_PUBLIC_API_ENDPOINT}about`],
+                authors: `admin`,
                 tags: postFin.categories,
                 images: [
                     {
