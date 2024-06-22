@@ -1,25 +1,29 @@
-// components/Analytics.js
+"use client";
+
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 
 const GA_TRACKING_ID = 'G-C05QGVCXR1';
 
 const Analytics = () => {
-  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = () => {
       window.gtag('config', GA_TRACKING_ID, {
-        page_path: url,
+        page_path: `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`,
       });
     };
 
-    router.events.on('routeChangeComplete', handleRouteChange);
+    handleRouteChange(); // Track the initial page load
+    window.addEventListener('popstate', handleRouteChange);
+
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      window.removeEventListener('popstate', handleRouteChange);
     };
-  }, [router.events]);
+  }, [pathname, searchParams]);
 
   return (
     <>
