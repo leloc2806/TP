@@ -6,6 +6,7 @@ import Footer from "../components/footer";
 import { Suspense } from "react";
 import SocialWhite from "../components/social-white";
 import Analytics from "../components/Analytics";
+import GoogleTagManager from "../components/GoogleTagManager";
 
 const roboto = Roboto({ 
   subsets: ["latin"],
@@ -68,6 +69,9 @@ function Loading() {
 export default function HomeLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <GoogleTagManager />
+      </head>
       <body className={roboto.className}>
         <Suspense fallback={<Loading />}>
           <Providers>
