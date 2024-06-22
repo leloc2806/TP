@@ -8,6 +8,7 @@ const GTM_ID = 'GTM-MR6FGMV5';
 const GoogleTagManager = () => {
   return (
     <>
+      {/* Google Tag Manager Script */}
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -17,9 +18,14 @@ const GoogleTagManager = () => {
           })(window,document,'script','dataLayer','${GTM_ID}');
         `}
       </Script>
+      {/* No-Script Fallback */}
       <noscript>
-        <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-          height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+          height="0"
+          width="0"
+          style={{ display: 'none', visibility: 'hidden' }}
+        ></iframe>
       </noscript>
     </>
   );
