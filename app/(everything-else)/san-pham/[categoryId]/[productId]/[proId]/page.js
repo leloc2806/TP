@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
                 description: productD.SEO?.metaDescription || productD.excerpt || productD.description,
             },
             alternates: {
-                canonical: `/san-pham/${productD.product_category.slug}/${productD.slug}`
+                canonical: `/san-pham/${params.categoryId}/${productD.product_category.slug}/${productD.slug}`
             }
         };
     } catch (error) {

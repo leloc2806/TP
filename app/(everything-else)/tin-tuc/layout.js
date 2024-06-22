@@ -29,7 +29,7 @@ export const metadata = {
         site: "@thanhphat",
       },
       alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_API_ENDPOINT}news`
+        canonical: `/tin-tuc`
       }
   };
 export default function NewsLayout({ children }) {

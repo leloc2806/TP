@@ -41,12 +41,7 @@ export const metadata = {
     capable: true
   },
   verification: {
-    google: "YOUR_DATA",
-    yandex: ["YOUR_DATA"],
-    other: {
-      "msvalidate.01": ["YOUR_DATA"],
-      "facebook-domain-verification": ["YOUR_DATA"]
-    }
+    google: process.env.GOOGLE_VERIFICATION,
   },
   icons: {
     icon: [

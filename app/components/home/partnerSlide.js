@@ -67,7 +67,7 @@ export default function SlidePartner({brands}){
             <div className="ani-view-details">
                 <Link
                     className="view-details dark sticky-button detect-on-view is-inview relative flex item-center p-0 border-0 mt-8 mx-0 mb-0 w-[5rem] h-[5rem]"
-                    href="/about"
+                    href="/gioi-thieu"
                 >
                     <svg className="w_100 h_100" viewBox="0 0 80 80">
                         <circle r="38" cx="40" cy="40" stroke="#fff" fill="none"></circle>

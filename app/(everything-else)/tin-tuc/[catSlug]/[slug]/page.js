@@ -65,7 +65,7 @@ export async function generateMetadata({ params }) {
                 ]
             },
             alternates: {
-                canonical: `/tin-tuc/${postFin.slug}`
+                canonical: `/tin-tuc/${params.catSlug}/${postFin.slug}`
             }
         };
     } catch (error) {
