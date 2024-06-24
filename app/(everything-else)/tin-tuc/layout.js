@@ -2,17 +2,7 @@ export const metadata = {
     title: "Tin tức",
     description:
       "Tin tuc",
-      keywords: [
-        "cửa nhựa",
-        "cửa",
-        "sàn",
-        "trần",
-        "nhà máy",
-        "nhựa",
-        "sản xuất",
-        "nhập khẩu"
-    
-      ],
+      keywords: ["Thành Phát", "nhựa thành phát", "nhuathanhphat", "nhựa composite", "sản phẩm nhựa", "cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
       openGraph: {
         url: "https://nhuathanhphat.vn/",
         type: "article",

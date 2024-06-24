@@ -3,7 +3,7 @@ import AboutTab from "../../components/about/about-tab";
 import SectionComponent from "@/app/components/sectionComponent";
 
 export const metadata = {
-    title: "Về chúng tôi | Nhựa Thành Phát",
+    title: "Về chúng tôi",
     description:
       "Nhựa Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
     keywords: [
@@ -14,7 +14,11 @@ export const metadata = {
       "nhà máy",
       "nhựa",
       "sản xuất",
-      "nhập khẩu"
+      "nhập khẩu",
+      "thành phát",
+      "thanhphat",
+      "nhựa thành phát",
+      
   
     ],
     openGraph: {

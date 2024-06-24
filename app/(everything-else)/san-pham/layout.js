@@ -3,7 +3,7 @@ import { Suspense } from "react";
 export const metadata = {
   title: "Danh mục sản phẩm",
   description: "Công ty Cổ phần Năng lượng Thành Phát - Sản phẩm nhựa uy tín hàng đầu Việt Nam",
-  keywords: ["cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
+  keywords: ["Thành Phát", "nhựa thành phát", "nhuathanhphat", "nhựa composite", "sản phẩm nhựa", "cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
   openGraph: {
       url: "https://nhuathanhphat.vn/",
       type: "website",

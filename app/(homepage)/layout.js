@@ -15,7 +15,7 @@ const roboto = Roboto({
 
 export const metadata = {
   title: "Công ty Cổ phần Năng lượng Thành Phát",
-  keywords: "Thành Phát, nhựa thành phát, nhuathanhphat, nhựa composite, sản phẩm nhựa",
+  keywords: ["Thành Phát", "nhựa thành phát", "nhuathanhphat", "nhựa composite", "sản phẩm nhựa", "cửa nhựa", "cửa", "sàn", "trần", "nhà máy", "nhựa", "sản xuất", "nhập khẩu"],
   description: "Công ty Cổ phần Năng lượng Thành Phát chuyên cung cấp sản phẩm nhựa composite chất lượng cao, bền vững và thẩm mỹ.",
   metadataBase: new URL("https://nhuathanhphat.vn/"),
   openGraph: {
