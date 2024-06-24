@@ -22,6 +22,8 @@ export const metadata = {
 
 export default function ContactLayout({ children }) {
     return(
-        {children}
+        <>
+            {children}
+        </>
     );
 }

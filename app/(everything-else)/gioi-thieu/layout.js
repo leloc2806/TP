@@ -22,6 +22,8 @@ export const metadata = {
 
 export default function AboutUsLayout({ children }) {
     return(
-        {children}
+        <>
+            {children}
+        </>
     );
 }
