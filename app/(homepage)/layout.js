@@ -15,7 +15,8 @@ const roboto = Roboto({
 
 export const metadata = {
   title: "Công ty Cổ phần Năng lượng Thành Phát",
-  description: "Công ty Cổ phần Năng lượng Thành Phát là đơn vị hàng đầu trong sản xuất các sản phẩm từ nhựa composite tại Việt Nam. Chúng tôi chuyên cung cấp các sản phẩm chất lượng cao như phôi cửa, cửa nhựa composite, trần, và tường vách, phục vụ nhu cầu đa dạng của ngành xây dựng. Với sứ mệnh mang đến giải pháp bền vững và thẩm mỹ, Thành Phát luôn chú trọng ứng dụng công nghệ hiện đại và quy trình sản xuất tiên tiến. Đội ngũ nhân viên giàu kinh nghiệm của chúng tôi cam kết tạo ra các sản phẩm không chỉ đạt tiêu chuẩn về độ bền và an toàn, mà còn có thiết kế đẹp mắt và phù hợp với xu hướng thị trường. Thành Phát luôn đặt lợi ích của khách hàng, đối tác và cộng đồng lên hàng đầu, nỗ lực không ngừng để mang lại những giá trị tốt nhất. Hãy cùng chúng tôi xây dựng tương lai thịnh vượng và bền vững!",
+  keywords: "Thành Phát, nhựa thành phát, nhuathanhphat, nhựa composite, sản phẩm nhựa",
+  description: "Công ty Cổ phần Năng lượng Thành Phát chuyên cung cấp sản phẩm nhựa composite chất lượng cao, bền vững và thẩm mỹ.",
   metadataBase: new URL("https://nhuathanhphat.vn/"),
   openGraph: {
     siteName: "Công ty Cổ phần Năng lượng Thành Phát",
@@ -68,7 +69,7 @@ function Loading() {
 
 export default function HomeLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="vi" className="scroll-smooth">
       <head>
         <GoogleTagManager />
       </head>
