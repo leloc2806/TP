@@ -3884,7 +3884,21 @@ img.trans-y {
     margin: 0 auto;
 }
 
+@media screen and (max-width: 650px){
+    .image-responsive {
+        width: 100vw!important;
+        max-height: 813px;
+        height: calc(27 / 16 * 100vw)!important;
+    }
 
+    .home-banner .mobile-slide-home,
+    .home-banner .bg-cover::after{
+        width: 100vw!important;
+        max-height: 813px;
+        height: calc(27 / 16 * 100vw)!important;
+        top: 0;
+    }
+}
 
 @media screen and (max-width:580px) {
 

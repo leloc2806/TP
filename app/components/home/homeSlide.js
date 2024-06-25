@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Image from 'next/image';
 
-import { EffectFade } from 'swiper/modules';
+import { EffectFade, Autoplay } from 'swiper/modules';
 
 export default function SlideHome({slides}){
 
@@ -18,8 +18,12 @@ export default function SlideHome({slides}){
         effect={'fade'}
         slidesPerView={1}
         loop={true}
-        modules={[EffectFade]}
-        className='h-[100vh]'
+        autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+        }}
+        modules={[EffectFade, Autoplay]}
+        className='h-[100vh] mobile-slide-home'
         >
         {
             slides.map((slide) => (
@@ -27,7 +31,7 @@ export default function SlideHome({slides}){
             <SwiperSlide key={slide.id}>
                 <div className='bg-cover relative'>
                     <Image
-                        className={'desktop'}
+                        className={'desktop image-responsive'}
                         src={`${process.env.NEXT_PUBLIC_API_URL}${slide.Image.url}`}
                         width={1000}
                         height={1000}
