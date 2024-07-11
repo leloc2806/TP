@@ -1,8 +1,14 @@
+// components/contact/GMap.js
 "use client";
 
-export default function GoogleMap ({ center }) {
-  // const mapSrc = `https://maps.google.com/maps?q=${center.lat},${center.lng}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
-  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${center.lat},${center.lng}`;
+import { useEffect, useState } from "react";
+
+export default function GoogleMap({ mapUrl }) {
+  const [mapSrc, setMapSrc] = useState('');
+
+  useEffect(() => {
+    setMapSrc(mapUrl);
+  }, [mapUrl]);
 
   return (
     <div className="h-full">
