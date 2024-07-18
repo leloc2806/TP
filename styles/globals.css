@@ -1947,7 +1947,7 @@ img.trans-y {
 
 /* News Detail */
 
-.news-detail-page .load-title h2, 
+.news-detail-page .load-title h1, 
 .news-detail-page .load-title h3 {
 
     font-size: max(1.5rem, 28px);
@@ -1957,7 +1957,7 @@ img.trans-y {
     text-align: center;
 }
 
-.news-detail-page .box-text h3, .news-detail-page .load-title h2, .news-detail-page .load-title h3{
+.news-detail-page .box-text h3, .news-detail-page .load-title h1, .news-detail-page .load-title h3{
     position: relative;
     display: block;
     height: auto;
@@ -1975,17 +1975,27 @@ img.trans-y {
     list-style-type: disc;
 }
 
-.load-text h2, .load-text h3, .load-text h4, .load-text p, .load-text ul, .load-text ol, .load-text li{
+.load-text h2, .load-text h3, .load-text h4, .load-text p{
     position: relative;
     display: block;
     margin: 0 0 1.5rem;
-    padding: 0 3vw;
+    /* padding: 0 3vw; */
 }
 
 .load-text p img {
     display: block;
     text-align: center;
     width: 100%;
+}
+
+.markdown ul{
+    margin: 0 0 1.5rem;
+    padding: 0 1.5vw;
+    font-size: 1.2rem;
+}
+
+.markdown li{ 
+    margin: 0 0 1.5rem;
 }
 
 .load-text h1{}
@@ -3515,11 +3525,11 @@ img.trans-y {
         margin-top: 30px;
     }
 
-    .news-detail-page .load-title h2, .news-detail-page .load-title h3 {
+    .news-detail-page .load-title h1, .news-detail-page .load-title h3 {
         padding: 0;
     }
 
-    .news-detail-page .load-title h2 {
+    .news-detail-page .load-title h1 {
         text-align: center;
         max-width: unset;
         font-size: var(--titleSmall);

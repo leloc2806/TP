@@ -149,7 +149,7 @@ export default async function News({ params }) {
                             <div className="news-group-name text-center px-0 pb-8 pt-0 text-xl font-bold text-[var(--color-black50)] relative block w-full h-auto">
                                 {category.length > 1 ? category.join(', ') : category}
                             </div>
-                            <h2>{detailData.title}</h2>
+                            <h1>{detailData.title}</h1>
                             <div className="date-thumb text-center">by admin | {formatDate(detailData.createdAt)}</div>
                         </div>
                         <div className="load-text relative block my-0 mx-auto overflow-hidden p-[40px]">
